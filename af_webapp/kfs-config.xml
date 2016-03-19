@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--    -->
+<config>
+    <param name="project.name">kfs</param>
+    <param name="is.local.build">true</param>
+    <param name="use.p6spy">false</param>
+    <param name="use.quartz.scheduling">true</param>
+    <param name="environment">ptd</param>
+    <param name="build.environment">ptd</param>
+    <param name="external.config.directory">${user.home}/kuali/main/${environment}</param>
+    <param name="base.security.directory">${user.home}/kuali/main/${environment}/security</param>
+    <param name="base.settings.directory">${user.home}/kuali/main/${environment}/settings</param>
+    <param name="base.logs.directory">${user.home}/kuali/main/${environment}/logs</param>
+    <param name="base.work.directory">${user.home}/kuali/main/${environment}/work</param>
+    <param name="appserver.home">${user.home}</param>
+    <param name="appserver.lib.dir">${user.home}/lib</param>
+
+    <param name="datasource.username">finance</param>
+    <param name="datasource.password">PASSWORD_GOES_HERE</param>
+
+    <param name="mysql.datasource.url">jdbc:mysql://localhost:3306/FINANCE</param>
+    <param name="oracle.datasource.url">jdbc:oracle:thin:@SERVER_NAME_GOES_HERE:1678:ARIAH</param>
+    <param name="datasource.url">${oracle.datasource.url}</param>
+    <param name="datasource.driver.name">oracle.jdbc.OracleDriver</param>
+    <param name="datasource.driver.class">oracle.jdbc.OracleDriver</param>
+    <param name="mail.relay.server">localhost</param>
+    <param name="batch.mailing.list"></param>
+    <param name="incident.mailing.list"></param>
+    <param name="rice.standalone">false</param>
+    <param name="rice.server.datasource.username">${datasource.username}</param>
+    <param name="rice.server.datasource.password">${datasource.password}</param>
+    <param name="oracle.datasource.username">${datasource.username}</param>
+    <param name="oracle.datasource.password">${datasource.password}</param>
+
+    <param name="rice.server.datasource.driver.class">oracle.jdbc.OracleDriver</param>
+    <param name="rice.server.datasource.url">${datasource.url}</param>
+    <param name="rice.server.datasource.connection.timeout">${datasource.connection.timeout}</param>
+    <param name="rice.server.datasource.validating.query">${datasource.validating.query}</param>
+
+    <param name="rice.kew.xml.pipeline.lifecycle.enabled">true</param>
+    <param name="rice.dev.mode">false</param>
+    <param name="tomcat.version">7</param>
+
+    <param name="connection.pool.impl">XAPool</param>
+    <param name="datasource.pool.maxActive">50</param>
+    <param name="datasource.pool.minIdle">5</param>
+    <param name="datasource.pool.initialSize">5</param>
+    <param name="datasource.pool.maxSize">50</param>
+    <param name="datasource.pool.minSize">5</param>
+    <param name="datasource.pool.maxWait">30000</param>
+    <param name="datasource.btm.journal">null</param>
+    <param name="datasource.btm.transactionTimeout">120</param>
+
+
+</config>
