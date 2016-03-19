@@ -55,7 +55,7 @@
 		<div style="padding: 3px; border-style: double;">
 			<c:out value="${contenthtml}" escapeXml="false" />
 		</div>
-		<div style="padding: 3px; align=center;">
+		<div style="padding: 3px; align: center;">
         <%-- first test whether this notification is actionable by the current user --%>
         <c:if test="${actionable}">
             <c:if test="${notification.deliveryType == 'ACK' && ! empty messageDeliveryId}">
