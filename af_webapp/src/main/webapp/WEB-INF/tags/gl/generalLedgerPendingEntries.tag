@@ -31,8 +31,10 @@
 
 <%-- are we in a maint doc? --%>
 <c:set var="maintenanceViewMode" value="${requestScope[Constants.PARAM_MAINTENANCE_VIEW_MODE]}" />
-<c:set var="isMaintenance" value="${ (KualiForm.class.name eq 'org.kuali.rice.kns.web.struts.form.KualiMaintenanceForm') || (maintenanceViewMode eq Constants.PARAM_MAINTENANCE_VIEW_MODE_MAINTENANCE) }" />
 
+<c:if test='<%= jspContext.findAttribute("KualiForm") != null %>'>
+   <c:set var="isMaintenance" value='${ (jspContext.findAttribute("KualiForm").getClass() == org.kuali.rice.kns.web.struts.form.KualiMaintenanceForm.class) || (maintenanceViewMode eq Constants.PARAM_MAINTENANCE_VIEW_MODE_MAINTENANCE) }' />
+</c:if>
 <%-- if we are maintenance, then we need to rename the generalLedgerPendingEntryProperty, where document.newMaintainableObject actually gives us the business object --%>
 <c:set var="realGeneralLedgerPendingEntryProperty" value="${generalLedgerPendingEntryProperty}" />
 <c:if test="${isMaintenance}">
