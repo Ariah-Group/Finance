@@ -17,7 +17,6 @@ package org.kuali.kfs.module.purap.document.web.struts;
 
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.kuali.kfs.module.purap.PurapAuthorizationConstants.CreditMemoEditMode;
 import org.kuali.kfs.module.purap.PurapConstants;
 import org.kuali.kfs.module.purap.document.VendorCreditMemoDocument;

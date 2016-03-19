@@ -15,7 +15,6 @@
  */
 package org.kuali.kfs.sys.document;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.kuali.kfs.sys.businessobject.AccountingLineParser;

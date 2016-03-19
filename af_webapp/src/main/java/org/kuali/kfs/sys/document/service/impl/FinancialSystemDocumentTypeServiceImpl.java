@@ -18,7 +18,6 @@ package org.kuali.kfs.sys.document.service.impl;
 import org.apache.commons.lang.StringUtils;
 import org.kuali.kfs.gl.service.impl.StringHelper;
 import org.kuali.kfs.sys.KFSConstants;
-import org.kuali.kfs.sys.context.SpringContext;
 import org.kuali.kfs.sys.document.LedgerPostingDocument;
 import org.kuali.kfs.sys.document.LedgerPostingMaintainable;
 import org.kuali.kfs.sys.document.service.FinancialSystemDocumentTypeService;

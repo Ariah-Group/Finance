@@ -17,7 +17,6 @@ package org.kuali.kfs.module.purap.document.validation.impl;
 
 import org.kuali.kfs.module.purap.businessobject.PurApAccountingLine;
 import org.kuali.kfs.sys.document.validation.event.AttributedDocumentEvent;
-import org.kuali.rice.kew.api.WorkflowDocument;
 
 /**
  * Overridden to force an account identifier (thus forcing the validation) into an accounting line when the accounting

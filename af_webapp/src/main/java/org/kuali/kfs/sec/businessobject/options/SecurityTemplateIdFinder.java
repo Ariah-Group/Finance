@@ -18,7 +18,6 @@ package org.kuali.kfs.sec.businessobject.options;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.kuali.kfs.sec.SecConstants;
 import org.kuali.kfs.sec.service.AccessSecurityService;
 import org.kuali.kfs.sys.context.SpringContext;
 import org.kuali.rice.core.api.util.ConcreteKeyValue;

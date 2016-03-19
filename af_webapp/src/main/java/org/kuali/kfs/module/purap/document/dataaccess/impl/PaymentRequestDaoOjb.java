@@ -18,7 +18,6 @@ package org.kuali.kfs.module.purap.document.dataaccess.impl;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;

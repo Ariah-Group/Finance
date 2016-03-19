@@ -15,13 +15,7 @@
  */
 package org.kuali.kfs.module.cam.document.authorization;
 
-import java.util.Set;
-
-import org.kuali.kfs.sys.KFSConstants;
 import org.kuali.kfs.sys.document.authorization.AccountingDocumentAuthorizerBase;
-import org.kuali.rice.kim.api.identity.Person;
-import org.kuali.rice.krad.document.Document;
-import org.kuali.rice.krad.util.KRADConstants;
 
 
 public class AssetPaymentDocumentAuthorizer extends AccountingDocumentAuthorizerBase {

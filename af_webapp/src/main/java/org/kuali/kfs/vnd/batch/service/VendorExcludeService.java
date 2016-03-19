@@ -17,7 +17,6 @@ package org.kuali.kfs.vnd.batch.service;
 
 import java.util.List;
 
-import org.kuali.kfs.vnd.businessobject.DebarredVendorMatch;
 import org.kuali.kfs.vnd.businessobject.VendorDetail;
 
 public interface VendorExcludeService {

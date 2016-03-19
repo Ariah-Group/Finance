@@ -33,7 +33,6 @@ import org.kuali.rice.kim.api.services.IdentityManagementService;
 import org.kuali.rice.krad.bo.ModuleConfiguration;
 import org.kuali.rice.krad.service.KualiModuleService;
 import org.kuali.rice.krad.service.ModuleService;
-import org.kuali.rice.krad.util.KRADConstants;
 
 public class BatchFileAdminAuthorizationServiceImpl implements BatchFileAdminAuthorizationService {
 

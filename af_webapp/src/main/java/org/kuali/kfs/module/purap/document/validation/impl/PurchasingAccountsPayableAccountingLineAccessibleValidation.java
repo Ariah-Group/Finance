@@ -15,7 +15,6 @@
  */
 package org.kuali.kfs.module.purap.document.validation.impl;
 
-import java.util.List;
 import java.util.Set;
 
 import org.kuali.kfs.module.purap.businessobject.PurApAccountingLine;

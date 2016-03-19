@@ -18,7 +18,6 @@ package org.kuali.kfs.module.purap.document;
 
 import static org.kuali.kfs.sys.KFSConstants.GL_DEBIT_CODE;
 import static org.kuali.rice.core.api.util.type.KualiDecimal.ZERO;
-import static org.kuali.rice.core.api.util.type.KualiDecimal.ZERO;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -48,7 +47,6 @@ import org.kuali.rice.core.api.util.type.KualiDecimal;
 import org.kuali.rice.kew.api.exception.WorkflowException;
 import org.kuali.rice.kew.framework.postprocessor.DocumentRouteStatusChange;
 import org.kuali.rice.krad.rules.rule.event.KualiDocumentEvent;
-import org.kuali.rice.krad.service.SequenceAccessorService;
 import org.kuali.rice.krad.util.ObjectUtils;
 import org.kuali.rice.krad.workflow.service.WorkflowDocumentService;
 

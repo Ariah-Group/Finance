@@ -28,8 +28,6 @@ import org.kuali.kfs.integration.UnimplementedKfsModuleServiceImpl;
 import org.kuali.rice.core.api.util.type.KualiDecimal;
 import org.kuali.rice.kew.api.exception.WorkflowException;
 import org.kuali.rice.kns.lookup.HtmlData;
-import org.kuali.rice.krad.bo.BusinessObject;
-import org.kuali.rice.krad.bo.ExternalizableBusinessObject;
 
 public class LaborModuleServiceNoOp extends UnimplementedKfsModuleServiceImpl implements LaborModuleService  {
 

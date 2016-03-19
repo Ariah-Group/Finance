@@ -29,7 +29,6 @@ import org.kuali.kfs.gl.businessobject.lookup.AccountBalanceByConsolidationLooku
 import org.kuali.kfs.gl.service.AccountBalanceService;
 import org.kuali.kfs.sec.SecKeyConstants;
 import org.kuali.kfs.sec.service.AccessSecurityService;
-import org.kuali.kfs.sec.util.SecUtil;
 import org.kuali.kfs.sys.KFSConstants;
 import org.kuali.kfs.sys.KFSKeyConstants;
 import org.kuali.kfs.sys.KFSPropertyConstants;

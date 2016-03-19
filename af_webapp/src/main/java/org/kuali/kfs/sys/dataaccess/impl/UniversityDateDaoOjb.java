@@ -16,7 +16,6 @@
 package org.kuali.kfs.sys.dataaccess.impl;
 
 import java.sql.Date;
-import java.util.Collection;
 
 import org.apache.ojb.broker.query.Criteria;
 import org.apache.ojb.broker.query.QueryByCriteria;

@@ -17,7 +17,6 @@ package org.kuali.kfs.sys.businessobject;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.LinkedHashMap;
 
 import org.kuali.rice.krad.bo.PersistableBusinessObjectBase;
 

@@ -20,7 +20,6 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.struts.taglib.html.HiddenTag;
-import org.springframework.web.util.HtmlUtils;
 
 /**
  * Renders a hidden field

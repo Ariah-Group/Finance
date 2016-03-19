@@ -24,7 +24,6 @@ import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts.taglib.html.HiddenTag;
-import org.springframework.web.util.HtmlUtils;
 
 /**
  * Renders the dynamic label portion of a field

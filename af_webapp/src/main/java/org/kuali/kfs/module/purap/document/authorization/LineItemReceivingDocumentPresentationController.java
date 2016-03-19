@@ -18,7 +18,6 @@ package org.kuali.kfs.module.purap.document.authorization;
 import java.util.Set;
 
 import org.kuali.kfs.module.purap.PurapAuthorizationConstants;
-import org.kuali.kfs.module.purap.document.PurchasingAccountsPayableDocument;
 import org.kuali.kfs.module.purap.document.ReceivingDocumentBase;
 import org.kuali.rice.krad.document.Document;
 

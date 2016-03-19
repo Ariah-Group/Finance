@@ -29,7 +29,6 @@ import org.apache.commons.lang.StringUtils;
 import org.kuali.kfs.integration.ld.SegmentedBusinessObject;
 import org.kuali.kfs.sec.SecKeyConstants;
 import org.kuali.kfs.sec.service.AccessSecurityService;
-import org.kuali.kfs.sec.util.SecUtil;
 import org.kuali.kfs.sys.KFSConstants;
 import org.kuali.rice.core.web.format.BooleanFormatter;
 import org.kuali.rice.core.web.format.CollectionFormatter;

@@ -52,9 +52,6 @@ import org.kuali.rice.krad.service.DocumentService;
 import org.kuali.rice.krad.service.KualiRuleService;
 import org.kuali.rice.krad.service.SessionDocumentService;
 import org.kuali.rice.krad.util.GlobalVariables;
-import org.kuali.rice.krad.util.ObjectUtils;
-
-import com.lowagie.text.Document;
 
 public class CashControlDocumentAction extends FinancialSystemTransactionalDocumentActionBase {
 

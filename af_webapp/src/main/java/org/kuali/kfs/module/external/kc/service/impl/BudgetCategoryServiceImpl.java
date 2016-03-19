@@ -30,7 +30,6 @@ import org.kuali.kfs.module.external.kc.service.ExternalizableBusinessObjectServ
 import org.kuali.kfs.module.external.kc.service.KfsService;
 import org.kuali.kfs.module.external.kc.util.GlobalVariablesExtractHelper;
 import org.kuali.kfs.module.external.kc.webService.InstitutionalBudgetCategorySoapService;
-import org.kuali.kra.external.award.AwardAccountService;
 import org.kuali.kra.external.budget.service.BudgetCategoryService;
 import org.kuali.rice.core.api.resourceloader.GlobalResourceLoader;
 import org.kuali.rice.krad.bo.ExternalizableBusinessObject;

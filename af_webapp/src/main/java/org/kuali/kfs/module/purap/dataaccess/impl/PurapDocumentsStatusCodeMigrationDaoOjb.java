@@ -15,15 +15,12 @@
  */
 package org.kuali.kfs.module.purap.dataaccess.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ojb.broker.query.Criteria;
 import org.apache.ojb.broker.query.QueryByCriteria;
 import org.apache.ojb.broker.query.QueryFactory;
 import org.kuali.kfs.module.purap.businessobject.PurchaseOrderVendorQuote;
-import org.kuali.kfs.module.purap.dataaccess.PurapDocumentsStatusCodeMigrationDao;
 import org.kuali.kfs.module.purap.document.LineItemReceivingDocument;
 import org.kuali.kfs.module.purap.document.PaymentRequestDocument;
 import org.kuali.kfs.module.purap.document.PurchaseOrderDocument;

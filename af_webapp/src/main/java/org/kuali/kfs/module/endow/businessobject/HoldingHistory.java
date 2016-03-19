@@ -16,9 +16,6 @@
 package org.kuali.kfs.module.endow.businessobject;
 
 import java.math.BigDecimal;
-import java.util.LinkedHashMap;
-
-import org.kuali.kfs.module.endow.EndowPropertyConstants;
 import org.kuali.rice.core.api.util.type.KualiInteger;
 
 public class HoldingHistory extends HoldingTaxLot {

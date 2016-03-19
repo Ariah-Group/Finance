@@ -15,7 +15,6 @@
  */
 package org.kuali.kfs.module.purap.businessobject;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;

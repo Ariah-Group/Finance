@@ -27,7 +27,6 @@ import org.kuali.kfs.sys.businessobject.AccountingLine;
 import org.kuali.kfs.sys.context.SpringContext;
 import org.kuali.kfs.sys.document.service.AccountingLineRenderingService;
 import org.kuali.rice.kns.web.ui.Field;
-import org.springframework.web.util.HtmlUtils;
 
 /**
  * The renderer of an override field

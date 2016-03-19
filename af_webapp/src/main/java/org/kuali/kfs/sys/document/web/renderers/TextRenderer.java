@@ -21,7 +21,6 @@ import javax.servlet.jsp.tagext.Tag;
 
 import org.apache.commons.lang.StringUtils;
 import org.kuali.rice.kns.web.taglib.html.KNSTextTag;
-import org.springframework.web.util.HtmlUtils;
 
 /**
  * Represents a field rendered as a text field
