@@ -78,7 +78,7 @@
     </td>
   </tr>
   <tr>
-    <td style="border: 1px solid gray">
+    <td style="border=solid gray">
       <iframe src="<c:out value="${SuperUserForm.docHandlerUrl}"/>" width="100%" height="500" hspace="0" vspace="0" frameborder="0"></iframe>
       <html-el:hidden property="docHandlerUrl" />
     </td>
