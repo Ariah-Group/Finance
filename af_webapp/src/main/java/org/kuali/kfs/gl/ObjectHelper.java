@@ -19,12 +19,13 @@ package org.kuali.kfs.gl;
  * This class is used to compare objects with one another
  */
 public class ObjectHelper {
+
     protected ObjectHelper() {
     }
 
     /**
      * Returns true if object on left side is equal to object on right side
-     * 
+     *
      * @param lhs object on left side of equation
      * @param rhs object on right side of equation
      * @return true if both lhs and rhs are null or if lhs.equals(rhs)
@@ -34,16 +35,18 @@ public class ObjectHelper {
     }
 
     /**
-     * Return true if object on left side is one of the items in array of objects
-     * 
+     * Return true if object on left side is one of the items in array of
+     * objects
+     *
      * @param lhs object on left side of equation
      * @param rhs object on right side of equation
-     * @return false if rhs is null. true if isEqual(lhs, rhs[i]) for any ith element of rhs.
+     * @return false if rhs is null. true if isEqual(lhs, rhs[i]) for any ith
+     * element of rhs.
      */
     static public boolean isOneOf(Object lhs, Object[] rhs) {
-        if (rhs == null)
+        if (rhs == null) {
             return false;
-
+        }
         // simple linear search. Arrays.binarySearch isn't appropriate
         // because the elements of rhs aren't in natural order.
         for (int i = 0; i < rhs.length; i++) {

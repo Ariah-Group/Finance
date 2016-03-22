@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.kuali.kfs.coa.businessobject;
 
 import java.sql.Date;
@@ -29,12 +28,12 @@ import org.kuali.rice.core.api.mo.common.active.MutableInactivatable;
 import org.kuali.rice.krad.bo.PersistableBusinessObjectBase;
 
 /**
- * 
+ *
  */
 public class AccountingPeriod extends PersistableBusinessObjectBase implements MutableInactivatable, FiscalYearBasedBusinessObject {
 
     public static final String CACHE_NAME = KFSConstants.APPLICATION_NAMESPACE_CODE + "/" + "AccountingPeriod";
-    
+
     private Integer universityFiscalYear;
     private String universityFiscalPeriodCode;
     private String universityFiscalPeriodName;
@@ -53,7 +52,7 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Gets the universityFiscalYear attribute.
-     * 
+     *
      * @return Returns the universityFiscalYear
      */
     public Integer getUniversityFiscalYear() {
@@ -62,17 +61,16 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Sets the universityFiscalYear attribute.
-     * 
+     *
      * @param universityFiscalYear The universityFiscalYear to set.
      */
     public void setUniversityFiscalYear(Integer universityFiscalYear) {
         this.universityFiscalYear = universityFiscalYear;
     }
 
-
     /**
      * Gets the universityFiscalPeriodCode attribute.
-     * 
+     *
      * @return Returns the universityFiscalPeriodCode
      */
     public String getUniversityFiscalPeriodCode() {
@@ -81,17 +79,16 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Sets the universityFiscalPeriodCode attribute.
-     * 
+     *
      * @param universityFiscalPeriodCode The universityFiscalPeriodCode to set.
      */
     public void setUniversityFiscalPeriodCode(String universityFiscalPeriodCode) {
         this.universityFiscalPeriodCode = universityFiscalPeriodCode;
     }
 
-
     /**
      * Gets the universityFiscalPeriodName attribute.
-     * 
+     *
      * @return Returns the universityFiscalPeriodName
      */
     public String getUniversityFiscalPeriodName() {
@@ -100,17 +97,16 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Sets the universityFiscalPeriodName attribute.
-     * 
+     *
      * @param universityFiscalPeriodName The universityFiscalPeriodName to set.
      */
     public void setUniversityFiscalPeriodName(String universityFiscalPeriodName) {
         this.universityFiscalPeriodName = universityFiscalPeriodName;
     }
 
-
     /**
      * Gets the active attribute.
-     * 
+     *
      * @return Returns the active
      */
     public boolean isActive() {
@@ -119,37 +115,34 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Sets the active attribute.
-     * 
+     *
      * @param active The active to set.
      */
     public void setActive(boolean active) {
         this.active = active;
     }
 
-
     /**
      * Gets the budgetRolloverIndicator attribute.
-     * 
+     *
      * @return Returns the budgetRolloverIndicator
      */
     public boolean isBudgetRolloverIndicator() {
         return budgetRolloverIndicator;
     }
 
-
     /**
      * Sets the budgetRolloverIndicator attribute.
-     * 
+     *
      * @param budgetRolloverIndicator The budgetRolloverIndicator to set.
      */
     public void setBudgetRolloverIndicator(boolean budgetRolloverIndicator) {
         this.budgetRolloverIndicator = budgetRolloverIndicator;
     }
 
-
     /**
      * Gets the universityFiscalPeriodEndDate attribute.
-     * 
+     *
      * @return Returns the universityFiscalPeriodEndDate
      */
     public Date getUniversityFiscalPeriodEndDate() {
@@ -158,8 +151,9 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Sets the universityFiscalPeriodEndDate attribute.
-     * 
-     * @param universityFiscalPeriodEndDate The universityFiscalPeriodEndDate to set.
+     *
+     * @param universityFiscalPeriodEndDate The universityFiscalPeriodEndDate to
+     * set.
      */
     public void setUniversityFiscalPeriodEndDate(Date universityFiscalPeriodEndDate) {
         this.universityFiscalPeriodEndDate = universityFiscalPeriodEndDate;
@@ -167,7 +161,7 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * Determine if the current account period is open
-     * 
+     *
      * @return true if the accounting period is open; otherwise, false
      */
     public boolean isOpen() {
@@ -191,7 +185,7 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
 
     /**
      * This method returns the month that this period represents
-     * 
+     *
      * @return the actual month (1 - 12) that this period represents
      */
     public int getMonth() {
@@ -211,9 +205,10 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
     }
 
     /**
-     * generates a hash code for this accounting period, based on the primary keys of the AccountingPeriod BusinesObject: university
-     * fiscal year and university fiscal period code
-     * 
+     * generates a hash code for this accounting period, based on the primary
+     * keys of the AccountingPeriod BusinesObject: university fiscal year and
+     * university fiscal period code
+     *
      * @see java.lang.Object#hashCode()
      */
     @Override
@@ -226,34 +221,40 @@ public class AccountingPeriod extends PersistableBusinessObjectBase implements M
     }
 
     /**
-     * determines if two accounting periods are equal, based on the primary keys of the AccountingPeriod BusinesObject: university
-     * fiscal year and university fiscal period code
-     * 
+     * determines if two accounting periods are equal, based on the primary keys
+     * of the AccountingPeriod BusinesObject: university fiscal year and
+     * university fiscal period code
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
     public boolean equals(Object obj) {
         // this method was added so that
         // org.kuali.kfs.fp.document.web.struts.AuxiliaryVoucherForm.populateAccountingPeriodListForRendering works properly
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final AccountingPeriod other = (AccountingPeriod) obj;
         if (universityFiscalPeriodCode == null) {
-            if (other.universityFiscalPeriodCode != null)
+            if (other.universityFiscalPeriodCode != null) {
                 return false;
-        }
-        else if (!universityFiscalPeriodCode.equals(other.universityFiscalPeriodCode))
+            }
+        } else if (!universityFiscalPeriodCode.equals(other.universityFiscalPeriodCode)) {
             return false;
+        }
         if (universityFiscalYear == null) {
-            if (other.universityFiscalYear != null)
+            if (other.universityFiscalYear != null) {
                 return false;
-        }
-        else if (!universityFiscalYear.equals(other.universityFiscalYear))
+            }
+        } else if (!universityFiscalYear.equals(other.universityFiscalYear)) {
             return false;
+        }
         return true;
     }
 }

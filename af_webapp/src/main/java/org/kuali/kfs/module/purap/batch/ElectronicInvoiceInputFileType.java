@@ -60,7 +60,9 @@ public class ElectronicInvoiceInputFileType extends XmlBatchInputFileTypeBase {
         }
         
         String fileName = ((ElectronicInvoice)parsedFileContents).getFileName();
-        if (fileName == null) return fileUserIdentifer;
+        if (fileName == null)  { 
+            return fileUserIdentifer;
+        }
         int whereDot = fileName.lastIndexOf('.');
         
         return fileName.substring(0, whereDot);

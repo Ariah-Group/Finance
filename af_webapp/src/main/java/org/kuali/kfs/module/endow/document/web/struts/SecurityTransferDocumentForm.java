@@ -18,7 +18,6 @@ package org.kuali.kfs.module.endow.document.web.struts;
 import org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine;
 import org.kuali.kfs.module.endow.document.SecurityTransferDocument;
 
-
 public class SecurityTransferDocumentForm extends EndowmentTransactionLinesDocumentFormBase {
 
     public SecurityTransferDocumentForm() {
@@ -37,7 +36,7 @@ public class SecurityTransferDocumentForm extends EndowmentTransactionLinesDocum
 
     /**
      * This method gets the asset increase document
-     * 
+     *
      * @return the AssetIncreaseDocument
      */
     public SecurityTransferDocument getSecurityTransferDocument() {
@@ -45,7 +44,8 @@ public class SecurityTransferDocumentForm extends EndowmentTransactionLinesDocum
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewSourceTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewSourceTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
      */
     @Override
     public void setNewSourceTransactionLine(EndowmentTransactionLine newSourceTransactionLine) {
@@ -56,7 +56,8 @@ public class SecurityTransferDocumentForm extends EndowmentTransactionLinesDocum
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewTargetTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewTargetTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
      */
     @Override
     public void setNewTargetTransactionLine(EndowmentTransactionLine newTargetTransactionLine) {
@@ -67,13 +68,15 @@ public class SecurityTransferDocumentForm extends EndowmentTransactionLinesDocum
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowFromTransactionLine()
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowFromTransactionLine()
      */
     public boolean getShowFromTransactionLine() {
         SecurityTransferDocument document = getSecurityTransferDocument();
-        if (document.getSourceTransactionLines() != null && document.getSourceTransactionLines().size() > 0)
+        if (document.getSourceTransactionLines() != null && document.getSourceTransactionLines().size() > 0) {
             return false;
-        else
+        } else {
             return true;
+        }
     }
 }

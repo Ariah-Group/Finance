@@ -30,19 +30,23 @@ import org.kuali.rice.kim.api.identity.PersonService;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Bootstrap implementation of HumanResourcesPayrollService. Only implements the methods so that Budget will function. Data is not
- * correct and should not be used in production.
- * 
+ * Bootstrap implementation of HumanResourcesPayrollService. Only implements the
+ * methods so that Budget will function. Data is not correct and should not be
+ * used in production.
+ *
  * @see org.kuali.kfs.module.bc.service.HumanResourcesPayrollService
  */
 public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollService {
+
     HumanResourcesPayrollDao humanResourcesPayrollDao;
     private PersonService personService;
-    
+
     /**
-     * This is just a bootstrap implementation. Should be replaced by the real integration with the payroll/hr system.
-     * 
-     * @see org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#validatePositionUnionCode(java.lang.String)
+     * This is just a bootstrap implementation. Should be replaced by the real
+     * integration with the payroll/hr system.
+     *
+     * @see
+     * org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#validatePositionUnionCode(java.lang.String)
      */
     @NonTransactional
     public boolean validatePositionUnionCode(String positionUnionCode) {
@@ -50,9 +54,12 @@ public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollSe
     }
 
     /**
-     * This is just a bootstrap implementation. Should be replaced by the real integration with the payroll/hr system.
-     * 
-     * @see org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#getPosition(java.lang.Integer, java.lang.String)
+     * This is just a bootstrap implementation. Should be replaced by the real
+     * integration with the payroll/hr system.
+     *
+     * @see
+     * org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#getPosition(java.lang.Integer,
+     * java.lang.String)
      */
     @Transactional
     public Position getPosition(Integer universityFiscalYear, String positionNumber) throws PositionNotFoundException {
@@ -66,9 +73,11 @@ public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollSe
     }
 
     /**
-     * This is just a bootstrap implementation. Should be replaced by the real integration with the payroll/hr system.
-     * 
-     * @see org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#getIncumbent(java.lang.String)
+     * This is just a bootstrap implementation. Should be replaced by the real
+     * integration with the payroll/hr system.
+     *
+     * @see
+     * org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#getIncumbent(java.lang.String)
      */
     @Transactional
     public Incumbent getIncumbent(String emplid) throws IncumbentNotFoundException {
@@ -86,8 +95,10 @@ public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollSe
     }
 
     /**
-     * @see org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#isActiveJob(java.lang.String, java.lang.String,
-     *      java.lang.Integer, org.kuali.kfs.module.bc.BCConstants.SynchronizationCheckType)
+     * @see
+     * org.kuali.kfs.module.bc.service.HumanResourcesPayrollService#isActiveJob(java.lang.String,
+     * java.lang.String, java.lang.Integer,
+     * org.kuali.kfs.module.bc.BCConstants.SynchronizationCheckType)
      */
     @Transactional
     public boolean isActiveJob(String emplid, String positionNumber, Integer fiscalYear, SynchronizationCheckType synchronizationCheckType) {
@@ -96,7 +107,7 @@ public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollSe
 
     /**
      * Sets the humanResourcesPayrollDao attribute value.
-     * 
+     *
      * @param humanResourcesPayrollDao The humanResourcesPayrollDao to set.
      */
     @NonTransactional
@@ -108,8 +119,9 @@ public class HumanResourcesPayrollServiceImpl implements HumanResourcesPayrollSe
      * @return Returns the personService.
      */
     protected PersonService getPersonService() {
-        if(personService==null)
+        if (personService == null) {
             personService = SpringContext.getBean(PersonService.class);
+        }
         return personService;
     }
 

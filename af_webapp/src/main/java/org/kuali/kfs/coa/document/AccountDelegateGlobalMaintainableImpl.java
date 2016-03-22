@@ -87,9 +87,9 @@ public class AccountDelegateGlobalMaintainableImpl extends FinancialSystemGlobal
     @Override
     public String getLockingDocumentId() {
        String lock = super.getLockingDocumentId();
-       if (StringUtils.isNotBlank(lock))
+       if (StringUtils.isNotBlank(lock)) {
            return lock;
-       else {
+       } else {
            AccountDelegateService accountDelegateService = SpringContext.getBean(AccountDelegateService.class);
            lock = accountDelegateService.getLockingDocumentId(this, getDocumentNumber());
            return lock;

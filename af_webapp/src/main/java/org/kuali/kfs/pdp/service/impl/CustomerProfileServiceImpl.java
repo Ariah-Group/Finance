@@ -42,7 +42,9 @@ public class CustomerProfileServiceImpl implements CustomerProfileService {
         fieldValues.put(PdpPropertyConstants.CustomerProfile.CUSTOMER_PROFILE_UNIT_CODE, unitCode);
         fieldValues.put(PdpPropertyConstants.CustomerProfile.CUSTOMER_PROFILE_SUB_UNIT_CODE, subUnitCode);
         List customerProfileList = (List) this.businessObjectService.findMatching(CustomerProfile.class, fieldValues);
-        if (customerProfileList.isEmpty()) return null;
+        if (customerProfileList.isEmpty())  {
+            return null;
+        }
         
         return (CustomerProfile) customerProfileList.get(0);
     }

@@ -43,7 +43,7 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Updates the tax lots for the given transaction line.
-     * 
+     *
      * @param isSource
      * @param etlDocument
      * @param transLine
@@ -52,12 +52,11 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Updates the tax lots for the given document.
-     * 
+     *
      * @param isSource
      * @param etlDocument
      */
     protected void updateTaxLots(EndowmentTransactionLinesDocument etlDocument) {
-
 
         if (etlDocument.getSourceTransactionLines() != null) {
             for (int i = 0; i < etlDocument.getSourceTransactionLines().size(); i++) {
@@ -89,7 +88,7 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Refreshes the tax lots for the selected target transaction line.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -112,15 +111,16 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
             updateTransactionLineTaxLots(false, false, endowmentDocument, transLine);
         }
 
-        if (endowmentDocument instanceof AmountTotaling)
+        if (endowmentDocument instanceof AmountTotaling) {
             ((FinancialSystemDocumentHeader) documentForm.getDocument().getDocumentHeader()).setFinancialDocumentTotalAmount(((AmountTotaling) endowmentDocument).getTotalDollarAmount());
+        }
 
         return mapping.findForward(KFSConstants.MAPPING_BASIC);
     }
 
     /**
      * Refreshes the tax lots for the selected source transaction line.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -142,17 +142,18 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
             updateTransactionLineTaxLots(false, true, endowmentDocument, transLine);
         }
 
-        if (endowmentDocument instanceof AmountTotaling)
+        if (endowmentDocument instanceof AmountTotaling) {
             ((FinancialSystemDocumentHeader) documentForm.getDocument().getDocumentHeader()).setFinancialDocumentTotalAmount(((AmountTotaling) endowmentDocument).getTotalDollarAmount());
-
+        }
 
         return mapping.findForward(KFSConstants.MAPPING_BASIC);
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentActionBase#insertTransactionLine(boolean,
-     *      org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase,
-     *      org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentActionBase#insertTransactionLine(boolean,
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase,
+     * org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
      */
     @Override
     protected void insertTransactionLine(boolean isSource, EndowmentTransactionLinesDocumentFormBase etlDocumentForm, EndowmentTransactionLine line) {
@@ -165,7 +166,7 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Deletes a source tax lot line.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -194,7 +195,7 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Deletes a target tax lot line
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -223,7 +224,7 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
 
     /**
      * Deletes a tax lot.
-     * 
+     *
      * @param isSource
      * @param etlDocumentForm
      * @param transLineindex
@@ -232,15 +233,14 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
     private void deleteTaxLot(boolean isSource, EndowmentTransactionLinesDocumentFormBase etlDocumentForm, int transLineindex, int taxLotIndex) {
         if (isSource) {
             etlDocumentForm.getEndowmentTransactionLinesDocumentBase().getSourceTransactionLines().get(transLineindex).getTaxLotLines().remove(taxLotIndex);
-        }
-        else {
+        } else {
             etlDocumentForm.getEndowmentTransactionLinesDocumentBase().getTargetTransactionLines().get(transLineindex).getTaxLotLines().remove(taxLotIndex);
         }
     }
 
     /**
      * Gets the index of the tax lot line to be deleted.
-     * 
+     *
      * @param request
      * @return the index of the tax lot line to be deleted
      */
@@ -256,8 +256,11 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
     }
 
     /**
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#save(org.apache.struts.action.ActionMapping,
-     *      org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#save(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     @Override
     public ActionForward save(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -275,8 +278,11 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
     }
 
     /**
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#route(org.apache.struts.action.ActionMapping,
-     *      org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#route(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     @Override
     public ActionForward route(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -294,10 +300,12 @@ public abstract class EndowmentTaxLotLinesDocumentActionBase extends EndowmentTr
     }
 
     /**
-     * Tells whether the tax lot lines related to the transaction lines should be refreshed on save or submit. For documents that
-     * support tax lots deletion this method should return false. For documents that do not support tax lots deletion this method
-     * can return true so that the tax lots are updated on save or submit.
-     * 
+     * Tells whether the tax lot lines related to the transaction lines should
+     * be refreshed on save or submit. For documents that support tax lots
+     * deletion this method should return false. For documents that do not
+     * support tax lots deletion this method can return true so that the tax
+     * lots are updated on save or submit.
+     *
      * @return true or false depending on the document
      */
     abstract protected boolean getRefreshTaxLotsOnSaveOrSubmit();

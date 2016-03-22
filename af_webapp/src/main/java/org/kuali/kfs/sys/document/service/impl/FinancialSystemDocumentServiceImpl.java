@@ -30,25 +30,27 @@ import org.kuali.rice.krad.service.DocumentService;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * This class is a Financial System specific Document Service class to allow for the
- * {@link #findByDocumentHeaderStatusCode(Class, String)} method.
+ * This class is a Financial System specific Document Service class to allow for
+ * the {@link #findByDocumentHeaderStatusCode(Class, String)} method.
  */
 @Transactional
 public class FinancialSystemDocumentServiceImpl implements FinancialSystemDocumentService {
+
     private FinancialSystemDocumentDao financialSystemDocumentDao;
     private DocumentService documentService;
     protected DocumentAdHocService documentAdHocService;
 
     /**
-     * @see org.kuali.kfs.sys.document.service.FinancialSystemDocumentService#findByDocumentHeaderStatusCode(java.lang.Class,
-     *      java.lang.String)
+     * @see
+     * org.kuali.kfs.sys.document.service.FinancialSystemDocumentService#findByDocumentHeaderStatusCode(java.lang.Class,
+     * java.lang.String)
      */
     @Override
     public <T extends Document> Collection<T> findByDocumentHeaderStatusCode(Class<T> clazz, String statusCode) throws WorkflowException {
         Collection<T> foundDocuments = getFinancialSystemDocumentDao().findByDocumentHeaderStatusCode(clazz, statusCode);
-        for (Document doc : foundDocuments)
+        for (Document doc : foundDocuments) {
             documentAdHocService.addAdHocs(doc);
-
+        }
         Collection<T> returnDocuments = new ArrayList<T>();
         for (Iterator<T> iter = foundDocuments.iterator(); iter.hasNext();) {
             Document doc = (Document) iter.next();
@@ -80,6 +82,5 @@ public class FinancialSystemDocumentServiceImpl implements FinancialSystemDocume
     public void setDocumentAdHocService(DocumentAdHocService documentAdHocService) {
         this.documentAdHocService = documentAdHocService;
     }
-
 
 }

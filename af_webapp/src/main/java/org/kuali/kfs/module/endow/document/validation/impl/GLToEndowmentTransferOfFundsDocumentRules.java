@@ -25,8 +25,9 @@ import org.kuali.rice.krad.document.Document;
 public class GLToEndowmentTransferOfFundsDocumentRules extends EndowmentAccountingLinesDocumentBaseRules {
 
     /**
-     * @see org.kuali.kfs.module.endow.document.validation.impl.EndowmentTransactionLinesDocumentBaseRules#validateTransactionLine(org.kuali.kfs.module.endow.document.EndowmentTransactionLinesDocument,
-     *      org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine, int)
+     * @see
+     * org.kuali.kfs.module.endow.document.validation.impl.EndowmentTransactionLinesDocumentBaseRules#validateTransactionLine(org.kuali.kfs.module.endow.document.EndowmentTransactionLinesDocument,
+     * org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine, int)
      */
     @Override
     protected boolean validateTransactionLine(EndowmentTransactionLinesDocument endowmentTransactionLinesDocument, EndowmentTransactionLine line, int index) {
@@ -37,19 +38,22 @@ public class GLToEndowmentTransferOfFundsDocumentRules extends EndowmentAccounti
         if (isValid) {
 
             // Is Etran code empty
-            if (isEndowmentTransactionCodeEmpty(line, ERROR_PREFIX))
+            if (isEndowmentTransactionCodeEmpty(line, ERROR_PREFIX)) {
                 return false;
+            }
 
             // Validate ETran code
-            if (!validateEndowmentTransactionCode(line, ERROR_PREFIX))
+            if (!validateEndowmentTransactionCode(line, ERROR_PREFIX)) {
                 return false;
+            }
 
             // Validate ETran code as E or I
             isValid &= validateEndowmentTransactionTypeCode(endowmentTransactionLinesDocument, line, ERROR_PREFIX);
 
             // Validate if a KEMID can have a principal transaction when IP indicator is P
-            if (!canKEMIDHaveAPrincipalTransaction(line, ERROR_PREFIX))
+            if (!canKEMIDHaveAPrincipalTransaction(line, ERROR_PREFIX)) {
                 return false;
+            }
 
             // Validate if the chart is matched between the KEMID and EtranCode
             isValid &= validateChartMatch(line, ERROR_PREFIX);
@@ -66,7 +70,8 @@ public class GLToEndowmentTransferOfFundsDocumentRules extends EndowmentAccounti
     }
 
     /**
-     * @see org.kuali.rice.krad.rules.DocumentRuleBase#processCustomRouteDocumentBusinessRules(org.kuali.rice.krad.document.Document)
+     * @see
+     * org.kuali.rice.krad.rules.DocumentRuleBase#processCustomRouteDocumentBusinessRules(org.kuali.rice.krad.document.Document)
      */
     @Override
     protected boolean processCustomRouteDocumentBusinessRules(Document document) {
@@ -74,8 +79,9 @@ public class GLToEndowmentTransferOfFundsDocumentRules extends EndowmentAccounti
         GLToEndowmentTransferOfFundsDocument transferOfFundsDocument = (GLToEndowmentTransferOfFundsDocument) document;
 
         // validate the document has at least one target transaction line
-        if (!transactionLineSizeGreaterThanZero(transferOfFundsDocument, false))
+        if (!transactionLineSizeGreaterThanZero(transferOfFundsDocument, false)) {
             return false;
+        }
 
         // validate that the document has at least one source accounting line
         if (!validateAccountingLinesSizeGreaterThanZero(transferOfFundsDocument, true)) {
@@ -84,14 +90,15 @@ public class GLToEndowmentTransferOfFundsDocumentRules extends EndowmentAccounti
 
         //validations of security and registration attributes
         isValid &= validateSecurityAndRegistrationRules(document);
-        
+
         return isValid;
     }
 
     /**
      * GLToEndowmentTransferOfFundsDocument use target
-     * 
-     * @see org.kuali.kfs.module.endow.document.validation.impl.OptionalSecurityBaseRules#isSourceDocument()
+     *
+     * @see
+     * org.kuali.kfs.module.endow.document.validation.impl.OptionalSecurityBaseRules#isSourceDocument()
      */
     @Override
     boolean isSourceDocument() {

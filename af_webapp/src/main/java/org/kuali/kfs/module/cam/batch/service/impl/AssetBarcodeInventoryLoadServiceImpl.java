@@ -57,10 +57,11 @@ import org.kuali.rice.krad.service.KualiRuleService;
 import org.kuali.rice.krad.util.GlobalVariables;
 
 /**
- * Implementation of the AssetBarcodeInventoryLoadService interface. Handles loading, parsing, and storing of incoming barcode
- * inventory files.
+ * Implementation of the AssetBarcodeInventoryLoadService interface. Handles
+ * loading, parsing, and storing of incoming barcode inventory files.
  */
 public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInventoryLoadService {
+
     private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AssetBarcodeInventoryLoadServiceImpl.class);
 
     public static final String MESSAGE_NO_DOCUMENT_CREATED = "NO barcode inventory error document was created.";
@@ -80,13 +81,14 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     private DateTimeService dateTimeService;
 
     /**
-     * Determines whether or not the BCIE document has all its records corrected or deleted
-     * 
+     * Determines whether or not the BCIE document has all its records corrected
+     * or deleted
+     *
      * @param document
      * @return boolean
      */
     public boolean isFullyProcessed(Document document) {
-        BarcodeInventoryErrorDocument barcodeInventoryErrorDocument = (BarcodeInventoryErrorDocument)document;
+        BarcodeInventoryErrorDocument barcodeInventoryErrorDocument = (BarcodeInventoryErrorDocument) document;
         boolean result = true;
         List<BarcodeInventoryErrorDetail> barcodeInventoryErrorDetails = barcodeInventoryErrorDocument.getBarcodeInventoryErrorDetail();
         BarcodeInventoryErrorDetail barcodeInventoryErrorDetail;
@@ -101,7 +103,8 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     }
 
     /**
-     * @see org.kuali.kfs.module.cam.batch.service.AssetBarcodeInventoryLoadService#isCurrentUserInitiator(org.kuali.rice.krad.document.Document)
+     * @see
+     * org.kuali.kfs.module.cam.batch.service.AssetBarcodeInventoryLoadService#isCurrentUserInitiator(org.kuali.rice.krad.document.Document)
      */
     public boolean isCurrentUserInitiator(Document document) {
         if (document != null) {
@@ -111,7 +114,8 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     }
 
     /**
-     * @see org.kuali.module.cams.service.AssetBarcodeInventoryLoadService#isFileFormatValid(java.io.File)
+     * @see
+     * org.kuali.module.cams.service.AssetBarcodeInventoryLoadService#isFileFormatValid(java.io.File)
      */
     public boolean isFileFormatValid(File file) {
         LOG.debug("isFileFormatValid(File file) - start");
@@ -149,7 +153,6 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
             input = new BufferedReader(new FileReader(file));
             String line = null;
 
-
             while ((line = input.readLine()) != null) {
                 recordCount++;
                 errorMsg = "";
@@ -161,12 +164,10 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
                     // Error more columns that allowed. put it in the constants class.
                     errorMsg += "  Barcode inventory file has record(s) with more than " + MAX_NUMBER_OF_COLUMNS + " columns\n";
                     proceed = false;
-                }
-                else if (MAX_NUMBER_OF_COLUMNS > column.length) {
+                } else if (MAX_NUMBER_OF_COLUMNS > column.length) {
                     errorMsg += "  Barcode inventory file has record(s) with less than " + MAX_NUMBER_OF_COLUMNS + " columns\n";
                     proceed = false;
-                }
-                else {
+                } else {
 
                     // Validating length of each field
                     if (column[0].length() > campusTagNumberMaxLength.intValue()) {
@@ -207,11 +208,9 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
                     }
 
                     // validate date 
-                    if(!validateDate(column[2])) {
+                    if (!validateDate(column[2])) {
                         errorMsg += ", " + InventoryDateLabel + " is invalid";
                     }
-
-
 
                 }
                 if (!StringUtils.isBlank(errorMsg)) {
@@ -220,31 +219,29 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
                     errorMessage += errorMsg;
                     LOG.error(errorMsg);
                 }
-                if (!proceed)
+                if (!proceed) {
                     break;
+                }
+
             }
             if (!StringUtils.isBlank(errorMessage)) {
                 return false;
             }
 
             return true;
-        }
-        catch (FileNotFoundException e1) {
+        } catch (FileNotFoundException e1) {
             LOG.error("file to parse not found " + fileName, e1);
             throw new RuntimeException("Cannot find the file requested to be parsed " + fileName + " " + e1.getMessage(), e1);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.error("Error running file validation - File: " + fileName, e);
             throw new IllegalArgumentException("Error running file validation - File: " + fileName);
-        }
-        finally {
+        } finally {
             LOG.debug("isFileFormatValid(File file) - end");
             try {
                 if (input != null) {
                     input.close();
                 }
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 LOG.error("isFileFormatValid() error closing file.", ex);
             }
         }
@@ -252,11 +249,12 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     }
 
     /**
-     * @see org.kuali.module.cams.service.AssetBarCodeInventoryLoadService#processFile(java.io.File)
+     * @see
+     * org.kuali.module.cams.service.AssetBarCodeInventoryLoadService#processFile(java.io.File)
      */
     public boolean processFile(File file, AssetBarCodeInventoryInputFileForm form) {
         LOG.debug("processFile(File file) - start");
-        
+
         // Removing *.done files that are created automatically by the framework.
         this.removeDoneFile(file);
 
@@ -273,7 +271,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
 
         SimpleDateFormat formatter = new SimpleDateFormat(CamsConstants.DateFormats.MONTH_DAY_YEAR + " " + CamsConstants.DateFormats.MILITARY_TIME, Locale.US);
         formatter.setLenient(false);
-        
+
         BarcodeInventoryErrorDetail barcodeInventoryErrorDetail;
         List<BarcodeInventoryErrorDetail> barcodeInventoryErrorDetails = new ArrayList<BarcodeInventoryErrorDetail>();
 
@@ -303,8 +301,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
                 // If date has invalid format set its value to null
                 try {
                     timestamp = new Timestamp(formatter.parse(stringDate).getTime());
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                 }
 
                 // Its set to null because for some reason java parses "00000000000000" as 0002-11-30
@@ -331,33 +328,30 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
             processBarcodeInventory(barcodeInventoryErrorDetails, form);
 
             return true;
-        }
-        catch (FileNotFoundException e1) {
+        } catch (FileNotFoundException e1) {
             LOG.error("file to parse not found " + fileName, e1);
             throw new RuntimeException("Cannot find the file requested to be parsed " + fileName + " " + e1.getMessage(), e1);
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             LOG.error("Error reading file", ex);
             throw new IllegalArgumentException("Error reading file: " + ex.getMessage(), ex);
-        }
-        finally {
+        } finally {
             LOG.debug("processFile(File file) - End");
 
             try {
                 if (input != null) {
                     input.close();
                 }
-            }
-            catch (IOException ex) {
+            } catch (IOException ex) {
                 LOG.error("loadFlatFile() error closing file.", ex);
             }
         }
     }
 
     /**
-     * This method removes the *.done files. If not deleted, then the program will display the name of the file in a puldown menu
-     * with a label of ready for process.
-     * 
+     * This method removes the *.done files. If not deleted, then the program
+     * will display the name of the file in a puldown menu with a label of ready
+     * for process.
+     *
      * @param file
      */
     protected void removeDoneFile(File file) {
@@ -370,9 +364,10 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     }
 
     /**
-     * This method invokes the rules in order to validate each records of the barcode file and invokes the method that updates the
-     * asset table with the records that passes the rules validation
-     * 
+     * This method invokes the rules in order to validate each records of the
+     * barcode file and invokes the method that updates the asset table with the
+     * records that passes the rules validation
+     *
      * @param barcodeInventoryErrorDetails
      */
     protected void processBarcodeInventory(List<BarcodeInventoryErrorDetail> barcodeInventoryErrorDetails, AssetBarCodeInventoryInputFileForm form) throws Exception {
@@ -391,9 +386,8 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
             totalRecCount++;
             // if no error found, then update asset table.
             if (!barcodeInventoryErrorDetail.getErrorCorrectionStatusCode().equals(CamsConstants.BarCodeInventoryError.STATUS_CODE_ERROR)) {
-                this.updateAssetInformation(barcodeInventoryErrorDetail,true);
-            }
-            else {
+                this.updateAssetInformation(barcodeInventoryErrorDetail, true);
+            } else {
                 errorRecCount++;
                 lineNumber++;
                 // Assigning the row number to each invalid BCIE record
@@ -414,8 +408,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
 
         if (!docCreated) {
             form.getMessages().add(MESSAGE_NO_DOCUMENT_CREATED);
-        }
-        else {
+        } else {
             // Adding the list of documents that were created in the message list
             form.getMessages().add(DOCUMENTS_MSG + ": " + documentsCreated.substring(2));
         }
@@ -423,10 +416,9 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
         form.getMessages().add(TOTAL_RECORDS_IN_ERROR_MSG + ": " + StringUtils.rightPad(Integer.toString(errorRecCount), 5, " "));
     }
 
-
     /**
      * This method...
-     * 
+     *
      * @param bcies
      * @param barcodeInventoryErrorDocument
      */
@@ -456,33 +448,31 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
 
                     barcodeInventoryErrorDetails = new ArrayList<BarcodeInventoryErrorDetail>();
 
-                    if (bcieCount >= bcies.size())
+                    if (bcieCount >= bcies.size()) {
                         break;
-
+                    }
                     ln = 0;
                     isFirstDocument = false;
                 }
 
-                BarcodeInventoryErrorDetail barcodeInventoryErrorDetail =bcies.get(bcieCount);
-                barcodeInventoryErrorDetail.setUploadRowNumber(Long.valueOf(ln+1));
+                BarcodeInventoryErrorDetail barcodeInventoryErrorDetail = bcies.get(bcieCount);
+                barcodeInventoryErrorDetail.setUploadRowNumber(Long.valueOf(ln + 1));
                 barcodeInventoryErrorDetails.add(barcodeInventoryErrorDetail);
 
                 ln++;
                 bcieCount++;
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.error("Error creating BCIE documents", e);
             throw new IllegalArgumentException("Error creating BCIE documents: " + e.getMessage(), e);
         }
         return documentsCreated;
     }
 
-
     /**
-     * This method updates the asset information particularly the building code, bulding room, building subrool, campus code, and
-     * condition code
-     * 
+     * This method updates the asset information particularly the building code,
+     * bulding room, building subrool, campus code, and condition code
+     *
      * @param barcodeInventoryErrorDetail
      */
     public void updateAssetInformation(BarcodeInventoryErrorDetail barcodeInventoryErrorDetail, boolean updateWithDateAssetWasScanned) {
@@ -495,7 +485,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
         asset.setBuildingRoomNumber(barcodeInventoryErrorDetail.getBuildingRoomNumber());
         asset.setBuildingSubRoomNumber(barcodeInventoryErrorDetail.getBuildingSubRoomNumber());
         asset.setCampusCode(barcodeInventoryErrorDetail.getCampusCode());
-        asset.setConditionCode(barcodeInventoryErrorDetail.getAssetConditionCode());        
+        asset.setConditionCode(barcodeInventoryErrorDetail.getAssetConditionCode());
 
         // set building code and room number to null if they are empty string, to avoid FK violation exception
         if (StringUtils.isEmpty(asset.getBuildingCode())) {
@@ -505,18 +495,18 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
         if (StringUtils.isEmpty(asset.getBuildingRoomNumber())) {
             asset.setBuildingRoomNumber(null);
             asset.setBuildingRoom(null);
-        }        
-        
+        }
+
         if (updateWithDateAssetWasScanned) {
             asset.setLastInventoryDate(barcodeInventoryErrorDetail.getUploadScanTimestamp());
         } else {
             asset.setLastInventoryDate(new Timestamp(dateTimeService.getCurrentSqlDate().getTime()));
         }
-        
+
         // Purposefully deleting off-campus locations when loading locations via barcode scanning.
         List<AssetLocation> assetLocations = asset.getAssetLocations();
         for (AssetLocation assetLocation : assetLocations) {
-            if(CamsConstants.AssetLocationTypeCode.OFF_CAMPUS.equals(assetLocation.getAssetLocationTypeCode())) {
+            if (CamsConstants.AssetLocationTypeCode.OFF_CAMPUS.equals(assetLocation.getAssetLocationTypeCode())) {
                 assetLocations.remove(assetLocation);
                 break;
             }
@@ -527,8 +517,9 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     }
 
     /**
-     * This method creates a transaction document with the invalid barcode inventory records
-     * 
+     * This method creates a transaction document with the invalid barcode
+     * inventory records
+     *
      * @param barcodeInventoryErrorDetails
      * @return BarcodeInventoryErrorDocument
      */
@@ -544,10 +535,9 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
         return document;
     }
 
-
     /**
      * saves the barcode inventory document
-     * 
+     *
      * @param document
      */
     protected void saveInvalidBarcodeInventoryDocument(BarcodeInventoryErrorDocument document) {
@@ -558,8 +548,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
             // no adhoc recipient need to add when submit doc. doc will route to the doc uploader, i.e. initiator automtically.
             List<AdHocRouteRecipient> adHocRouteRecipients = new ArrayList<AdHocRouteRecipient>();
             documentService.routeDocument(document, "Routed Update Barcode Inventory Document", adHocRouteRecipients);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             LOG.error("Error persisting document # " + document.getDocumentHeader().getDocumentNumber() + " " + e.getMessage(), e);
             throw new RuntimeException("Error persisting document # " + document.getDocumentHeader().getDocumentNumber() + " " + e.getMessage(), e);
         }
@@ -567,7 +556,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
 
     /**
      * This method builds a recipient for Approval.
-     * 
+     *
      * @param userId
      * @return
      */
@@ -581,10 +570,9 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
     private boolean validateDate(String date) {
         // Parsing date so it can be validated.
         boolean valid = true;
-        if(StringHelper.isEmpty(date)) {
+        if (StringHelper.isEmpty(date)) {
             valid = false;
-        }
-        else {
+        } else {
             SimpleDateFormat formatter = new SimpleDateFormat(CamsConstants.DateFormats.MONTH_DAY_YEAR + " " + CamsConstants.DateFormats.STANDARD_TIME, Locale.US);
             date = StringUtils.rightPad(date.trim(), 14, "0");
             String day = date.substring(0, 2);
@@ -600,44 +588,44 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
             // If date has invalid format set its value to null
             try {
                 timestamp = new Timestamp(formatter.parse(stringDate).getTime());
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 valid = false;
             }
-            
+
         }
-        
+
         return valid;
     }
-        public void setBusinessObjectService(BusinessObjectService businessObjectService) {
-            this.businessObjectService = businessObjectService;
-        }
 
-        public void setDataDictionaryService(DataDictionaryService dataDictionaryService) {
-            this.dataDictionaryService = dataDictionaryService;
-        }
-
-        public void setWorkflowDocumentService(WorkflowDocumentService workflowDocumentService) {
-            this.workflowDocumentService = workflowDocumentService;
-        }
-
-        public void setKualiRuleService(KualiRuleService ruleService) {
-            this.kualiRuleService = ruleService;
-        }
-
-        public void setDocumentService(DocumentService documentService) {
-            this.documentService = documentService;
-        }
-
-        public ParameterService getParameterService() {
-            return parameterService;
-        }
-
-        public void setParameterService(ParameterService parameterService) {
-            this.parameterService = parameterService;
-        }
-
-        public void setDateTimeService(DateTimeService dateTimeService) {
-            this.dateTimeService = dateTimeService;
-        }
+    public void setBusinessObjectService(BusinessObjectService businessObjectService) {
+        this.businessObjectService = businessObjectService;
     }
+
+    public void setDataDictionaryService(DataDictionaryService dataDictionaryService) {
+        this.dataDictionaryService = dataDictionaryService;
+    }
+
+    public void setWorkflowDocumentService(WorkflowDocumentService workflowDocumentService) {
+        this.workflowDocumentService = workflowDocumentService;
+    }
+
+    public void setKualiRuleService(KualiRuleService ruleService) {
+        this.kualiRuleService = ruleService;
+    }
+
+    public void setDocumentService(DocumentService documentService) {
+        this.documentService = documentService;
+    }
+
+    public ParameterService getParameterService() {
+        return parameterService;
+    }
+
+    public void setParameterService(ParameterService parameterService) {
+        this.parameterService = parameterService;
+    }
+
+    public void setDateTimeService(DateTimeService dateTimeService) {
+        this.dateTimeService = dateTimeService;
+    }
+}

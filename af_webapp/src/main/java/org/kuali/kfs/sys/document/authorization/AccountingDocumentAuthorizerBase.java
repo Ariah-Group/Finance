@@ -43,7 +43,9 @@ public class AccountingDocumentAuthorizerBase extends FinancialSystemTransaction
      */
     protected boolean determineLineEditability(AccountingLine line, Person currentUser, AccountService accountService) {
         Account acct = accountService.getByPrimaryId(line.getChartOfAccountsCode(), line.getAccountNumber());
-        if (acct == null) return true;
+        if (acct == null)  {
+            return true;
+        }
         return accountService.hasResponsibilityOnAccount(currentUser, acct);
     }
     

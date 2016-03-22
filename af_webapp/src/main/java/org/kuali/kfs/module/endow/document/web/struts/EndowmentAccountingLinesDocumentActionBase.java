@@ -55,12 +55,14 @@ import org.kuali.rice.krad.util.KRADConstants;
 import org.kuali.rice.krad.util.UrlFactory;
 
 public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransactionLinesDocumentActionBase {
+
     protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(EndowmentAccountingLinesDocumentActionBase.class);
 
     /**
-     * This action executes an insert of an TargetEndowmentAccountingLine into a document only after validating the Accounting line
-     * and checking any appropriate business rules.
-     * 
+     * This action executes an insert of an TargetEndowmentAccountingLine into a
+     * document only after validating the Accounting line and checking any
+     * appropriate business rules.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -93,9 +95,10 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * This action executes an insert of an SourceEndowmentAccountingLine into a document only after validating the Accounting line
-     * and checking any appropriate business rules.
-     * 
+     * This action executes an insert of an SourceEndowmentAccountingLine into a
+     * document only after validating the Accounting line and checking any
+     * appropriate business rules.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -127,8 +130,9 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * Adds the given accountingLine to the appropriate form-related data structures.
-     * 
+     * Adds the given accountingLine to the appropriate form-related data
+     * structures.
+     *
      * @param isSource
      * @param etlDocumentForm
      * @param line
@@ -139,20 +143,20 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         if (isSource) {
             // add it to the document
             etaDoc.addSourceAccountingLine((SourceEndowmentAccountingLine) line);
-        }
-        else {
+        } else {
             // add it to the document
             etaDoc.addTargetAccountingLine((TargetEndowmentAccountingLine) line);
         }
 
         // Update the doc total
-        if (etaDoc instanceof AmountTotaling)
+        if (etaDoc instanceof AmountTotaling) {
             ((FinancialSystemDocumentHeader) etaDocumentForm.getDocument().getDocumentHeader()).setFinancialDocumentTotalAmount(((AmountTotaling) etaDoc).getTotalDollarAmount());
+        }
     }
 
     /**
      * This action deletes an EndowmentSourceAccountingLine from a document.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -171,9 +175,8 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         // if the rule evaluation passed, let's delete it
         if (rulePassed) {
             deleteAccountingLine(true, etlForm, deleteIndex);
-        }
-        else {
-            String[] errorParams = new String[] { "source", Integer.toString(deleteIndex + 1) };
+        } else {
+            String[] errorParams = new String[]{"source", Integer.toString(deleteIndex + 1)};
             GlobalVariables.getMessageMap().putError(errorPath, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_DELETING_ACCOUNTING_LINE, errorParams);
         }
 
@@ -182,7 +185,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
 
     /**
      * This action deletes an EndowmentTargetAccountingLine from a document.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -201,9 +204,8 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         // if the rule evaluation passed, let's delete it
         if (rulePassed) {
             deleteAccountingLine(false, etlForm, deleteIndex);
-        }
-        else {
-            String[] errorParams = new String[] { "target", Integer.toString(deleteIndex + 1) };
+        } else {
+            String[] errorParams = new String[]{"target", Integer.toString(deleteIndex + 1)};
             GlobalVariables.getMessageMap().putError(errorPath, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_DELETING_ACCOUNTING_LINE, errorParams);
         }
 
@@ -212,7 +214,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
 
     /**
      * Deletes a Accounting Line.
-     * 
+     *
      * @param isSource
      * @param etlDocumentForm
      * @param index
@@ -222,8 +224,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
             // remove from document
             etlDocumentForm.getEndowmentAccountingLinesDocumentBase().getSourceAccountingLines().remove(index);
 
-        }
-        else {
+        } else {
             // remove from document
             etlDocumentForm.getEndowmentAccountingLinesDocumentBase().getTargetAccountingLines().remove(index);
         }
@@ -236,7 +237,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
 
     /**
      * This method returns the balance inquiry for target accounting lines.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -250,7 +251,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
 
     /**
      * This method returns the balance inquiry for source accounting lines.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -263,9 +264,9 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * This method provides the KEMIDCurrentBalance as the default lookup object. If a different lookup is needed this method should
-     * be overriden.
-     * 
+     * This method provides the KEMIDCurrentBalance as the default lookup
+     * object. If a different lookup is needed this method should be overriden.
+     *
      * @param isSource
      * @param mapping
      * @param form
@@ -280,8 +281,9 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * This method is similar to org.kuali.kfs.sys.web.struts.KualiAccountingDocumentActionBase.performBalanceInquiry()
-     * 
+     * This method is similar to
+     * org.kuali.kfs.sys.web.struts.KualiAccountingDocumentActionBase.performBalanceInquiry()
+     *
      * @param isRevenue
      * @param mapping
      * @param form
@@ -297,15 +299,13 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         EndowmentAccountingLinesDocumentFormBase etlForm = (EndowmentAccountingLinesDocumentFormBase) form;
         EndowmentAccountingLinesDocumentBase etlDoc = ((EndowmentAccountingLinesDocumentFormBase) form).getEndowmentAccountingLinesDocumentBase();
 
-
         // when we return from the lookup, our next request's method to call is going to be refresh
         etlForm.registerEditableProperty(KRADConstants.DISPATCH_REQUEST_PARAMETER);
 
         EndowmentAccountingLine etLine;
         if (isSource) {
             etLine = etlDoc.getSourceAccountingLines().get(this.getSelectedLine(request));
-        }
-        else {
+        } else {
             etLine = etlDoc.getTargetAccountingLines().get(this.getSelectedLine(request));
         }
 
@@ -331,7 +331,6 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         // params.put(KFSConstants.HIDE_LOOKUP_RETURN_LINK, "true");
         params.put(KFSConstants.BACK_LOCATION, basePath + mapping.getPath() + ".do");
 
-
         if (StringUtils.isNotBlank(etLine.getChartOfAccountsCode())) {
             params.put("chartOfAccountsCode", etLine.getChartOfAccountsCode());
         }
@@ -351,7 +350,6 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
             params.put("projectCode", etLine.getProjectCode());
         }
 
-
         String lookupUrl = UrlFactory.parameterizeUrl(basePath + "/" + KFSConstants.BALANCE_INQUIRY_REPORT_MENU_ACTION, params);
 
         // register that we're going to come back w/ to this form w/ a refresh methodToCall
@@ -361,9 +359,10 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * This action executes a call to upload CSV accounting line values as TargetAccountingLines for a given transactional document.
-     * The "uploadAccountingLines()" method handles the multi-part request.
-     * 
+     * This action executes a call to upload CSV accounting line values as
+     * TargetAccountingLines for a given transactional document. The
+     * "uploadAccountingLines()" method handles the multi-part request.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -379,11 +378,11 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
         return mapping.findForward(KFSConstants.MAPPING_BASIC);
     }
 
-
     /**
-     * This action executes a call to upload CSV accounting line values as SourceAccountingLines for a given transactional document.
-     * The "uploadAccountingLines()" method handles the multi-part request.
-     * 
+     * This action executes a call to upload CSV accounting line values as
+     * SourceAccountingLines for a given transactional document. The
+     * "uploadAccountingLines()" method handles the multi-part request.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -401,9 +400,11 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
     }
 
     /**
-     * This method determines whether we are uploading source or target lines, and then calls uploadAccountingLines directly on the
-     * document object. This method handles retrieving the actual upload file as an input stream into the document.
-     * 
+     * This method determines whether we are uploading source or target lines,
+     * and then calls uploadAccountingLines directly on the document object.
+     * This method handles retrieving the actual upload file as an input stream
+     * into the document.
+     *
      * @param isSource
      * @param form
      * @throws FileNotFoundException
@@ -425,15 +426,13 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
                 FormFile sourceFile = tmpForm.getSourceFile();
                 checkUploadFile(sourceFile);
                 importedLines = accountingLineParser.importSourceEndowmentAccountingLines(sourceFile.getFileName(), sourceFile.getInputStream(), financialDocument);
-            }
-            else {
+            } else {
                 errorPathPrefix = EndowPropertyConstants.EXISTING_TARGET_ACCT_LINE_PREFIX;
                 FormFile targetFile = tmpForm.getTargetFile();
                 checkUploadFile(targetFile);
                 importedLines = accountingLineParser.importTargetEndowmentAccountingLines(targetFile.getFileName(), targetFile.getInputStream(), financialDocument);
             }
-        }
-        catch (EndowmentAccountingLineException e) {
+        } catch (EndowmentAccountingLineException e) {
             GlobalVariables.getMessageMap().putError(errorPathPrefix, e.getErrorKey(), e.getErrorParameters());
         }
 
@@ -448,7 +447,7 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
 
     /**
      * This method...
-     * 
+     *
      * @param file
      */
     protected void checkUploadFile(FormFile file) {
@@ -456,6 +455,5 @@ public class EndowmentAccountingLinesDocumentActionBase extends EndowmentTransac
             throw new EndowmentAccountingLineException("invalid (null) upload file", KFSKeyConstants.ERROR_UPLOADFILE_NULL);
         }
     }
-
 
 }

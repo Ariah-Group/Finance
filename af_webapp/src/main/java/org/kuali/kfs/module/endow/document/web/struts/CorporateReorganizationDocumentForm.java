@@ -26,27 +26,26 @@ public class CorporateReorganizationDocumentForm extends EndowmentTransactionLin
         // Transaction amount is read only for this document; the filed is empty initially.
         newSourceTransactionLine.setTransactionAmount(null);
         newTargetTransactionLine.setTransactionAmount(null);
-        
+
         // Don't show the Etran code field.
         setShowETranCode(false);
-        
+
         // Don't show the import and add button on the target transaction lines.
         setShowTargetImport(false);
         setShowTargetAdd(true);
-        
+
         // Don't show the import button on the source transaction lines.
         setShowSourceImport(false);
-        
+
         // Make the KEMID field on the target transaction lines read only.
         setTargetKemidReadOnly(true);
-        
+
         // Make the income/principal indicator on the target transaction lines read only.
         setTargetIncomePrincipalIndicatorReadOnly(true);
-        
+
         // Don't want to show all the added target transaction lines since
         // only one target transaction exists.  We just want one line to show-up.
         //setShowTargetTransLines(true);
-        
         setShowTargetBalance(false);
         setShowTargetDelete(false);
     }
@@ -55,10 +54,11 @@ public class CorporateReorganizationDocumentForm extends EndowmentTransactionLin
     protected String getDefaultDocumentTypeName() {
         return "ECR";
     }
-    
+
     /**
-     * 
+     *
      * This method...
+     *
      * @return
      */
     public CorporateReorganizationDocument getCorporateReorganizationDocument() {
@@ -66,7 +66,8 @@ public class CorporateReorganizationDocumentForm extends EndowmentTransactionLin
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewSourceTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewSourceTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
      */
     @Override
     public void setNewSourceTransactionLine(EndowmentTransactionLine newSourceTransactionLine) {
@@ -77,7 +78,8 @@ public class CorporateReorganizationDocumentForm extends EndowmentTransactionLin
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewTargetTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#setNewTargetTransactionLine(org.kuali.kfs.module.endow.businessobject.EndowmentTransactionLine)
      */
     @Override
     public void setNewTargetTransactionLine(EndowmentTransactionLine newTargetTransactionLine) {
@@ -85,26 +87,30 @@ public class CorporateReorganizationDocumentForm extends EndowmentTransactionLin
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowFromTransactionLine()
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowFromTransactionLine()
      */
     public boolean getShowFromTransactionLine() {
         CorporateReorganizationDocument document = getCorporateReorganizationDocument();
-        if (document.getSourceTransactionLines() != null && document.getSourceTransactionLines().size() > 0)
+        if (document.getSourceTransactionLines() != null && document.getSourceTransactionLines().size() > 0) {
             return false;
-        else
+        } else {
             return true;
+        }
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowToTransactionLine()
+     * @see
+     * org.kuali.kfs.module.endow.document.web.struts.EndowmentTransactionLinesDocumentFormBase#getShowToTransactionLine()
      */
     @Override
     public boolean getShowToTransactionLine() {
         CorporateReorganizationDocument document = getCorporateReorganizationDocument();
-        if (document.getTargetTransactionLines() != null && document.getTargetTransactionLines().size() > 0)
+        if (document.getTargetTransactionLines() != null && document.getTargetTransactionLines().size() > 0) {
             return false;
-        else
+        } else {
             return true;
+        }
     }
-    
+
 }

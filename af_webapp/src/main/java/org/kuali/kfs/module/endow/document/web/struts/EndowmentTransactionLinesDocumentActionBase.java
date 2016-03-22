@@ -81,9 +81,9 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
 
     protected static org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(EndowmentTransactionLinesDocumentActionBase.class);
 
-
     /**
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#loadDocument(org.kuali.rice.kns.web.struts.form.KualiDocumentFormBase)
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#loadDocument(org.kuali.rice.kns.web.struts.form.KualiDocumentFormBase)
      */
     @Override
     protected void loadDocument(KualiDocumentFormBase kualiDocumentFormBase) throws WorkflowException {
@@ -154,7 +154,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
 
     /**
      * Cancels import.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -165,7 +165,6 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     public ActionForward cancelImport(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mapping.findForward(KFSConstants.MAPPING_BASIC);
     }
-
 
     /**
      * @param mapping
@@ -195,8 +194,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         if (isSource) {
             itemLinePosition = tranLineDocument.getNextSourceLineNumber();
             transactionLineSize = tranLineDocument.getSourceTransactionLines().size();
-        }
-        else {
+        } else {
             itemLinePosition = tranLineDocument.getNextTargetLineNumber();
             transactionLineSize = tranLineDocument.getTargetTransactionLines().size();
         }
@@ -207,7 +205,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
             // Validate imported items
             boolean rulePassed = true;
             int lineNumber = 1;
-            
+
 //            for (EndowmentTransactionLine line : importedTransactionLines) {
 //                 // Before the validation, set the item line number to the same as the line number in the import file (starting from
 //                 // 1) So that the error message will use the correct line number if there're errors for the current item line.
@@ -229,16 +227,16 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
                     insertTransactionLine(isSource, tranLineForm, line);
                 }
             }
-        }
-        catch (LineParserException e) {
+        } catch (LineParserException e) {
             GlobalVariables.getMessageMap().putError(errorPath, e.getErrorKey(), e.getErrorParameters());
         }
     }
 
     /**
-     * This action executes an insert of an EndowmentTargetTransactionLine into a document only after validating the Transaction
-     * line and checking any appropriate business rules.
-     * 
+     * This action executes an insert of an EndowmentTargetTransactionLine into
+     * a document only after validating the Transaction line and checking any
+     * appropriate business rules.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -271,9 +269,10 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * This action executes an insert of an EndowmentTargetTransactionLine into a document only after validating the Transaction
-     * line and checking any appropriate business rules.
-     * 
+     * This action executes an insert of an EndowmentTargetTransactionLine into
+     * a document only after validating the Transaction line and checking any
+     * appropriate business rules.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -305,8 +304,9 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * Adds the given transactionLine to the appropriate form-related datastructures.
-     * 
+     * Adds the given transactionLine to the appropriate form-related
+     * datastructures.
+     *
      * @param isSource
      * @param etlDocumentForm
      * @param line
@@ -317,20 +317,20 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         if (isSource) {
             // add it to the document
             etlDoc.addSourceTransactionLine((EndowmentSourceTransactionLine) line);
-        }
-        else {
+        } else {
             // add it to the document
             etlDoc.addTargetTransactionLine((EndowmentTargetTransactionLine) line);
         }
 
         // Update the doc total
-        if (etlDoc instanceof AmountTotaling)
+        if (etlDoc instanceof AmountTotaling) {
             ((FinancialSystemDocumentHeader) etlDocumentForm.getDocument().getDocumentHeader()).setFinancialDocumentTotalAmount(((AmountTotaling) etlDoc).getTotalDollarAmount());
+        }
     }
 
     /**
      * This action deletes an EndowmentSourceTransactionLine from a document.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -349,9 +349,8 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         // if the rule evaluation passed, let's delete it
         if (rulePassed) {
             deleteTransactionLine(true, etlForm, deleteIndex);
-        }
-        else {
-            String[] errorParams = new String[] { "source", Integer.toString(deleteIndex + 1) };
+        } else {
+            String[] errorParams = new String[]{"source", Integer.toString(deleteIndex + 1)};
             GlobalVariables.getMessageMap().putError(errorPath, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_DELETING_TRANSACTION_LINE, errorParams);
         }
 
@@ -360,7 +359,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
 
     /**
      * This action deletes an EndowmentTargetTransactionLine from a document.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -379,9 +378,8 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         // if the rule evaluation passed, let's delete it
         if (rulePassed) {
             deleteTransactionLine(false, etlForm, deleteIndex);
-        }
-        else {
-            String[] errorParams = new String[] { "target", Integer.toString(deleteIndex + 1) };
+        } else {
+            String[] errorParams = new String[]{"target", Integer.toString(deleteIndex + 1)};
             GlobalVariables.getMessageMap().putError(errorPath, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_DELETING_TRANSACTION_LINE, errorParams);
         }
 
@@ -390,7 +388,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
 
     /**
      * Deletes a Transaction Line.
-     * 
+     *
      * @param isSource
      * @param etlDocumentForm
      * @param index
@@ -400,8 +398,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
             // remove from document
             etlDocumentForm.getEndowmentTransactionLinesDocumentBase().getSourceTransactionLines().remove(index);
 
-        }
-        else {
+        } else {
             // remove from document
             etlDocumentForm.getEndowmentTransactionLinesDocumentBase().getTargetTransactionLines().remove(index);
         }
@@ -412,10 +409,12 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         }
     }
 
-
     /**
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#refresh(org.apache.struts.action.ActionMapping,
-     *      org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#refresh(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     @Override
     public ActionForward refresh(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -450,21 +449,19 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
             refreshEtranCode(etlForm, false);
         }
 
-
         // balance inquiry anchor is set before doing a balance inquiry
         if (etlForm.getBalanceInquiryReturnAnchor() != null) {
             etlForm.setAnchor(etlForm.getBalanceInquiryReturnAnchor());
             etlForm.setBalanceInquiryReturnAnchor(null);
         }
 
-
         return mapping.findForward(KFSConstants.MAPPING_BASIC);
     }
 
     /**
-     * Retrieves and sets the reference kemid object on newSourceTransactionLine or newTargetTransactionLine based on the kemid
-     * looked up value.
-     * 
+     * Retrieves and sets the reference kemid object on newSourceTransactionLine
+     * or newTargetTransactionLine based on the kemid looked up value.
+     *
      * @param etlForm
      * @param isSource
      */
@@ -474,8 +471,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         if (isSource) {
             kemid = SpringContext.getBean(KEMIDService.class).getByPrimaryKey(etlForm.getNewSourceTransactionLine().getKemid());
             etlForm.getNewSourceTransactionLine().setKemidObj(kemid);
-        }
-        else {
+        } else {
             kemid = SpringContext.getBean(KEMIDService.class).getByPrimaryKey(etlForm.getNewTargetTransactionLine().getKemid());
             etlForm.getNewTargetTransactionLine().setKemidObj(kemid);
         }
@@ -483,9 +479,10 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * Retrieves and sets the reference endowment transaction code object on newSourceTransactionLine or newTargetTransactionLine
-     * based on the etranCode looked up value.
-     * 
+     * Retrieves and sets the reference endowment transaction code object on
+     * newSourceTransactionLine or newTargetTransactionLine based on the
+     * etranCode looked up value.
+     *
      * @param etlForm
      * @param isSource
      */
@@ -495,8 +492,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         if (isSource) {
             etranCode = SpringContext.getBean(EndowmentTransactionCodeService.class).getByPrimaryKey(etlForm.getNewSourceTransactionLine().getEtranCode());
             etlForm.getNewSourceTransactionLine().setEtranCodeObj(etranCode);
-        }
-        else {
+        } else {
             etranCode = SpringContext.getBean(EndowmentTransactionCodeService.class).getByPrimaryKey(etlForm.getNewTargetTransactionLine().getEtranCode());
             etlForm.getNewTargetTransactionLine().setEtranCodeObj(etranCode);
         }
@@ -504,8 +500,9 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * Retrieves and sets the reference Security object on Source or Target transactionsecurity based on the looked up value.
-     * 
+     * Retrieves and sets the reference Security object on Source or Target
+     * transactionsecurity based on the looked up value.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -517,28 +514,30 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         EndowmentSecurityDetailsDocumentBase endowmentSecurityDetailsDocumentBase = (EndowmentSecurityDetailsDocumentBase) ((EndowmentTransactionLinesDocumentFormBase) form).getDocument();
 
         Security security;
-        if (request.getParameterMap().containsKey(SECURITY_SOURCE_REFRESH))
+        if (request.getParameterMap().containsKey(SECURITY_SOURCE_REFRESH)) {
             security = SpringContext.getBean(SecurityService.class).getByPrimaryKey(endowmentSecurityDetailsDocumentBase.getSourceTransactionSecurity().getSecurityID());
-        else
+        } else {
             security = SpringContext.getBean(SecurityService.class).getByPrimaryKey(endowmentSecurityDetailsDocumentBase.getTargetTransactionSecurity().getSecurityID());
+        }
 
         ClassCode classCode = SpringContext.getBean(ClassCodeService.class).getByPrimaryKey(security.getSecurityClassCode());
         security.setClassCode(classCode);
         EndowmentTransactionCode endowmentTransactionCode = SpringContext.getBean(EndowmentTransactionCodeService.class).getByPrimaryKey(classCode.getSecurityEndowmentTransactionCode());
         classCode.setEndowmentTransactionCode(endowmentTransactionCode);
 
-        if (request.getParameterMap().containsKey(SECURITY_SOURCE_REFRESH))
+        if (request.getParameterMap().containsKey(SECURITY_SOURCE_REFRESH)) {
             endowmentSecurityDetailsDocumentBase.getSourceTransactionSecurity().setSecurity(security);
-        else
+        } else {
             endowmentSecurityDetailsDocumentBase.getTargetTransactionSecurity().setSecurity(security);
+        }
 
         return null;
     }
 
     /**
-     * Retrieves and sets the reference RegistrationCode object on Source or Target transactionsecurity based on the looked up
-     * value.
-     * 
+     * Retrieves and sets the reference RegistrationCode object on Source or
+     * Target transactionsecurity based on the looked up value.
+     *
      * @param mapping
      * @param form
      * @param request
@@ -550,23 +549,24 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         EndowmentSecurityDetailsDocumentBase endowmentSecurityDetailsDocumentBase = (EndowmentSecurityDetailsDocumentBase) ((EndowmentTransactionLinesDocumentFormBase) form).getDocument();
 
         RegistrationCode registrationCode = null;
-        if (request.getParameterMap().containsKey(REGISTRATION_SOURCE_REFRESH))
+        if (request.getParameterMap().containsKey(REGISTRATION_SOURCE_REFRESH)) {
             registrationCode = SpringContext.getBean(RegistrationCodeService.class).getByPrimaryKey(endowmentSecurityDetailsDocumentBase.getSourceTransactionSecurity().getRegistrationCode());
-        else
+        } else {
             registrationCode = SpringContext.getBean(RegistrationCodeService.class).getByPrimaryKey(endowmentSecurityDetailsDocumentBase.getTargetTransactionSecurity().getRegistrationCode());
+        }
 
-        if (request.getParameterMap().containsKey(REGISTRATION_SOURCE_REFRESH))
+        if (request.getParameterMap().containsKey(REGISTRATION_SOURCE_REFRESH)) {
             endowmentSecurityDetailsDocumentBase.getSourceTransactionSecurity().setRegistrationCodeObj(registrationCode);
-        else
+        } else {
             endowmentSecurityDetailsDocumentBase.getTargetTransactionSecurity().setRegistrationCodeObj(registrationCode);
+        }
 
         return null;
     }
 
-
     /**
      * This method returns the balance inquiry for target transaction lines.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -580,7 +580,7 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
 
     /**
      * This method returns the balance inquiry for source transaction lines.
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -593,9 +593,9 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * This method provides the KEMIDCurrentBalance as the default lookup object. If a different lookup is needed this method should
-     * be overriden.
-     * 
+     * This method provides the KEMIDCurrentBalance as the default lookup
+     * object. If a different lookup is needed this method should be overriden.
+     *
      * @param isSource
      * @param mapping
      * @param form
@@ -610,8 +610,9 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * This method is similar to org.kuali.kfs.sys.web.struts.KualiAccountingDocumentActionBase.performBalanceInquiry()
-     * 
+     * This method is similar to
+     * org.kuali.kfs.sys.web.struts.KualiAccountingDocumentActionBase.performBalanceInquiry()
+     *
      * @param isRevenue
      * @param mapping
      * @param form
@@ -627,15 +628,13 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
         EndowmentTransactionLinesDocumentFormBase etlForm = (EndowmentTransactionLinesDocumentFormBase) form;
         EndowmentTransactionLinesDocumentBase etlDoc = ((EndowmentTransactionLinesDocumentFormBase) form).getEndowmentTransactionLinesDocumentBase();
 
-
         // when we return from the lookup, our next request's method to call is going to be refresh
         etlForm.registerEditableProperty(KRADConstants.DISPATCH_REQUEST_PARAMETER);
 
         EndowmentTransactionLine etLine;
         if (isSource) {
             etLine = etlDoc.getSourceTransactionLines().get(this.getSelectedLine(request));
-        }
-        else {
+        } else {
             etLine = etlDoc.getTargetTransactionLines().get(this.getSelectedLine(request));
         }
 
@@ -671,50 +670,65 @@ public abstract class EndowmentTransactionLinesDocumentActionBase extends Financ
     }
 
     /**
-     * need to refresh the accounting lines on the document so the referenced objects are
-     * available before document validations.
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#blanketApprove(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * need to refresh the accounting lines on the document so the referenced
+     * objects are available before document validations.
+     *
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#blanketApprove(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     public ActionForward blanketApprove(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         refreshAccountingLines(form);
-        
+
         return super.blanketApprove(mapping, form, request, response);
     }
-        
+
     /**
-     * need to refresh the accounting lines on the document so the referenced objects are
-     * available before document validations.
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#route(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * need to refresh the accounting lines on the document so the referenced
+     * objects are available before document validations.
+     *
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#route(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     @Override
     public ActionForward route(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         refreshAccountingLines(form);
-        
+
         return super.route(mapping, form, request, response);
     }
-    
+
     /**
-     * need to refresh the accounting lines on the document so the referenced objects are
-     * available before document validations.
-     * @see org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#approve(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     * need to refresh the accounting lines on the document so the referenced
+     * objects are available before document validations.
+     *
+     * @see
+     * org.kuali.rice.kns.web.struts.action.KualiDocumentActionBase#approve(org.apache.struts.action.ActionMapping,
+     * org.apache.struts.action.ActionForm,
+     * javax.servlet.http.HttpServletRequest,
+     * javax.servlet.http.HttpServletResponse)
      */
     public ActionForward approve(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         refreshAccountingLines(form);
-        
+
         return super.approve(mapping, form, request, response);
     }
 
     protected void refreshAccountingLines(ActionForm form) {
         EndowmentAccountingLinesDocumentFormBase tmpForm = (EndowmentAccountingLinesDocumentFormBase) form;
-        EndowmentAccountingLinesDocument endowmentAccountingLinesDocument = (EndowmentAccountingLinesDocument)  tmpForm.getDocument();
-        
+        EndowmentAccountingLinesDocument endowmentAccountingLinesDocument = (EndowmentAccountingLinesDocument) tmpForm.getDocument();
+
         if (endowmentAccountingLinesDocument.getSourceAccountingLines() != null) {
             for (int i = 0; i < endowmentAccountingLinesDocument.getSourceAccountingLines().size(); i++) {
                 SourceEndowmentAccountingLine sourceEndowmentAccountingLine = endowmentAccountingLinesDocument.getSourceAccountingLines().get(i);
                 sourceEndowmentAccountingLine.refreshNonUpdateableReferences();
             }
         }
-        
+
         if (endowmentAccountingLinesDocument.getTargetAccountingLines() != null) {
             for (int i = 0; i < endowmentAccountingLinesDocument.getTargetAccountingLines().size(); i++) {
                 TargetEndowmentAccountingLine targetEndowmentAccountingLine = endowmentAccountingLinesDocument.getTargetAccountingLines().get(i);

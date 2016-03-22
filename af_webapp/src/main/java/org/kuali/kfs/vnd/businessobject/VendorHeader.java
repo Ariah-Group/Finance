@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.kuali.kfs.vnd.businessobject;
 
 import java.sql.Date;
@@ -25,12 +24,13 @@ import org.apache.log4j.Logger;
 import org.kuali.rice.krad.bo.PersistableBusinessObjectBase;
 
 /**
- * Contains information specific to a parent Vendor, which may be shared by its division Vendors if it has any. Contained by a
- * <code>VendorDetail</code>.
+ * Contains information specific to a parent Vendor, which may be shared by its
+ * division Vendors if it has any. Contained by a <code>VendorDetail</code>.
  *
  * @see org.kuali.kfs.vnd.businessobject.VendorDetail
  */
 public class VendorHeader extends PersistableBusinessObjectBase {
+
     private static Logger LOG = Logger.getLogger(VendorHeader.class);
 
     private Integer vendorHeaderGeneratedIdentifier;
@@ -151,8 +151,9 @@ public class VendorHeader extends PersistableBusinessObjectBase {
 
     public VendorType getVendorType() {
         // refresh because proxy doesn't work properly and vendor type sometimes is null
-        if (vendorType == null)
+        if (vendorType == null) {
             this.refreshReferenceObject("vendorType");
+        }
         return vendorType;
     }
 
@@ -234,9 +235,10 @@ public class VendorHeader extends PersistableBusinessObjectBase {
     }
 
     /**
-     * Used by the Spring Framework to correctly retrieve the vendor supplier diversities as a single
-     * attribute. The vendorSupplierDiversities is a collection of diversities, and without this method,
-     * there was no way to get a single attribute for it.
+     * Used by the Spring Framework to correctly retrieve the vendor supplier
+     * diversities as a single attribute. The vendorSupplierDiversities is a
+     * collection of diversities, and without this method, there was no way to
+     * get a single attribute for it.
      *
      * @return the vendor supplier diversities as a single attribute
      */
@@ -245,7 +247,7 @@ public class VendorHeader extends PersistableBusinessObjectBase {
 
         boolean first = true;
         for (VendorSupplierDiversity vsd : vendorSupplierDiversities) {
-            if(vsd.isActive()){
+            if (vsd.isActive()) {
                 if (!first) {
                     sb.append(", ");
                 } else {
@@ -269,11 +271,13 @@ public class VendorHeader extends PersistableBusinessObjectBase {
     }
 
     /**
-     * This method is a predicate to test equality of all the persisted attributes of an instance of this class, including member
-     * collections. This is used to determine whether to route
+     * This method is a predicate to test equality of all the persisted
+     * attributes of an instance of this class, including member collections.
+     * This is used to determine whether to route
      *
      * @param vh Another VendorHeader object
-     * @return True if all non-derived attributes of the given object are equal to this one's
+     * @return True if all non-derived attributes of the given object are equal
+     * to this one's
      */
     public boolean isEqualForRouting(VendorHeader vh) {
         LOG.debug("Entering isEqualForRouting.");

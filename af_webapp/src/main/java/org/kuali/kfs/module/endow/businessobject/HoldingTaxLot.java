@@ -56,7 +56,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the incomePrincipal.
-     * 
+     *
      * @return incomePrincipal
      */
     public IncomePrincipalIndicator getIncomePrincipal() {
@@ -65,7 +65,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the incomePrincipal.
-     * 
+     *
      * @param incomePrincipal
      */
     public void setIncomePrincipal(IncomePrincipalIndicator incomePrincipal) {
@@ -74,7 +74,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the security
-     * 
+     *
      * @return security
      */
     public Security getSecurity() {
@@ -83,7 +83,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the security.
-     * 
+     *
      * @param security
      */
     public void setSecurity(Security security) {
@@ -93,7 +93,6 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
     /**
      * @see org.kuali.rice.krad.bo.BusinessObjectBase#toStringMapper()
      */
-    
     protected LinkedHashMap toStringMapper_RICE20_REFACTORME() {
         LinkedHashMap m = new LinkedHashMap();
         m.put(EndowPropertyConstants.HOLDING_TAX_LOT_KEMID, this.kemid);
@@ -105,7 +104,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the acquiredDate.
-     * 
+     *
      * @return acquiredDate
      */
     public Date getAcquiredDate() {
@@ -114,7 +113,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the acquiredDate.
-     * 
+     *
      * @param acquiredDate
      */
     public void setAcquiredDate(Date acquiredDate) {
@@ -123,7 +122,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the cost.
-     * 
+     *
      * @return cost
      */
     public BigDecimal getCost() {
@@ -132,7 +131,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the cost.
-     * 
+     *
      * @param cost
      */
     public void setCost(BigDecimal cost) {
@@ -141,7 +140,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the currentAccrual.
-     * 
+     *
      * @return currentAccrual
      */
     public BigDecimal getCurrentAccrual() {
@@ -150,7 +149,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the currentAccrual.
-     * 
+     *
      * @param currentAccrual
      */
     public void setCurrentAccrual(BigDecimal currentAccrual) {
@@ -159,7 +158,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the incomePrincipalIndicator.
-     * 
+     *
      * @return incomePrincipalIndicator
      */
     public String getIncomePrincipalIndicator() {
@@ -168,7 +167,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the incomePrincipalIndicator.
-     * 
+     *
      * @param incomePrincipalIndicator
      */
     public void setIncomePrincipalIndicator(String incomePrincipalIndicator) {
@@ -177,7 +176,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the kemid.
-     * 
+     *
      * @return kemid
      */
     public String getKemid() {
@@ -186,7 +185,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the kemid.
-     * 
+     *
      * @param kemid
      */
     public void setKemid(String kemid) {
@@ -195,7 +194,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the lastTransactionDate.
-     * 
+     *
      * @return lastTransactionDate
      */
     public Date getLastTransactionDate() {
@@ -204,7 +203,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the lastTransactionDate.
-     * 
+     *
      * @param lastTransactionDate
      */
     public void setLastTransactionDate(Date lastTransactionDate) {
@@ -213,7 +212,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the lotNumber.
-     * 
+     *
      * @return lotNumber
      */
     public KualiInteger getLotNumber() {
@@ -222,7 +221,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the lotNumber.
-     * 
+     *
      * @param lotNumber
      */
     public void setLotNumber(KualiInteger lotNumber) {
@@ -231,7 +230,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the priorAccrual.
-     * 
+     *
      * @return priorAccrual
      */
     public BigDecimal getPriorAccrual() {
@@ -240,7 +239,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the priorAccrual.
-     * 
+     *
      * @param priorAccrual
      */
     public void setPriorAccrual(BigDecimal priorAccrual) {
@@ -249,7 +248,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the registrationCode.
-     * 
+     *
      * @return registrationCode
      */
     public String getRegistrationCode() {
@@ -258,7 +257,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the registrationCode.
-     * 
+     *
      * @param registrationCode
      */
     public void setRegistrationCode(String registrationCode) {
@@ -267,7 +266,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the securityId.
-     * 
+     *
      * @return securityId
      */
     public String getSecurityId() {
@@ -276,7 +275,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the securityId.
-     * 
+     *
      * @param securityId
      */
     public void setSecurityId(String securityId) {
@@ -285,7 +284,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the units.
-     * 
+     *
      * @return units
      */
     public BigDecimal getUnits() {
@@ -294,7 +293,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the units.
-     * 
+     *
      * @param units
      */
     public void setUnits(BigDecimal units) {
@@ -303,7 +302,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the market value.
-     * 
+     *
      * @return the market value
      */
     public BigDecimal getMarketValue() {
@@ -316,7 +315,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the Balance Date which is the Current System/Process date
-     * 
+     *
      * @return the Balance Date
      */
     public Date getBalanceDate() {
@@ -326,7 +325,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the registration.
-     * 
+     *
      * @return registration
      */
     public RegistrationCode getRegistration() {
@@ -335,7 +334,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the registration
-     * 
+     *
      * @param registration
      */
     public void setRegistration(RegistrationCode registration) {
@@ -344,7 +343,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Gets the kemidObj.
-     * 
+     *
      * @return kemidObj
      */
     public KEMID getKemidObj() {
@@ -353,7 +352,7 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
 
     /**
      * Sets the kemidObj.
-     * 
+     *
      * @param kemidObj
      */
     @Deprecated
@@ -381,43 +380,51 @@ public class HoldingTaxLot extends PersistableBusinessObjectBase {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         HoldingTaxLot other = (HoldingTaxLot) obj;
         if (incomePrincipalIndicator == null) {
-            if (other.incomePrincipalIndicator != null)
+            if (other.incomePrincipalIndicator != null) {
                 return false;
-        }
-        else if (!incomePrincipalIndicator.equals(other.incomePrincipalIndicator))
+            }
+        } else if (!incomePrincipalIndicator.equals(other.incomePrincipalIndicator)) {
             return false;
+        }
         if (kemid == null) {
-            if (other.kemid != null)
+            if (other.kemid != null) {
                 return false;
-        }
-        else if (!kemid.equals(other.kemid))
+            }
+        } else if (!kemid.equals(other.kemid)) {
             return false;
+        }
         if (lotNumber == null) {
-            if (other.lotNumber != null)
+            if (other.lotNumber != null) {
                 return false;
-        }
-        else if (!lotNumber.equals(other.lotNumber))
+            }
+        } else if (!lotNumber.equals(other.lotNumber)) {
             return false;
+        }
         if (registrationCode == null) {
-            if (other.registrationCode != null)
+            if (other.registrationCode != null) {
                 return false;
-        }
-        else if (!registrationCode.equals(other.registrationCode))
+            }
+        } else if (!registrationCode.equals(other.registrationCode)) {
             return false;
+        }
         if (securityId == null) {
-            if (other.securityId != null)
+            if (other.securityId != null) {
                 return false;
-        }
-        else if (!securityId.equals(other.securityId))
+            }
+        } else if (!securityId.equals(other.securityId)) {
             return false;
+        }
         return true;
     }
 

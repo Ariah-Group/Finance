@@ -50,8 +50,9 @@ import org.kuali.rice.krad.util.ObjectUtils;
 abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurityBaseRules implements AddEndowmentAccountingLineRule<EndowmentAccountingLinesDocument, EndowmentAccountingLine>, DeleteEndowmentAccountingLineRule<EndowmentAccountingLinesDocument, EndowmentAccountingLine> {
 
     /**
-     * @see org.kuali.kfs.module.endow.document.validation.AddEndowmentAccountingLineRule#processAddEndowmentAccountingLineRules(org.kuali.kfs.module.endow.document.EndowmentAccountingLinesDocument,
-     *      org.kuali.kfs.module.endow.businessobject.EndowmentAccountingLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.validation.AddEndowmentAccountingLineRule#processAddEndowmentAccountingLineRules(org.kuali.kfs.module.endow.document.EndowmentAccountingLinesDocument,
+     * org.kuali.kfs.module.endow.businessobject.EndowmentAccountingLine)
      */
     public boolean processAddEndowmentAccountingLineRules(EndowmentAccountingLinesDocument endowmentAccountingLinesDocument, EndowmentAccountingLine endowmentAccountingLine) {
         boolean isValid = true;
@@ -60,8 +61,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.validation.DeleteEndowmentAccountingLineRule#processDeleteAccountingLineRules(org.kuali.kfs.module.endow.document.EndowmentAccountingLinesDocument,
-     *      org.kuali.kfs.module.endow.businessobject.EndowmentAccountingLine)
+     * @see
+     * org.kuali.kfs.module.endow.document.validation.DeleteEndowmentAccountingLineRule#processDeleteAccountingLineRules(org.kuali.kfs.module.endow.document.EndowmentAccountingLinesDocument,
+     * org.kuali.kfs.module.endow.businessobject.EndowmentAccountingLine)
      */
     public boolean processDeleteAccountingLineRules(EndowmentAccountingLinesDocument EndowmentAccountingLinesDocument, EndowmentAccountingLine EndowmentAccountingLine) {
         // TODO Auto-generated method stub
@@ -70,7 +72,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates the given accounting Line.
-     * 
+     *
      * @param accountingLinesDocument
      * @param accountingLine
      * @param index
@@ -124,10 +126,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         return isValid;
     }
 
-
     /**
      * Validates the transaction amount for the given accounting line.
-     * 
+     *
      * @param accountingLine
      * @param index
      * @return true if valid, false otherwise
@@ -144,10 +145,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     }
 
-
     /**
      * Gets the prefix for an accounting line error.
-     * 
+     *
      * @param line
      * @param index
      * @return the prefix
@@ -157,16 +157,13 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         if (line instanceof SourceEndowmentAccountingLine) {
             if (index == -1) {
                 ERROR_PREFIX = EndowPropertyConstants.SOURCE_ACCT_LINE_PREFIX;
-            }
-            else {
+            } else {
                 ERROR_PREFIX = EndowPropertyConstants.EXISTING_SOURCE_ACCT_LINE_PREFIX + "[" + index + "].";
             }
-        }
-        else {
+        } else {
             if (index == -1) {
                 ERROR_PREFIX = EndowPropertyConstants.TARGET_ACCT_LINE_PREFIX;
-            }
-            else {
+            } else {
                 ERROR_PREFIX = EndowPropertyConstants.EXISTING_TARGET_ACCT_LINE_PREFIX + "[" + index + "].";
             }
         }
@@ -176,7 +173,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Checks if the chart code is empty.
-     * 
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -185,14 +182,14 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         if (StringUtils.isBlank(line.getChartOfAccountsCode())) {
             putFieldError(getAcctLineErrorPrefix(line, index) + EndowPropertyConstants.ENDOWMENT_ACCOUNTING_LINE_CHART_CD, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_ACCT_LINE_CHART_CODE_REQUIRED);
             return true;
-        }
-        else
+        } else {
             return false;
+        }
     }
 
     /**
      * Validates that the chart code exists in the database.
-     * 
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -214,7 +211,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates if the chart code is Active.
-     * 
+     *
      * @param line
      * @param index
      * @return true of active, false otherwise
@@ -238,7 +235,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Checks if the account number is empty.
-     * 
+     *
      * @param line
      * @param index
      * @return true if empty, false otherwise
@@ -247,14 +244,14 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         if (StringUtils.isBlank(line.getAccountNumber())) {
             putFieldError(getAcctLineErrorPrefix(line, index) + EndowPropertyConstants.ENDOWMENT_ACCOUNTING_LINE_ACCT_NBR, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_ACCT_LINE_CHART_CODE_REQUIRED);
             return true;
-        }
-        else
+        } else {
             return false;
+        }
     }
 
     /**
      * Validates if the account exists in the database.
-     * 
+     *
      * @param line
      * @param index
      * @return true if it exists, false otherwise
@@ -277,7 +274,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates that the account is active.
-     * 
+     *
      * @param line
      * @param index
      * @return true if active, false otherwise
@@ -302,7 +299,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates if the account is expired.
-     * 
+     *
      * @param line
      * @param index
      * @return true if not expired, false otherwise.
@@ -327,7 +324,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Checks if the object code is empty.
-     * 
+     *
      * @param line
      * @param index
      * @return true if empty, false otherwise
@@ -337,14 +334,14 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         if (StringUtils.isBlank(line.getFinancialObjectCode())) {
             putFieldError(getAcctLineErrorPrefix(line, index) + EndowPropertyConstants.ENDOWMENT_ACCOUNTING_LINE_OBJECT_CD, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_ACCT_LINE_OBJECT_CODE_REQUIRED);
             return true;
-        }
-        else
+        } else {
             return false;
+        }
     }
 
     /**
      * Validates that the object code exists.
-     * 
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -367,7 +364,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates that the object code is active.
-     * 
+     *
      * @param line
      * @param index
      * @return true if active, false otherwise
@@ -391,9 +388,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * Validate that the object code does not represent assets, liabilities or funds balances (as indicated by the object code's
-     * object consolidation).
-     * 
+     * Validate that the object code does not represent assets, liabilities or
+     * funds balances (as indicated by the object code's object consolidation).
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -420,9 +417,10 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * Validates that Object codes belonging to the object types of Expense not Expenditure and Income not Cash may not be used on a
-     * Transfer of Funds document.
-     * 
+     * Validates that Object codes belonging to the object types of Expense not
+     * Expenditure and Income not Cash may not be used on a Transfer of Funds
+     * document.
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -448,8 +446,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * Validates that if the sub account number is not empty it exists in the DB and is active.
-     * 
+     * Validates that if the sub account number is not empty it exists in the DB
+     * and is active.
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -482,8 +481,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * Validates that if the sub object code is not empty it exists in the DB and is active.
-     * 
+     * Validates that if the sub object code is not empty it exists in the DB
+     * and is active.
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -516,8 +516,9 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * Validates that if the project code is not empty it exists in the DB and is active.
-     * 
+     * Validates that if the project code is not empty it exists in the DB and
+     * is active.
+     *
      * @param line
      * @param index
      * @return true if valid, false otherwise
@@ -551,7 +552,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
 
     /**
      * Validates that the document has at least one accounting line.
-     * 
+     *
      * @param document
      * @param isSource
      * @return true if valid, false otherwise
@@ -560,8 +561,7 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         boolean isValid = true;
         if (isSource) {
             isValid &= (document.getSourceAccountingLines().size() > 0);
-        }
-        else {
+        } else {
             isValid &= (document.getTargetAccountingLines().size() > 0);
         }
 
@@ -572,7 +572,8 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
     }
 
     /**
-     * @see org.kuali.kfs.module.endow.document.validation.impl.EndowmentTransactionLinesDocumentBaseRules#processCustomRouteDocumentBusinessRules(org.kuali.rice.krad.document.Document)
+     * @see
+     * org.kuali.kfs.module.endow.document.validation.impl.EndowmentTransactionLinesDocumentBaseRules#processCustomRouteDocumentBusinessRules(org.kuali.rice.krad.document.Document)
      */
     @Override
     protected boolean processCustomRouteDocumentBusinessRules(Document document) {
@@ -607,10 +608,10 @@ abstract class EndowmentAccountingLinesDocumentBaseRules extends OptionalSecurit
         return isValid;
     }
 
-
     /**
-     * Validates that the total amount in the FROM section equals the total amount in the To section.
-     * 
+     * Validates that the total amount in the FROM section equals the total
+     * amount in the To section.
+     *
      * @param endowmentAccountingLinesDocumentBase
      * @return true if valid, false otherwise
      */

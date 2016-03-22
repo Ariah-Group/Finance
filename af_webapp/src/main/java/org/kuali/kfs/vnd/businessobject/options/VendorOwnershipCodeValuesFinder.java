@@ -28,30 +28,33 @@ import org.kuali.rice.krad.service.KeyValuesService;
 
 /**
  * Values Finder for <code>OwnershipType</code>.
- * 
+ *
  * @see org.kuali.kfs.vnd.businessobject.OwnershipType
  */
 public class VendorOwnershipCodeValuesFinder extends KeyValuesBase {
 
-    /***
+    /**
+     * *
      * @see org.kuali.keyvalues.KeyValuesFinder#getKeyValues()
      */
     public List getKeyValues() {
         return getKeyValues(true);
     }
 
-    /***
+    /**
+     * *
      * @see org.kuali.rice.krad.keyvalues.KeyValuesBase#getKeyValues(boolean)
      */
-    public List getKeyValues(boolean active){
+    public List getKeyValues(boolean active) {
         KeyValuesService boService = SpringContext.getBean(KeyValuesService.class);
         Collection codes;
         List labels = new ArrayList();
-        if(active){
+        if (active) {
             codes = boService.findAll(OwnershipType.class);
             labels.add(new ConcreteKeyValue("", ""));
-        } else
+        } else {
             codes = boService.findAllInactive(OwnershipType.class);
+        }
         for (Iterator iter = codes.iterator(); iter.hasNext();) {
             OwnershipType ot = (OwnershipType) iter.next();
             labels.add(new ConcreteKeyValue(ot.getVendorOwnershipCode(), ot.getVendorOwnershipDescription()));

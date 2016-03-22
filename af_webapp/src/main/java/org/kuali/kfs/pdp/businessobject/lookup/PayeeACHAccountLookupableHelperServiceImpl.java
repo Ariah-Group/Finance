@@ -26,10 +26,12 @@ import org.kuali.rice.krad.bo.BusinessObject;
 import org.kuali.rice.krad.util.KRADConstants;
 
 public class PayeeACHAccountLookupableHelperServiceImpl extends AbstractPayeeLookupableHelperServiceImpl {
-    
+
     /**
-     * @see AbstractPayeeLookupableHelperServiceImpl#allowsMaintenanceNewOrCopyAction
-     * Allows copy on a PayeeACHAccount record only if edit is allowed on the record.
+     * @see
+     * AbstractPayeeLookupableHelperServiceImpl#allowsMaintenanceNewOrCopyAction
+     * Allows copy on a PayeeACHAccount record only if edit is allowed on the
+     * record.
      */
     @Override
     public List<HtmlData> getCustomActionUrls(BusinessObject businessObject, List pkNames) {
@@ -47,16 +49,17 @@ public class PayeeACHAccountLookupableHelperServiceImpl extends AbstractPayeeLoo
     }
 
     /**
-     * @see AbstractPayeeLookupableHelperServiceImpl#getInquiryUrl
-     * For payeeName, creates an inquiry link for the PayeeACHAccount record only if the user is allowed to inquire the record.
+     * @see AbstractPayeeLookupableHelperServiceImpl#getInquiryUrl For
+     * payeeName, creates an inquiry link for the PayeeACHAccount record only if
+     * the user is allowed to inquire the record.
      */
     @Override
     public HtmlData getInquiryUrl(BusinessObject bo, String propertyName) {
         // for properties other than payeeName, or if the user is allowed to inquire the record, return inquiry link as done in super
         // NOTE: Since we don't have separate permission for inquiring PayeeACHAccount, we regard the permission for inquiry as equivalent to the permission for edit.
-        if (!StringUtils.equals(PdpPropertyConstants.PAYEE_NAME, propertyName) || allowsMaintenanceEditAction(bo)) 
+        if (!StringUtils.equals(PdpPropertyConstants.PAYEE_NAME, propertyName) || allowsMaintenanceEditAction(bo)) {
             return super.getInquiryUrl(bo, propertyName);
-
+        }
         // otherwise return empty inquiry link 
         return new HtmlData.AnchorHtmlData();
     }

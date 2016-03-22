@@ -40,8 +40,9 @@ import org.kuali.rice.krad.util.spring.NamedOrderedListBean;
 import org.springframework.core.io.DefaultResourceLoader;
 
 public class KfsDWRServlet extends DwrServlet {
+
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -3903455224197903186L;
 
@@ -53,22 +54,23 @@ public class KfsDWRServlet extends DwrServlet {
     /**
      * This method calls the super version then loads the dwr config file
      * specified in the loaded module definitions.
-     * 
-     * @see uk.ltd.getahead.dwr.DWRServlet#configure(javax.servlet.ServletConfig,
-     *      uk.ltd.getahead.dwr.Configuration)
+     *
+     * @see
+     * uk.ltd.getahead.dwr.DWRServlet#configure(javax.servlet.ServletConfig,
+     * uk.ltd.getahead.dwr.Configuration)
      */
     protected List<NamedOrderedListBean> getDwrNamedOrderedListBeans(String listName) {
-        List <NamedOrderedListBean> dwrListBeans = new ArrayList<NamedOrderedListBean>();
+        List<NamedOrderedListBean> dwrListBeans = new ArrayList<NamedOrderedListBean>();
         Map<String, NamedOrderedListBean> namedOrderedListBeans = SpringContext.getBeansOfType(NamedOrderedListBean.class);
-         for (NamedOrderedListBean nameOrderedListBean : namedOrderedListBeans.values()) {
+        for (NamedOrderedListBean nameOrderedListBean : namedOrderedListBeans.values()) {
             if (nameOrderedListBean.getName().equals(listName)) {
                 dwrListBeans.add((NamedOrderedListBean) nameOrderedListBean);
             }
         }
         return dwrListBeans;
     }
-    
-    protected DwrXmlConfigurator generateConfigurator(DefaultResourceLoader resourceLoader, String scriptConfigurationFilePath ) throws ServletException {
+
+    protected DwrXmlConfigurator generateConfigurator(DefaultResourceLoader resourceLoader, String scriptConfigurationFilePath) throws ServletException {
         try {
             InputStream is = resourceLoader.getResource(scriptConfigurationFilePath).getInputStream();
             DwrXmlConfigurator dwrXmlConfigurator = new DwrXmlConfigurator();
@@ -78,57 +80,53 @@ public class KfsDWRServlet extends DwrServlet {
             throw new ServletException(e);
         }
     }
-    
+
     @Override
-    protected void configureContainer(Container container, ServletConfig servletConfig) throws ServletException, IOException {       
+    protected void configureContainer(Container container, ServletConfig servletConfig) throws ServletException, IOException {
         List<Configurator> configurators = new ArrayList<Configurator>();
         DefaultResourceLoader resourceLoader = new DefaultResourceLoader(ClassLoaderUtils.getDefaultClassLoader());
         String classpathResourcePrefix = KRADServiceLocator.getKualiConfigurationService().getPropertyValueAsString(CLASSPATH_RESOURCE_PREFIX);
         for (NamedOrderedListBean namedOrderedListBean : this.getDwrNamedOrderedListBeans(KFSConstants.SCRIPT_CONFIGURATION_FILES_LIST_NAME)) {
             for (String scriptConfigurationFilePath : namedOrderedListBean.getList()) {
                 if (getSpringBasedConfigPath()) {
-                      try {
-                        configurators.add( this.generateConfigurator(resourceLoader, scriptConfigurationFilePath));                       
-                       } catch (Exception e) {
-                        throw new ServletException(e);
-                    }
-                } 
-            }
-        }
-        
-        KualiModuleService kmi = SpringContext.getBean(KualiModuleService.class);
-        List<ModuleService> modules = kmi.getInstalledModuleServices();
-        
-        for (ModuleService moduleService : modules) {
-            for (String scriptConfigurationFilePath : moduleService.getModuleConfiguration().getScriptConfigurationFilePaths()) {
-                if (!StringUtils.isBlank(scriptConfigurationFilePath))
-                     try {
-                         configurators.add( this.generateConfigurator(resourceLoader, scriptConfigurationFilePath));       
+                    try {
+                        configurators.add(this.generateConfigurator(resourceLoader, scriptConfigurationFilePath));
                     } catch (Exception e) {
                         throw new ServletException(e);
                     }
-              }    
+                }
+            }
         }
-        
+
+        KualiModuleService kmi = SpringContext.getBean(KualiModuleService.class);
+        List<ModuleService> modules = kmi.getInstalledModuleServices();
+
+        for (ModuleService moduleService : modules) {
+            for (String scriptConfigurationFilePath : moduleService.getModuleConfiguration().getScriptConfigurationFilePaths()) {
+                if (!StringUtils.isBlank(scriptConfigurationFilePath)) {
+                    try {
+                        configurators.add(this.generateConfigurator(resourceLoader, scriptConfigurationFilePath));
+                    } catch (Exception e) {
+                        throw new ServletException(e);
+                    }
+                }
+            }
+        }
+
         for (String configFile : HACK_ADDITIONAL_FILES) {
-             try {
+            try {
                 String scriptConfigurationFilePath = classpathResourcePrefix + configFile;
-                configurators.add( this.generateConfigurator(resourceLoader, scriptConfigurationFilePath)); 
+                configurators.add(this.generateConfigurator(resourceLoader, scriptConfigurationFilePath));
             } catch (Exception e) {
                 throw new ServletException(e);
             }
         }
-        try
-        {
+        try {
             super.configureContainer(container, servletConfig);
             StartupUtil.configure(container, configurators);
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             throw ex;
-        }
-        catch (Exception ex)
-        {
+        } catch (Exception ex) {
             throw new ServletException(ex);
         }
     }
@@ -144,7 +142,6 @@ public class KfsDWRServlet extends DwrServlet {
     /**
      * @see javax.servlet.GenericServlet#init()
      */
-
     @Override
     public void init() throws ServletException {
         setSpringBasedConfigPath(new Boolean(this.getInitParameter("springpath")));

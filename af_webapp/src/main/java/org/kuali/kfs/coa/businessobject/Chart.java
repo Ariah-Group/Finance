@@ -623,10 +623,11 @@ public class Chart extends PersistableBusinessObjectBase implements KualiCode {
      * @return Returns the code and description in format: xx - xxxxxxxxxxxxxxxx
      */
     public String getCodeAndDescription() {
-        if (StringUtils.isNotBlank(getChartOfAccountsCode()) && StringUtils.isNotBlank(getFinChartOfAccountDescription()))
+        if (StringUtils.isNotBlank(getChartOfAccountsCode()) && StringUtils.isNotBlank(getFinChartOfAccountDescription())) {
             return getChartOfAccountsCode() + " - " + getFinChartOfAccountDescription();
-        else 
+        } else  {
             return "";
+        }
     }
 
     public String getCode() {

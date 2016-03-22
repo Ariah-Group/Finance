@@ -53,17 +53,17 @@ import org.kuali.rice.krad.util.GlobalVariables;
 import org.kuali.rice.krad.util.ObjectUtils;
 
 public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDocumentRuleBase {
-    
+
     @Override
     public boolean processCustomAddCollectionLineBusinessRules(MaintenanceDocument document, String collectionName, PersistableBusinessObject line) {
         boolean isValid = true;
         isValid &= super.processCustomAddCollectionLineBusinessRules(document, collectionName, line);
-        
+
         EndowmentRecurringCashTransfer endowmentRecurringCashTransfer = (EndowmentRecurringCashTransfer) document.getNewMaintainableObject().getBusinessObject();
         boolean success = true;
-        
+
         // apply rules
-        if (collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_KEMID_TARGET)){
+        if (collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_KEMID_TARGET)) {
             EndowmentRecurringCashTransferKEMIDTarget endowmentRecurringCashTransferKEMIDTarget = (EndowmentRecurringCashTransferKEMIDTarget) document.getNewMaintainableObject().getNewCollectionLine(collectionName);
             // check rules
             success &= validateKEMIDTarget(endowmentRecurringCashTransferKEMIDTarget);
@@ -71,10 +71,12 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
             success &= checkTransactionType(endowmentRecurringCashTransfer.getTransactionType(), collectionName, endowmentRecurringCashTransfer);
 
             // all rules are passed, then set sequenceNumber and add to collection
-            if (success){
+            if (success) {
                 endowmentRecurringCashTransferKEMIDTarget.setTargetSequenceNumber(endowmentRecurringCashTransfer.incrementTargetKemidNextSeqNumber().toString());
                 isValid = true;
-            } else isValid = false;
+            } else {
+                isValid = false;
+            }
         } else {
             EndowmentRecurringCashTransferGLTarget endowmentRecurringCashTransferGLTarget = (EndowmentRecurringCashTransferGLTarget) document.getNewMaintainableObject().getNewCollectionLine(collectionName);
             // check rules
@@ -82,14 +84,16 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
             // check transaction type
             success &= checkTransactionType(endowmentRecurringCashTransfer.getTransactionType(), collectionName, endowmentRecurringCashTransfer);
             // all rules are passed, then set sequenceNumber and add to collection
-            if (success){
+            if (success) {
                 endowmentRecurringCashTransferGLTarget.setTargetSequenceNumber(endowmentRecurringCashTransfer.incrementTargetGlNextSeqNumber().toString());
                 isValid = true;
-            } else isValid = false;      
+            } else {
+                isValid = false;
+            }
         }
         return isValid;
     }
-    
+
     @Override
     protected boolean processCustomRouteDocumentBusinessRules(MaintenanceDocument document) {
         EndowmentRecurringCashTransfer endowmentRecurringCashTransfer = (EndowmentRecurringCashTransfer) document.getNewMaintainableObject().getBusinessObject();
@@ -99,10 +103,10 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         // source rules
         success &= checkTargetExistence(endowmentRecurringCashTransfer);
 
-        if (ObjectUtils.isNotNull(endowmentRecurringCashTransfer.getTransactionType())){
+        if (ObjectUtils.isNotNull(endowmentRecurringCashTransfer.getTransactionType())) {
             success &= checkTransactionType(endowmentRecurringCashTransfer);
         }
-        
+
         // check eTran code
         String kemid = endowmentRecurringCashTransfer.getSourceKemid();
         String etranCode = endowmentRecurringCashTransfer.getSourceEtranCode();
@@ -110,14 +114,14 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         // refresh Etran obj
         endowmentRecurringCashTransfer.refreshReferenceObject(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_ETRAN_CODE_OBJ);
         success &= checkSourceEtranType(endowmentRecurringCashTransfer.getEtranCodeObj());
-        
+
         success &= checkEtranCodeWithChart(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_SOURCE_ETRAN_CODE, kemid, etranCode, ipIndicator);
-        
+
         success &= checkActiveSourceKemid(endowmentRecurringCashTransfer.getKemidObj());
-        
+
         success &= checkFrequencyCodeReferenceExists(endowmentRecurringCashTransfer);
-        
-        if (ObjectUtils.isNotNull(endowmentRecurringCashTransfer.getFrequencyCode())){
+
+        if (ObjectUtils.isNotNull(endowmentRecurringCashTransfer.getFrequencyCode())) {
             setNextProcessDate(endowmentRecurringCashTransfer);
             setLastProcessDate(endowmentRecurringCashTransfer);
         }
@@ -129,17 +133,17 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         for (EndowmentRecurringCashTransferKEMIDTarget endowmentRecurringCashTransferKEMIDTarget : endowmentRecurringCashTransfer.getKemidTarget()) {
             String errorPath = MAINTAINABLE_ERROR_PREFIX + EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_KEMID_TARGET + "[" + kemidIndex + "]";
             GlobalVariables.getMessageMap().addToErrorPath(errorPath);
-    
+
             success &= validateKEMIDTarget(endowmentRecurringCashTransferKEMIDTarget);
-            
+
             GlobalVariables.getMessageMap().removeFromErrorPath(errorPath);
             kemidIndex++;
         }
-        
+
         success &= checkKemidAllPercent(endowmentRecurringCashTransfer.getKemidTarget());
 
         success &= checkKemidPercentForSameEtranCode(endowmentRecurringCashTransfer.getKemidTarget());
-        
+
         // GLTarget rules
         int glIndex = 0;
         for (EndowmentRecurringCashTransferGLTarget endowmentRecurringCashTransferGLTarget : endowmentRecurringCashTransfer.getGlTarget()) {
@@ -147,7 +151,7 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
             GlobalVariables.getMessageMap().addToErrorPath(errorPath);
 
             success &= validateGlTarget(endowmentRecurringCashTransferGLTarget);
-            
+
             GlobalVariables.getMessageMap().removeFromErrorPath(errorPath);
             glIndex++;
         }
@@ -162,50 +166,50 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
 
         return success;
     }
-    
-    protected boolean validateKEMIDTarget(EndowmentRecurringCashTransferKEMIDTarget endowmentRecurringCashTransferKEMIDTarget){
+
+    protected boolean validateKEMIDTarget(EndowmentRecurringCashTransferKEMIDTarget endowmentRecurringCashTransferKEMIDTarget) {
         boolean success = true;
-        
+
         success &= checkTargetKemidReferenceExists(endowmentRecurringCashTransferKEMIDTarget);
-        
+
         success &= checkGeneralLedgerAccount(endowmentRecurringCashTransferKEMIDTarget);
 
         success &= checkKemidAmountPercentEtranCodeField(endowmentRecurringCashTransferKEMIDTarget);
-        
+
         String kemid = endowmentRecurringCashTransferKEMIDTarget.getTargetKemid();
         String etranCode = endowmentRecurringCashTransferKEMIDTarget.getTargetEtranCode();
         String ipIndicator = endowmentRecurringCashTransferKEMIDTarget.getTargetIncomeOrPrincipal();
-        
+
         // refresh Etran obj
         endowmentRecurringCashTransferKEMIDTarget.refreshReferenceObject(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_ETRAN_CODE_OBJ);
         success &= checkTargetEtranType(endowmentRecurringCashTransferKEMIDTarget.getTargetEtranCodeObj());
-        
+
         success &= checkEtranCodeWithChart(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_ETRAN_CODE, kemid, etranCode, ipIndicator);
 
         return success;
     }
 
-    protected boolean validateGlTarget(EndowmentRecurringCashTransferGLTarget endowmentRecurringCashTransferGLTarget){
+    protected boolean validateGlTarget(EndowmentRecurringCashTransferGLTarget endowmentRecurringCashTransferGLTarget) {
         boolean success = true;
-        
+
         success &= checkChart(endowmentRecurringCashTransferGLTarget);
-        
+
         success &= checkAccount(endowmentRecurringCashTransferGLTarget);
-        
-        if(ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetSubAccountNumber())){
+
+        if (ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetSubAccountNumber())) {
             success &= checkSubAccount(endowmentRecurringCashTransferGLTarget);
         }
 
         success &= checkObjectCode(endowmentRecurringCashTransferGLTarget);
 
-        if(ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetFinancialSubObjectCode())){
+        if (ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetFinancialSubObjectCode())) {
             success &= checkSubObjectCode(endowmentRecurringCashTransferGLTarget);
         }
-        
-        if(ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetProjectCode())){
+
+        if (ObjectUtils.isNotNull(endowmentRecurringCashTransferGLTarget.getTargetProjectCode())) {
             success &= checkProjectCode(endowmentRecurringCashTransferGLTarget);
         }
-        
+
         success &= checkGlAmountPercentEtranCodeField(endowmentRecurringCashTransferGLTarget);
 
         return success;
@@ -221,20 +225,20 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         }
         return true;
     }
-    
+
     protected boolean checkTransactionType(EndowmentRecurringCashTransfer endowmentRecurringCashTransfer) {
-        if (endowmentRecurringCashTransfer.getTransactionType().equals(EndowConstants.ENDOWMENT_CASH_TRANSFER_TRANSACTION_TYPE)){
-            if (endowmentRecurringCashTransfer.getGlTarget().size() > 0){
+        if (endowmentRecurringCashTransfer.getTransactionType().equals(EndowConstants.ENDOWMENT_CASH_TRANSFER_TRANSACTION_TYPE)) {
+            if (endowmentRecurringCashTransfer.getGlTarget().size() > 0) {
                 putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE, KFSKeyConstants.ERROR_TRANSACTION_TYPE_INVALID);
                 return false;
             }
-        } else if (endowmentRecurringCashTransfer.getKemidTarget().size() > 0){
+        } else if (endowmentRecurringCashTransfer.getKemidTarget().size() > 0) {
             putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE, KFSKeyConstants.ERROR_TRANSACTION_TYPE_INVALID);
             return false;
         }
         return true;
     }
-    
+
     protected boolean checkFrequencyCodeReferenceExists(EndowmentRecurringCashTransfer endowmentRecurringCashTransfer) {
         endowmentRecurringCashTransfer.refreshReferenceObject("frequencyCodeObj");
         if (ObjectUtils.isNull(endowmentRecurringCashTransfer.getFrequencyCodeObj())) {
@@ -245,9 +249,8 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         return true;
     }
 
-
-    protected boolean checkActiveSourceKemid(KEMID kemid){
-        if (kemid.isClose()){
+    protected boolean checkActiveSourceKemid(KEMID kemid) {
+        if (kemid.isClose()) {
             putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_SOURCE_KEMID, RiceKeyConstants.ERROR_CLOSED, EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_SOURCE_KEMID);
             return false;
         }
@@ -292,7 +295,7 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
             GlobalVariables.getMessageMap().putError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_KEMID, RiceKeyConstants.ERROR_EXISTENCE, EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_KEMID);
             return false;
         } else {
-            if (endowmentRecurringCashTransferKEMIDTarget.getTargetKemidObj().isClose()){
+            if (endowmentRecurringCashTransferKEMIDTarget.getTargetKemidObj().isClose()) {
                 GlobalVariables.getMessageMap().putError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_KEMID, RiceKeyConstants.ERROR_CLOSED, EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_KEMID);
             }
         }
@@ -315,43 +318,44 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         if (ObjectUtils.isNotNull(endowmentRecurringCashTransferKEMIDTarget.getTargetAmount())) {
             if (ObjectUtils.isNotNull(endowmentRecurringCashTransferKEMIDTarget.getTargetPercent()) || ObjectUtils.isNotNull(endowmentRecurringCashTransferKEMIDTarget.getTargetUseEtranCode())) {
                 GlobalVariables.getMessageMap().putError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_AMOUNT, EndowKeyConstants.EndowmentRecurringCashTransfer.ERROR_DOCUMENT_AMOUNT_SPECIFIED_PERCENT_OR_ETRAN);
-                return false; 
+                return false;
             }
         }
         return true;
     }
-    
-    protected boolean checkSourceEtranType(EndowmentTransactionCode eTranCodeObject){
-        if (!checkEtranType(eTranCodeObject)){
+
+    protected boolean checkSourceEtranType(EndowmentTransactionCode eTranCodeObject) {
+        if (!checkEtranType(eTranCodeObject)) {
             putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_SOURCE_ETRAN_CODE, EndowKeyConstants.EndowmentRecurringCashTransfer.ERROR_DOCUMENT_ETRAN_CODE_INVALID_TYPE);
-            return false; 
-        }
-        return true;   
-    }
-    
-    protected boolean checkTargetEtranType(EndowmentTransactionCode eTranCodeObject){
-        if (!checkEtranType(eTranCodeObject)){
-            GlobalVariables.getMessageMap().putError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_ETRAN_CODE, EndowKeyConstants.EndowmentRecurringCashTransfer.ERROR_DOCUMENT_ETRAN_CODE_INVALID_TYPE);
-            return false; 
-        }
-        return true;   
-    }
-    
-    protected boolean checkEtranType(EndowmentTransactionCode eTranCodeObject) {
-        String eTranTypeCode = eTranCodeObject.getEndowmentTransactionTypeCode();
-        if (!eTranTypeCode.equals(EndowConstants.EndowmentTransactionTypeCodes.INCOME_TYPE_CODE) && !eTranTypeCode.equals(EndowConstants.EndowmentTransactionTypeCodes.EXPENSE_TYPE_CODE)){
-            return false; 
+            return false;
         }
         return true;
     }
-    
+
+    protected boolean checkTargetEtranType(EndowmentTransactionCode eTranCodeObject) {
+        if (!checkEtranType(eTranCodeObject)) {
+            GlobalVariables.getMessageMap().putError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TARGET_ETRAN_CODE, EndowKeyConstants.EndowmentRecurringCashTransfer.ERROR_DOCUMENT_ETRAN_CODE_INVALID_TYPE);
+            return false;
+        }
+        return true;
+    }
+
+    protected boolean checkEtranType(EndowmentTransactionCode eTranCodeObject) {
+        String eTranTypeCode = eTranCodeObject.getEndowmentTransactionTypeCode();
+        if (!eTranTypeCode.equals(EndowConstants.EndowmentTransactionTypeCodes.INCOME_TYPE_CODE) && !eTranTypeCode.equals(EndowConstants.EndowmentTransactionTypeCodes.EXPENSE_TYPE_CODE)) {
+            return false;
+        }
+        return true;
+    }
+
     protected boolean checkEtranCodeWithChart(String property, String kemid, String etranCode, String ipIndicator) {
         EndowmentTransactionDocumentService endowmentTransactionDocumentService = SpringContext.getBean(EndowmentTransactionDocumentService.class);
-        if (!endowmentTransactionDocumentService.matchChartBetweenKEMIDAndETranCode(kemid, etranCode, ipIndicator)){
-            if (EndowConstants.IncomePrincipalIndicator.PRINCIPAL.equalsIgnoreCase(ipIndicator))
+        if (!endowmentTransactionDocumentService.matchChartBetweenKEMIDAndETranCode(kemid, etranCode, ipIndicator)) {
+            if (EndowConstants.IncomePrincipalIndicator.PRINCIPAL.equalsIgnoreCase(ipIndicator)) {
                 GlobalVariables.getMessageMap().putError(property, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_TRANSACTION_LINE_CHART_CODE_DOES_NOT_MATCH_FOR_PRINCIPAL);
-            else
+            } else {
                 GlobalVariables.getMessageMap().putError(property, EndowKeyConstants.EndowmentTransactionDocumentConstants.ERROR_TRANSACTION_LINE_CHART_CODE_DOES_NOT_MATCH_FOR_INCOME);
+            }
             return false;
         }
         return true;
@@ -538,7 +542,7 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
                 KualiDecimal totalTarget = KualiDecimal.ZERO;
 
                 for (EndowmentRecurringCashTransferGLTarget glTarget : glTargetList) {
-                    if (glTarget.getTargetUseEtranCode().equals(etranCode) && ObjectUtils.isNotNull(glTarget.getTargetPercent())){
+                    if (glTarget.getTargetUseEtranCode().equals(etranCode) && ObjectUtils.isNotNull(glTarget.getTargetPercent())) {
                         totalTarget = totalTarget.add(glTarget.getTargetPercent());
                     }
                 }
@@ -554,23 +558,23 @@ public class EndowmentRecurringCashTransferTransactionRule extends MaintenanceDo
         }
         return true;
     }
-    
+
     protected boolean checkTransactionType(String transactionType, String collectionName, EndowmentRecurringCashTransfer endowmentRecurringCashTransfer) {
-        if (ObjectUtils.isNull(endowmentRecurringCashTransfer.getTransactionType())){
+        if (ObjectUtils.isNull(endowmentRecurringCashTransfer.getTransactionType())) {
             putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE, KFSKeyConstants.ERROR_REQUIRED, EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE);
             return false;
         }
-        
-        if (transactionType.equals(EndowConstants.ENDOWMENT_CASH_TRANSFER_TRANSACTION_TYPE)){
-            if (!collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_KEMID_TARGET)){
+
+        if (transactionType.equals(EndowConstants.ENDOWMENT_CASH_TRANSFER_TRANSACTION_TYPE)) {
+            if (!collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_KEMID_TARGET)) {
                 putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE, KFSKeyConstants.ERROR_TRANSACTION_TYPE_INVALID);
                 return false;
-            } 
+            }
         } else {
-            if (!collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_GL_TARGET)){
+            if (!collectionName.equals(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_GL_TARGET)) {
                 putFieldError(EndowPropertyConstants.ENDOWMENT_RECURRING_CASH_TRANSF_TRANSACTION_TYPE, KFSKeyConstants.ERROR_TRANSACTION_TYPE_INVALID);
                 return false;
-            } 
+            }
         }
         return true;
     }

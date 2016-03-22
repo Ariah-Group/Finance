@@ -32,13 +32,15 @@ import org.kuali.rice.krad.util.GlobalVariables;
  * Performs business rules for the Payee ACH Account maintenance document
  */
 public class PayeeAchAccountRule extends MaintenanceDocumentRuleBase {
+
     protected static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(PayeeACHAccount.class);
 
     protected PayeeACHAccount oldPayeeAchAccount;
     protected PayeeACHAccount newPayeeAchAccount;
 
     /**
-     * @see org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#setupConvenienceObjects()
+     * @see
+     * org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#setupConvenienceObjects()
      */
     public void setupConvenienceObjects() {
         LOG.info("setupConvenienceObjects called");
@@ -51,7 +53,8 @@ public class PayeeAchAccountRule extends MaintenanceDocumentRuleBase {
     }
 
     /**
-     * @see org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#processCustomSaveDocumentBusinessRules(org.kuali.rice.kns.document.MaintenanceDocument)
+     * @see
+     * org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#processCustomSaveDocumentBusinessRules(org.kuali.rice.kns.document.MaintenanceDocument)
      */
     protected boolean processCustomSaveDocumentBusinessRules(MaintenanceDocument document) {
         LOG.info("processCustomSaveDocumentBusinessRules called");
@@ -64,23 +67,29 @@ public class PayeeAchAccountRule extends MaintenanceDocumentRuleBase {
     }
 
     /**
-     * @see org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#processCustomRouteDocumentBusinessRules(org.kuali.rice.kns.document.MaintenanceDocument)
+     * @see
+     * org.kuali.rice.kns.maintenance.rules.MaintenanceDocumentRuleBase#processCustomRouteDocumentBusinessRules(org.kuali.rice.kns.document.MaintenanceDocument)
      */
     protected boolean processCustomRouteDocumentBusinessRules(MaintenanceDocument document) {
         LOG.info("processCustomRouteDocumentBusinessRules called");
         setupConvenienceObjects();
 
         // no need to do further checking if user is not even allowed to submit new BO
-        if (!checkTransactionTypeAllowed()) return false;
-        
+        if (!checkTransactionTypeAllowed()) {
+            return false;
+        }
+
         return checkForDuplicateRecord();
     }
 
     /**
-     * Checks to verify record is not a duplicate for payee id. Do not check for a duplicate record if the following conditions are
-     * true 1. editing an existing record (old primary key = new primary key) 2. new PSD code = old PSD code 3. new payee type code
-     * = old payee type code 4. depending of the value of payee type code, new correspoding PayeeId = old corresponding PayeeId
-     * 
+     * Checks to verify record is not a duplicate for payee id. Do not check for
+     * a duplicate record if the following conditions are true 1. editing an
+     * existing record (old primary key = new primary key) 2. new PSD code = old
+     * PSD code 3. new payee type code = old payee type code 4. depending of the
+     * value of payee type code, new correspoding PayeeId = old corresponding
+     * PayeeId
+     *
      * @return true if record is not duplicate, false otherwise
      */
     protected boolean checkForDuplicateRecord() {
@@ -115,11 +124,14 @@ public class PayeeAchAccountRule extends MaintenanceDocumentRuleBase {
     }
 
     /**
-     * Checks if the user is allowed to submit the new created/edited PayeeAchAccount based on its current transactionType.  
-     * This checking is needed to prevent the following scenarios which bypass the document level authorization checking:
-     * #1 A Bursar user creates a blank PayeeAchAccount, sets the transactionType to TR and submits;
-     * #2 A Bursar user copies a PayeeAchAccount with transactionType BZ, changes the transactionType to TR and submits;
-     * #3 A Bursar user edits a PayeeAchAccount with transactionType BZ, changes the transactionType to TR and submits.
+     * Checks if the user is allowed to submit the new created/edited
+     * PayeeAchAccount based on its current transactionType. This checking is
+     * needed to prevent the following scenarios which bypass the document level
+     * authorization checking: #1 A Bursar user creates a blank PayeeAchAccount,
+     * sets the transactionType to TR and submits; #2 A Bursar user copies a
+     * PayeeAchAccount with transactionType BZ, changes the transactionType to
+     * TR and submits; #3 A Bursar user edits a PayeeAchAccount with
+     * transactionType BZ, changes the transactionType to TR and submits.
      */
     protected boolean checkTransactionTypeAllowed() {
         String docTypeName = maintDocDictionaryService.getDocumentTypeName(PayeeACHAccount.class);
@@ -132,5 +144,5 @@ public class PayeeAchAccountRule extends MaintenanceDocumentRuleBase {
         }
         return allowed;
     }
-    
+
 }
