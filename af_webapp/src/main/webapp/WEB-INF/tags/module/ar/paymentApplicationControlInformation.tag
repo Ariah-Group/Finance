@@ -76,7 +76,7 @@
 	                        	    </c:if>
                     	   		    <td style="text-align: right;">
                    	   		    	<c:choose>
-                   	   		    	<c:when test="${KualiForm.document.final}">
+                   	   		    	<c:when test="${KualiForm.document.final eq true}">
                    	   		    		<c:out value="${KualiForm.distributionsFromControlDocs[nonApplied.referenceFinancialDocumentNumber]}" />
                    	   		    	</c:when>
                    	   		    	<c:otherwise>
