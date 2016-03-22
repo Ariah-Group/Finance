@@ -1013,7 +1013,7 @@ public class LaborCorrectionAction extends CorrectionAction {
                     return mapping.findForward(KFSConstants.MAPPING_BASIC);
                 }
                 else {
-                    String fileName = "llcp_archived_group_" + laborCorrectionForm.getInputGroupIdFromLastDocumentLoad().toString() + ".txt";
+                    String fileName = "llcp_archived_group_" + laborCorrectionForm.getInputGroupIdFromLastDocumentLoad() + ".txt";
                     // set response
                     response.setContentType("application/txt");
                     response.setHeader("Content-disposition", "attachment; filename=" + fileName);
