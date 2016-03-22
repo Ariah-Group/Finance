@@ -41,7 +41,7 @@ public class ExcludeSingleActorSeparationOfDutiesRoleTypeService  extends Exclus
     @Override
     public List<RoleMembership> getMatchingRoleMemberships(Map<String, String> qualification, List<RoleMembership> roleMemberList) {
         List<RoleMembership> membershipInfos = super.getMatchingRoleMemberships(qualification, roleMemberList);
-        String documentId = new String(qualification.get(KimConstants.AttributeConstants.DOCUMENT_NUMBER));
+        String documentId = qualification.get(KimConstants.AttributeConstants.DOCUMENT_NUMBER);
         String approverOrInitiator = getApproverOrInitiator(documentId);
         if(ObjectUtils.isNotNull(approverOrInitiator )) {
             return excludePrincipalAsNeeded(approverOrInitiator, qualification, membershipInfos);

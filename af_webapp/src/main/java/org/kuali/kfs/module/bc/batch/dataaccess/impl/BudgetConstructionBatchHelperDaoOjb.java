@@ -308,9 +308,9 @@ public class BudgetConstructionBatchHelperDaoOjb extends PlatformAwareDaoBaseOjb
         {
             concatSeparator = new HashMap<String,String>();
         }
-        countDistinctLeader.put(ojbOraclePlatform,new String("COUNT( DISTINCT "));
-        countDistinctTrailer.put(ojbOraclePlatform,new String(")"));
-        concatSeparator.put(ojbOraclePlatform,new String("||"));
+        countDistinctLeader.put(ojbOraclePlatform, "COUNT( DISTINCT ");
+        countDistinctTrailer.put(ojbOraclePlatform, ")");
+        concatSeparator.put(ojbOraclePlatform, "||");
     }
     
     /**
@@ -333,9 +333,9 @@ public class BudgetConstructionBatchHelperDaoOjb extends PlatformAwareDaoBaseOjb
         {
             concatSeparator = new HashMap<String,String>();
         }
-        countDistinctLeader.put(ojbMySqlPlatform,new String("COUNT( DISTINCT CONCAT("));
-        countDistinctTrailer.put(ojbMySqlPlatform,new String("))"));
-        concatSeparator.put(ojbMySqlPlatform,new String(","));
+        countDistinctLeader.put(ojbMySqlPlatform, "COUNT( DISTINCT CONCAT(");
+        countDistinctTrailer.put(ojbMySqlPlatform, "))");
+        concatSeparator.put(ojbMySqlPlatform, ",");
     }
     
 }

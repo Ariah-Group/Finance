@@ -88,7 +88,7 @@ public class HumanResourcesPayrollDaoJdbc extends BudgetConstructionDaoJdbcBase 
         Date julyFirst = new Date(calendarJuly1.getTimeInMillis());
         Date augustFirst = new Date(calendarAugust1.getTimeInMillis());
 
-        String academicTenureTrackSalaryPlan = new String("AC1");
+        String academicTenureTrackSalaryPlan = "AC1";
 
         PositionData positionDataMaxEffectiveDate = null;
         for (PositionData posData : positionData) {

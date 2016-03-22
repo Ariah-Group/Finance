@@ -35,7 +35,7 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
       /**
        * this unrealistic implementation will simply clean out what is already there
        */
-       String sqlString = new String("DELETE FROM LD_BCN_ADM_POST_T\n");
+       String sqlString = "DELETE FROM LD_BCN_ADM_POST_T\n";
        getSimpleJdbcTemplate().update(sqlString);
     }
 
@@ -47,7 +47,7 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
         /**
          * this unrealistic implementation will simply clean out what is already there
          */
-         String sqlString = new String("DELETE FROM LD_BCN_AF_REASON_T WHERE (UNIV_FISCAL_YR = ?)\n");
+         String sqlString = "DELETE FROM LD_BCN_AF_REASON_T WHERE (UNIV_FISCAL_YR = ?)\n";
          getSimpleJdbcTemplate().update(sqlString,requestFiscalYear);
     }
 
@@ -79,7 +79,7 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
           *  July 1 of the coming fiscal year, or, if the person is a 10-month appointee, those that start on August 1 of the
           *  coming fiscal year.
           */
-         String defaultClassificationId = new String("TL");
+         String defaultClassificationId = "TL";
          GregorianCalendar calendarJuly1 = new GregorianCalendar(baseFiscalYear, Calendar.JULY, 1);
          GregorianCalendar calendarAugust1 = new GregorianCalendar(baseFiscalYear, Calendar.AUGUST, 1);
          Date julyFirst = new Date(calendarJuly1.getTimeInMillis());
@@ -145,11 +145,11 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
      */
     public void buildBudgetConstructionPositionBaseYear(Integer baseFiscalYear) {
         StringBuilder sqlBuilder = new StringBuilder(2000);
-        String defaultRCCd = new String("--");
+        String defaultRCCd = "--";
         /**
          *  we have to do this because imbedding a constant string in SQL assumes a string delimiter--that can vary with the DBMS 
          */
-        String orgSeparator = new String("-");
+        String orgSeparator = "-";
         GregorianCalendar calendarJuly1 = new GregorianCalendar(baseFiscalYear, Calendar.JULY, 1);
         Date julyFirst = new Date(calendarJuly1.getTimeInMillis());
         /**
@@ -215,15 +215,15 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
     public void buildBudgetConstructionPositonRequestYear(Integer requestFiscalYear) {
         StringBuilder sqlBuilder = new StringBuilder(2500);
         // we build constants for DB independence.  we let the library decide how they should be represented in what is passed to the DB server
-        String defaultRCCd = new String("--");
-        String orgSeparator = new String("-");
+        String defaultRCCd = "--";
+        String orgSeparator = "-";
         Integer baseFiscalYear = requestFiscalYear-1;
         GregorianCalendar calendarJuly1 = new GregorianCalendar(baseFiscalYear, Calendar.JULY, 1);
         GregorianCalendar calendarAugust1 = new GregorianCalendar(baseFiscalYear, Calendar.AUGUST, 1);
         Date julyFirst = new Date(calendarJuly1.getTimeInMillis());
         Date augustFirst = new Date(calendarAugust1.getTimeInMillis());
-        String academicPositionType = new String("AC");
-        String academicTenureTrackSalaryPlan = new String("AC1");   
+        String academicPositionType = "AC";
+        String academicTenureTrackSalaryPlan = "AC1";   
         
         sqlBuilder.append("INSERT INTO LD_BCN_POS_T\n");
         sqlBuilder.append("(POSITION_NBR, UNIV_FISCAL_YR, POS_EFFDT, POS_EFF_STATUS, POSN_STATUS,\n");
@@ -277,9 +277,9 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
     {
         // build constants for DB independence
         Integer monthConstant = new Integer(10);
-        String positionType  = new String("AC");
-        String defaultObject = new String("2000");
-        String salaryPlan    = new String("AC1");
+        String positionType  = "AC";
+        String defaultObject = "2000";
+        String salaryPlan    = "AC1";
         StringBuilder sqlBuilder = new StringBuilder(500);
         sqlBuilder.append("UPDATE LD_BCN_POS_T\n");
         sqlBuilder.append("SET IU_NORM_WORK_MONTHS = ?,\n");
@@ -295,9 +295,9 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
     {
         // build constants for DB independence
         Integer monthConstant = new Integer(12);
-        String positionType  = new String("SM");
-        String defaultObject = new String("2480");
-        String[] salaryPlan = {new String("PAO"), new String("PAU")};
+        String positionType  = "SM";
+        String defaultObject = "2480";
+        String[] salaryPlan = {"PAO", "PAU"};
         StringBuilder sqlBuilder = new StringBuilder(500);
         sqlBuilder.append("UPDATE LD_BCN_POS_T\n");
         sqlBuilder.append("SET IU_NORM_WORK_MONTHS = ?,\n");
@@ -316,9 +316,9 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
         // (note that this uses a pattern, and therefore assumes that any specific position types beginning with 'P' that go to
         //  a different default object class have already been assigned)
         Integer monthConstant = new Integer(12);
-        String  positionType  = new String("SM");
-        String  defaultObject = new String("2400");
-        String  salaryPlan    = new String("P%");
+        String  positionType  = "SM";
+        String  defaultObject = "2400";
+        String  salaryPlan    = "P%";
         StringBuilder sqlBuilder = new StringBuilder(500);
         sqlBuilder.append("UPDATE LD_BCN_POS_T\n");
         sqlBuilder.append("SET IU_NORM_WORK_MONTHS = ?,\n");
@@ -338,9 +338,9 @@ public class BudgetConstructionHumanResourcesPayrollInterfaceDaoJdbc extends Bud
         // (note that we are only assigning default object codes to positions not yet assigned a default.  so, this method must
         //  be called last.  In particular, there is no check on salary plan.)
         Integer monthConstant    = new Integer(12);
-        String  positionType     = new String("SB");
-        String  defaultObject    = new String("2500");
-        String  defaultUnionCode = new String("B1");
+        String  positionType     = "SB";
+        String  defaultObject    = "2500";
+        String  defaultUnionCode = "B1";
         StringBuilder sqlBuilder = new StringBuilder(500);
         sqlBuilder.append("UPDATE LD_BCN_POS_T\n");
         sqlBuilder.append("SET IU_NORM_WORK_MONTHS = ?,\n");

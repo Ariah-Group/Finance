@@ -309,7 +309,7 @@ public class JournalVoucherAction extends VoucherAction {
      * @throws Exception
      */
     protected String buildBalanceTypeChangeConfirmationMessage(JournalVoucherForm jvForm, ConfigurationService kualiConfiguration) throws Exception {
-        String message = new String("");
+        String message = "";
 
         // figure out which way the balance type is changing
         int balanceTypeAmountChangeMode = determineBalanceTypeAmountChangeMode(jvForm);
@@ -319,26 +319,26 @@ public class JournalVoucherAction extends VoucherAction {
         if (balanceTypeAmountChangeMode == SINGLE_AMT_TO_CREDIT_DEBIT_MODE) {
             message = kualiConfiguration.getPropertyValueAsString(KFSKeyConstants.QUESTION_CHANGE_JV_BAL_TYPE_FROM_SINGLE_AMT_TO_CREDIT_DEBIT_MODE);
             // see if we need the extra bit about the external encumbrance
-            String newMessage = new String("");
+            String newMessage = "";
             if (balanceTypeExternalEncumbranceChangeMode == NON_EXT_ENCUMB_TO_EXT_ENCUMB) {
                 newMessage = StringUtils.replace(message, "{3}", kualiConfiguration.getPropertyValueAsString(KFSKeyConstants.QUESTION_CHANGE_JV_BAL_TYPE_FROM_SINGLE_AMT_TO_EXT_ENCUMB_CREDIT_DEBIT_MODE));
             }
             else {
                 newMessage = StringUtils.replace(message, "{3}", "");
             }
-            message = new String(newMessage);
+            message = newMessage;
         }
         else if (balanceTypeAmountChangeMode == CREDIT_DEBIT_TO_SINGLE_AMT_MODE) {
             message = kualiConfiguration.getPropertyValueAsString(KFSKeyConstants.QUESTION_CHANGE_JV_BAL_TYPE_FROM_CREDIT_DEBIT_TO_SINGLE_AMT_MODE);
             // see if we need the extra bit about the external encumbrance
-            String newMessage = new String("");
+            String newMessage = "";
             if (balanceTypeExternalEncumbranceChangeMode == EXT_ENCUMB_TO_NON_EXT_ENCUMB) {
                 newMessage = StringUtils.replace(message, "{3}", kualiConfiguration.getPropertyValueAsString(KFSKeyConstants.QUESTION_CHANGE_JV_BAL_TYPE_FROM_EXT_ENCUMB_CREDIT_DEBIT_TO_SINGLE_AMT_MODE));
             }
             else {
                 newMessage = StringUtils.replace(message, "{3}", "");
             }
-            message = new String(newMessage);
+            message = newMessage;
         }
         else if (balanceTypeExternalEncumbranceChangeMode == EXT_ENCUMB_TO_NON_EXT_ENCUMB) {
             message = kualiConfiguration.getPropertyValueAsString(KFSKeyConstants.QUESTION_CHANGE_JV_BAL_TYPE_FROM_EXT_ENCUMB_TO_NON_EXT_ENCUMB);

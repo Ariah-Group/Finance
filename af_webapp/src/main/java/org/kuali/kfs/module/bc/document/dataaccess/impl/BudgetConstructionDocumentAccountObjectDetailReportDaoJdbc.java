@@ -179,7 +179,7 @@ public class BudgetConstructionDocumentAccountObjectDetailReportDaoJdbc extends 
         getSimpleJdbcTemplate().update(initialInsert.getSQL(stringsToInsert), principalName, documentNumber, universityFiscalYear, chartOfAccountsCode, accountNumber, subAccountNumber);
         // set the non-leave CSF FTE
         stringsToInsert.clear();
-        stringsToInsert.add(new String(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue()));
+        stringsToInsert.add(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue());
         stringsToInsert.add(stringsToInsert.get(0));
         getSimpleJdbcTemplate().update(setNonLeaveCSFFTE.getSQL(stringsToInsert), principalName, principalName);
         // set the CSF FTE for people on leave

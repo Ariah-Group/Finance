@@ -33,7 +33,7 @@ public class BudgetConstructionDaoJdbcBase extends PlatformAwareDaoBaseJdbc {
 
     private StringBuilder[] oracleSubString = { new StringBuilder("SUBSTR("), new StringBuilder(","), new StringBuilder(","), new StringBuilder(")") };
     private StringBuilder[] ansi92SubString = { new StringBuilder("SUBSTRING("), new StringBuilder(" FROM "), new StringBuilder(" FOR "), new StringBuilder(")") };
-    private String dateFetcher = new String("SELECT MIN(UNIV_DT) FROM SH_UNIV_DATE_T WHERE (UNIV_FISCAL_YR = ?)");
+    private String dateFetcher = "SELECT MIN(UNIV_DT) FROM SH_UNIV_DATE_T WHERE (UNIV_FISCAL_YR = ?)";
 
     protected void clearTempTableByUnvlId(String tableName, String personUnvlIdColumn, String principalName) {
         getSimpleJdbcTemplate().update("DELETE from " + tableName + " WHERE " + personUnvlIdColumn + " = ?", principalName);

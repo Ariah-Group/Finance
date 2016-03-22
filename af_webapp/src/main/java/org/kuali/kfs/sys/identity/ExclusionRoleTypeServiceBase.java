@@ -58,7 +58,7 @@ public class ExclusionRoleTypeServiceBase extends RoleTypeServiceBase {
         }
 
         Set<String> checkedMembers = new HashSet<String>();
-        final String documentId = new String(qualification.get(KimConstants.AttributeConstants.DOCUMENT_NUMBER));
+        final String documentId = qualification.get(KimConstants.AttributeConstants.DOCUMENT_NUMBER);
 
         List<RoleMembership> qualifiedRoleMembers = new ArrayList<RoleMembership>();
         for (RoleMembership member : membershipInfos) {

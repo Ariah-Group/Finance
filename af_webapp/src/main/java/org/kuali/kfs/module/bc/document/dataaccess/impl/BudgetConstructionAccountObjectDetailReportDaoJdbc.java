@@ -268,8 +268,8 @@ public class BudgetConstructionAccountObjectDetailReportDaoJdbc extends BudgetCo
         getSimpleJdbcTemplate().update(updateReportsAccountObjectDetailTable.get(1).getSQL(), sessionId);
         // fill in the FTE fields that come from CSF for people not on leave
         stringsToInsert.clear();
-        stringsToInsert.add(new String(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue()));
-        stringsToInsert.add(new String(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue()));
+        stringsToInsert.add(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue());
+        stringsToInsert.add(BCConstants.csfFundingStatusFlag.LEAVE.getFlagValue());
         getSimpleJdbcTemplate().update(updateReportsAccountObjectDetailTable.get(2).getSQL(stringsToInsert), sessionId);
         // fill in the FTE fields that come from CSF for people who are on leave
         getSimpleJdbcTemplate().update(updateReportsAccountObjectDetailTable.get(3).getSQL(stringsToInsert), sessionId);

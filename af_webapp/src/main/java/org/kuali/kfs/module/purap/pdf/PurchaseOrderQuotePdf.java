@@ -468,36 +468,36 @@ public class PurchaseOrderQuotePdf extends PurapPdf {
         vendorFillsInTable.getDefaultCell().setVerticalAlignment(Element.ALIGN_CENTER);
 
         // New row
-        String important = new String("\nIMPORTANT: The information and signature below MUST BE COMPLETED or your offer may be rejected.\n");
+        String important = "\nIMPORTANT: The information and signature below MUST BE COMPLETED or your offer may be rejected.\n";
         cell = createCell(important, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         cell.setColspan(2);
         vendorFillsInTable.addCell(cell);
         // New row
-        String cashDiscount = new String("Terms of Payment:  Cash discount_________%_________Days-Net________Days\n");
+        String cashDiscount = "Terms of Payment:  Cash discount_________%_________Days-Net________Days\n";
         cell = createCell(cashDiscount, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         cell.setColspan(2);
         vendorFillsInTable.addCell(cell);
         // New row
-        String fob = new String(" FOB: __ Destination (Title)\n");
+        String fob = " FOB: __ Destination (Title)\n";
         cell = createCell(fob, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
-        String freightVendor = new String(" __ Freight Vendor Paid (Allowed)\n");
+        String freightVendor = " __ Freight Vendor Paid (Allowed)\n";
         cell = createCell(freightVendor, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
         // New row
-        String shipping = new String("          __ Shipping Point (Title)\n");
+        String shipping = "          __ Shipping Point (Title)\n";
         cell = createCell(shipping, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
-        String freightPrepaid = new String(" __ Freight Prepaid & Added Amount $_________\n");
+        String freightPrepaid = " __ Freight Prepaid & Added Amount $_________\n";
         cell = createCell(freightPrepaid, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
         // New row
-        String commonCarrier = new String("      If material will ship common carrier, please provide the following:\n");
+        String commonCarrier = "      If material will ship common carrier, please provide the following:\n";
         cell = createCell(commonCarrier, true, false, false, false, Element.ALIGN_LEFT, ver_8_bold);
         cell.setColspan(2);
         vendorFillsInTable.addCell(cell);
         // New row
-        String origin = new String("      Point of origin and zip code: ______________________ Weight: _________ Class: _________\n");
+        String origin = "      Point of origin and zip code: ______________________ Weight: _________ Class: _________\n";
         cell = createCell(origin, true, false, false, false, Element.ALIGN_LEFT, ver_8_bold);
         cell.setColspan(2);
         vendorFillsInTable.addCell(cell);
@@ -516,31 +516,31 @@ public class PurchaseOrderQuotePdf extends PurapPdf {
         cell.setBorderWidth(0);
         vendorFillsInTable.addCell(cell);
         // New row
-        String offerEffective = new String(" Offer effective until (Date):_____________\n");
+        String offerEffective = " Offer effective until (Date):_____________\n";
         cell = createCell(offerEffective, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
-        String deliverBy = new String(" Delivery can be made by (Date):_____________\n");
+        String deliverBy = " Delivery can be made by (Date):_____________\n";
         cell = createCell(deliverBy, true, false, false, false, Element.ALIGN_LEFT, ver_8_normal);
         vendorFillsInTable.addCell(cell);
         // New row
-        String sign = new String(" SIGN HERE:____________________________\n");
+        String sign = " SIGN HERE:____________________________\n";
         cell = createCell(sign, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
-        String date = new String(" DATE:____________________________\n");
+        String date = " DATE:____________________________\n";
         cell = createCell(date, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
         // New row
-        String name = new String(" PRINT NAME:____________________________\n");
+        String name = " PRINT NAME:____________________________\n";
         cell = createCell(name, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
-        String phone = new String(" PHONE:____________________________\n");
+        String phone = " PHONE:____________________________\n";
         cell = createCell(phone, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
         // New row
-        String company = new String(" COMPANY:____________________________\n");
+        String company = " COMPANY:____________________________\n";
         cell = createCell(company, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
-        String fax = new String(" FAX:____________________________\n");
+        String fax = " FAX:____________________________\n";
         cell = createCell(fax, true, false, false, false, Element.ALIGN_RIGHT, ver_10_bold);
         vendorFillsInTable.addCell(cell);
 
