@@ -13,9 +13,7 @@
  See the License for the specific language governing permissions and
  limitations under the License.
 --%>
-
 <%@ include file="/jsp/sys/kfsTldHeader.jsp"%>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,14 +30,5 @@ if (top.location != self.location) {
 	top.location = self.location;
 }
 </script>
-
 </head>
 <body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
-
- <div id="header" title="Ariah Finance"> 
-    <h1 class="kfs"></h1>Ariah Finance
-  </div>
-  <div id="feedback">
-  	<a class="portal_link" href="${ConfigProperties.feedback.link.url}" target="_blank" title="<bean:message key="app.feedback.linkText" />"><bean:message key="app.feedback.linkText" /></a>
-  </div>
-  <div id="build">${ConfigProperties.version} (${ConfigProperties.datasource.ojb.platform})</div>
