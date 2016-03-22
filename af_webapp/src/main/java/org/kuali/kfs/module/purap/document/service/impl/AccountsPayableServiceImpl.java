@@ -320,7 +320,7 @@ public class AccountsPayableServiceImpl implements AccountsPayableService {
                 String expirationExtensionDays = parameterService.getParameterValueAsString(ScrubberStep.class, KFSConstants.SystemGroupParameterNames.GL_SCRUBBER_VALIDATION_DAYS_OFFSET);
                 int expirationExtensionDaysInt = 90; // default to 90 days (approximately 3 months)
                 if (expirationExtensionDays.trim().length() > 0) {
-                    expirationExtensionDaysInt = new Integer(expirationExtensionDays).intValue();
+                    expirationExtensionDaysInt = Integer.parseInt(expirationExtensionDays);
                 }
                 // if account is C&G and expired beyond grace period then get replacement
                 if ((account.isForContractsAndGrants() && dateTimeService.dateDiff(account.getAccountExpirationDate(), dateTimeService.getCurrentDate(), true) > expirationExtensionDaysInt)) {
@@ -409,7 +409,7 @@ public class AccountsPayableServiceImpl implements AccountsPayableService {
 
                     if (expirationExtensionDays.trim().length() > 0) {
 
-                        expirationExtensionDaysInt = new Integer(expirationExtensionDays).intValue();
+                        expirationExtensionDaysInt = Integer.parseInt(expirationExtensionDays);
                     }
 
                     // if account is C&G and expired then add to list.

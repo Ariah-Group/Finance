@@ -616,7 +616,7 @@ public class AuxiliaryVoucherDocument extends AccountingDocumentBase implements 
         final int todayAsComparableDate = comparableDateForm(today);
         final int periodClose = new Integer(comparableDateForm(periodToCheck.getUniversityFiscalPeriodEndDate()));
         final int periodBegin = comparableDateForm(calculateFirstDayOfMonth(periodToCheck.getUniversityFiscalPeriodEndDate()));
-        final int gracePeriodClose = periodClose + new Integer(SpringContext.getBean(ParameterService.class).getParameterValueAsString(getClass(), AUXILIARY_VOUCHER_ACCOUNTING_PERIOD_GRACE_PERIOD)).intValue();
+        final int gracePeriodClose = periodClose + Integer.parseInt(SpringContext.getBean(ParameterService.class).getParameterValueAsString(getClass(), AUXILIARY_VOUCHER_ACCOUNTING_PERIOD_GRACE_PERIOD));
         return (todayAsComparableDate >= periodBegin && todayAsComparableDate <= gracePeriodClose);
     }
     

@@ -87,7 +87,7 @@ public class PooledFundValueMaintainableImpl extends KualiMaintainableImpl {
                 Security theSecurity = securityService.getByPrimaryKey(pooledSecurityID);
 
                 ParameterService parameterService = SpringContext.getBean(ParameterService.class);
-                BigDecimal numOfDistributions = new BigDecimal(new Double(parameterService.getParameterValueAsString(PooledFundValue.class, EndowParameterKeyConstants.DISTRIBUTION_TIMES_PER_YEAR)).doubleValue());
+                BigDecimal numOfDistributions = new BigDecimal(Double.parseDouble(parameterService.getParameterValueAsString(PooledFundValue.class, EndowParameterKeyConstants.DISTRIBUTION_TIMES_PER_YEAR)));
                 BigDecimal interestRate = newDistributionPerUnit.multiply(numOfDistributions);
 
                 /*

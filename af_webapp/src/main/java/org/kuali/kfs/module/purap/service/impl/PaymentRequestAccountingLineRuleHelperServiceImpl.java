@@ -63,8 +63,7 @@ public class PaymentRequestAccountingLineRuleHelperServiceImpl extends PurapAcco
                 int expirationExtensionDaysInt = 3 * 30; // default to 90 days (approximately 3 months)
 
                 if (ObjectUtils.isNotNull(expirationExtensionDays) && expirationExtensionDays.trim().length() > 0) {
-
-                    expirationExtensionDaysInt = new Integer(expirationExtensionDays).intValue();
+                    expirationExtensionDaysInt = Integer.parseInt(expirationExtensionDays);
                 }
 
                 //if account is expired, c&g and past 90 days, add error

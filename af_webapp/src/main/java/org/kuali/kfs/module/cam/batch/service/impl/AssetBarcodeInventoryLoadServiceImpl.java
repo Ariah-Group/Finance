@@ -432,7 +432,7 @@ public class AssetBarcodeInventoryLoadServiceImpl implements AssetBarcodeInvento
 
         try {
             if (parameterService.parameterExists(BarcodeInventoryErrorDocument.class, CamsConstants.Parameters.MAX_NUMBER_OF_RECORDS_PER_DOCUMENT)) {
-                maxNumberRecordsPerDocument = new Integer(parameterService.getParameterValueAsString(BarcodeInventoryErrorDocument.class, CamsConstants.Parameters.MAX_NUMBER_OF_RECORDS_PER_DOCUMENT)).intValue();
+                maxNumberRecordsPerDocument = Integer.parseInt(parameterService.getParameterValueAsString(BarcodeInventoryErrorDocument.class, CamsConstants.Parameters.MAX_NUMBER_OF_RECORDS_PER_DOCUMENT));
             }
 
             while (true) {

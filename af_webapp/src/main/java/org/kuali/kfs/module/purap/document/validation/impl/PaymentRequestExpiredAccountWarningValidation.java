@@ -46,8 +46,7 @@ public class PaymentRequestExpiredAccountWarningValidation extends GenericValida
                 int expirationExtensionDaysInt = 3 * 30; // default to 90 days (approximately 3 months)
 
                 if (expirationExtensionDays.trim().length() > 0) {
-
-                    expirationExtensionDaysInt = new Integer(expirationExtensionDays).intValue();
+                    expirationExtensionDaysInt = Integer.parseInt(expirationExtensionDays);
                 }
                 
                 if (!accountingLine.getAccount().isForContractsAndGrants() ||

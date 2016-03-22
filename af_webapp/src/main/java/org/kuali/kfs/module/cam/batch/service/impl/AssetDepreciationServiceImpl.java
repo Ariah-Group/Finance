@@ -439,8 +439,8 @@ public class AssetDepreciationServiceImpl implements AssetDepreciationService {
     private Date getBlankOutEndDate(List<String> errorMessages) throws ParseException {
         String endDate = parameterService.getParameterValueAsString(AssetDepreciationStep.class, CamsConstants.Parameters.BLANK_OUT_END_MMDD);
         if(!StringHelper.isNullOrEmpty(endDate)) {
-            int endDay = new Integer(StringUtils.substringAfterLast(endDate, "/")).intValue();
-            int endMonth = new Integer(StringUtils.substringBeforeLast(endDate, "/")).intValue()-1  ;
+            int endDay = Integer.parseInt(StringUtils.substringAfterLast(endDate, "/"));
+            int endMonth = new Integer(StringUtils.substringBeforeLast(endDate, "/"))-1  ;
             Calendar blankOutEndcalendar = Calendar.getInstance();
             blankOutEndcalendar.set(blankOutEndcalendar.get(Calendar.YEAR), endMonth , endDay);
             return  convertToDate(dateTimeService.toString(blankOutEndcalendar.getTime(), CamsConstants.DateFormats.MONTH_DAY_YEAR));
@@ -467,8 +467,8 @@ public class AssetDepreciationServiceImpl implements AssetDepreciationService {
         String beginDate =  parameterService.getParameterValueAsString(AssetDepreciationStep.class, CamsConstants.Parameters.BLANK_OUT_BEGIN_MMDD);
 
         if(!StringHelper.isNullOrEmpty(beginDate)) {
-            int beginDay = new Integer(StringUtils.substringAfterLast(beginDate, "/")).intValue();
-            int beginMonth = new Integer(StringUtils.substringBeforeLast(beginDate, "/")).intValue()-1;
+            int beginDay = Integer.parseInt(StringUtils.substringAfterLast(beginDate, "/"));
+            int beginMonth = Integer.parseInt(StringUtils.substringBeforeLast(beginDate, "/"))-1;
             Calendar blankOutBegincalendar = Calendar.getInstance();
             blankOutBegincalendar.set(blankOutBegincalendar.get(Calendar.YEAR),beginMonth , beginDay);
             return convertToDate(dateTimeService.toString(blankOutBegincalendar.getTime(), CamsConstants.DateFormats.MONTH_DAY_YEAR));
