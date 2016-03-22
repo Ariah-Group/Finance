@@ -101,8 +101,6 @@
 	      </tr>
 	    </c:if>
 	   
-	   	<!-- CSU 6702 BEGIN -->
-	   	<!-- rSmart-jkneal-KFSCSU-199-begin mod for displaying accounting period field -->	   	 
 	   	<c:if test="${!empty KualiForm.documentActions[KFSConstants.YEAR_END_ACCOUNTING_PERIOD_VIEW_DOCUMENT_ACTION]}">	   
 	      	<c:set var="accountingPeriodAttribute" value="${DataDictionary.LedgerPostingDocumentBase.attributes.accountingPeriodCompositeString}" />
 	      	<tr>	      
@@ -123,9 +121,6 @@
 		      	<th colspan="2">&nbsp;</th>       
 	      	</tr>
 	   	</c:if>
-	   	<!-- rSmart-jkneal-KFSCSU-199-end mod --> 
-	   	<!-- CSU 6702 END -->
-	   	   
 	  </table>
 	</c:if>
 	<jsp:doBody/>
