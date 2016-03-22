@@ -335,7 +335,7 @@ public class DisbursementVoucherNonResidentAlienInformationValidation extends Ge
 
 // RUN FOR SUBMISSION
 
-    if(validationType!="GENERATE") {
+    if(!"GENERATE".equals(validationType)) {
         // verify tax lines have been generated
         if ((nonResidentAlienTax.getFederalIncomeTaxPercent().isNonZero() || nonResidentAlienTax.getStateIncomeTaxPercent().isNonZero())) {
             if (StringUtils.isBlank(nonResidentAlienTax.getFinancialDocumentAccountingLineText())) {
