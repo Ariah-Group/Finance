@@ -31,46 +31,54 @@ import org.kuali.kfs.gl.batch.service.BatchSortService;
  * This class...
  */
 public class BatchSortServiceImpl implements BatchSortService {
+
     private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(BatchSortServiceImpl.class);
-    
-    public void sortTextFileWithFields(String inputFileName, String outputFileName, Comparator comparator){
+
+    public void sortTextFileWithFields(String inputFileName, String outputFileName, Comparator comparator) {
         FileReader inputFile = null;
         PrintStream outputFileStream = null;
         try {
             inputFile = new FileReader(inputFileName);
             outputFileStream = new PrintStream(outputFileName);
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
         List<String> lineList = new ArrayList();
         BufferedReader inputBufferedReader = new BufferedReader(inputFile);
-        
+
         try {
+            // grab first line
             String currentLine = inputBufferedReader.readLine();
+
             while (currentLine != null) {
                 lineList.add(currentLine);
-            }
-            inputBufferedReader.close();    
-            outputFileStream.close();
+                currentLine = inputBufferedReader.readLine();
+            } 
+
         } catch (IOException e) {
-            // FIXME: do whatever should be done here
             LOG.error("performDemerger Stopped: " + e.getMessage());
             throw new RuntimeException("sortTextFileWithFields() Stopped: " + e.getMessage(), e);
+        } finally {
+
+            try {
+                inputBufferedReader.close();
+                outputFileStream.close();
+            } catch (Exception e) {
+                LOG.error("error closing streams: " + e.getMessage());
+            }
+
         }
-        
+
         Collections.sort(lineList, comparator);
-        
-        for (String line: lineList){
+
+        for (String line : lineList) {
             outputFileStream.printf("%s\n", line);
         }
         outputFileStream.close();
-             
+
     }
-    
-    
+
 }
