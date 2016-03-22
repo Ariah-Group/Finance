@@ -33,7 +33,7 @@ a.logicNode { border: 1px solid #ccd; background-color:#dde; /* -moz-border-radi
 
 .jstree-default li.jstree-last { margin-bottom: 5pt; }
 
-.jstree li { margin-top 3pt; }
+.jstree li { margin-top: 3pt; }
 
 .krms-rulesButtonBar{
     text-align: left;
