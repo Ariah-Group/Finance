@@ -207,6 +207,9 @@ public class SchemaBuilder {
     protected static void buildSchemaFile(File buildSchemFile, String outSchemaFilePathName, boolean useDataDictionaryValidation, Collection typesSchemaLines, String externalizableContentUrl, Set<String> builtTypes, boolean rebuildDDTypes) throws IOException {
         Collection buildSchemaLines = FileUtils.readLines(buildSchemFile);
         Collection outSchemaLines = new ArrayList();
+        
+        System.out.println("SchemaBuilder.buildSchemaFile running on file " + buildSchemFile.getAbsolutePath());
+        
         int lineCount = 1;
         for (Iterator iterator = buildSchemaLines.iterator(); iterator.hasNext();) {
             if (LOG.isDebugEnabled()) {

@@ -33,11 +33,14 @@ import org.kuali.rice.kns.web.ui.HeaderField;
  */
 public class FinancialSystemTransactionalDocumentFormBase extends KualiTransactionalDocumentFormBase {
 
+    protected static final org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(FinancialSystemTransactionalDocumentFormBase.class);
+    
     /**
      * Constructs a FinancialSystemTransactionalDocumentFormBase.java.
      */
     public FinancialSystemTransactionalDocumentFormBase() {
         super();
+        LOG.fatal("FinancialSystemTransactionalDocumentFormBase new() running...");
     }
 
     /**

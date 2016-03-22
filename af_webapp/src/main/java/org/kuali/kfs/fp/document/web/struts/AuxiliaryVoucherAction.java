@@ -32,6 +32,8 @@ import org.kuali.kfs.sys.KFSConstants;
  * transaction processing eDocs (i.e. external system fields, object type override, credit and debit amounts).
  */
 public class AuxiliaryVoucherAction extends VoucherAction {
+    
+    private static org.apache.log4j.Logger LOG = org.apache.log4j.Logger.getLogger(AuxiliaryVoucherAction.class);
     /**
      * Overrides the parent and then calls the super method after checking to see if the user just changed the voucher type.
      * 
@@ -87,13 +89,20 @@ public class AuxiliaryVoucherAction extends VoucherAction {
      */
     @Override
     public ActionForward docHandler(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        LOG.error("AuxiliaryVoucherAction.docHandler : running 1...");
+        
         ActionForward forward = super.docHandler(mapping, form, request, response);
+        
+        LOG.error("AuxiliaryVoucherAction.docHandler : running 2...");
 
         // Fix for KULEDOCS-1701, update the original voucher type so that the execute method in
         // this class will call the right block of code
         AuxiliaryVoucherForm avForm = (AuxiliaryVoucherForm) form;
         AuxiliaryVoucherDocument avDoc = avForm.getAuxiliaryVoucherDocument();
         avForm.setOriginalVoucherType(avDoc.getTypeCode());
+        
+        LOG.error("AuxiliaryVoucherAction.docHandler : running 3 : forward = " + forward.toString());
 
         return forward;
     }
