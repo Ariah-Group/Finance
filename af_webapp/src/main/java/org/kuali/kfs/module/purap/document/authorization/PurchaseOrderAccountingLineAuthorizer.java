@@ -67,13 +67,13 @@ public class PurchaseOrderAccountingLineAuthorizer extends PurapAccountingLineAu
         return super.renderNewLine(accountingDocument, accountingGroupProperty);
     }
 
-    private int determineItemNumberFromGroupProperty(String accountingGroupProperty) {
-        int openBracketPos = accountingGroupProperty.indexOf("[");
-        int closeBracketPos = accountingGroupProperty.indexOf("]");
-        String itemNumberString = accountingGroupProperty.substring(openBracketPos + 1, closeBracketPos);
-        int itemNumber = new Integer(itemNumberString).intValue();
-        return itemNumber;
-    }
+//    private int determineItemNumberFromGroupProperty(String accountingGroupProperty) {
+//        int openBracketPos = accountingGroupProperty.indexOf("[");
+//        int closeBracketPos = accountingGroupProperty.indexOf("]");
+//        String itemNumberString = accountingGroupProperty.substring(openBracketPos + 1, closeBracketPos);
+//        int itemNumber = new Integer(itemNumberString).intValue();
+//        return itemNumber;
+//    }
 
     @Override
     protected boolean allowAccountingLinesAreEditable(AccountingDocument accountingDocument,
