@@ -439,17 +439,17 @@ public class CollectorBatch extends PersistableBusinessObjectBase {
      * 
      * @return OriginEntryGroup
      */
-    private OriginEntryGroup createOriginEntryGroup() {
-        OriginEntryGroup group = new OriginEntryGroup();
-
-        group.setSourceCode(OriginEntrySource.COLLECTOR);
-        group.setDate(new java.sql.Date(SpringContext.getBean(DateTimeService.class).getCurrentDate().getTime()));
-        group.setProcess(new Boolean(true));
-        group.setScrub(new Boolean(true));
-        group.setValid(new Boolean(true));
-
-        return group;
-    }
+//    private OriginEntryGroup createOriginEntryGroup() {
+//        OriginEntryGroup group = new OriginEntryGroup();
+//
+//        group.setSourceCode(OriginEntrySource.COLLECTOR);
+//        group.setDate(new java.sql.Date(SpringContext.getBean(DateTimeService.class).getCurrentDate().getTime()));
+//        group.setProcess(new Boolean(true));
+//        group.setScrub(new Boolean(true));
+//        group.setValid(new Boolean(true));
+//
+//        return group;
+//    }
 
     /**
      * Creates a CollectorHeader from the batch to be used for storage
