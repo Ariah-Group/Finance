@@ -90,7 +90,7 @@ public class CustomerLoadResult {
         return getResultCodeString(result);
     }
     
-    private void setResult(ResultCode result) {
+    public void setResult(ResultCode result) {
         this.result = result;
     }
     
