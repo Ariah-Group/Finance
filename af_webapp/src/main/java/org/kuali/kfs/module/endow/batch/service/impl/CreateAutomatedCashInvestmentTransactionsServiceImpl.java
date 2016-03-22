@@ -582,25 +582,25 @@ public class CreateAutomatedCashInvestmentTransactionsServiceImpl implements Cre
      * @param inv
      * @return
      */
-    private String getSaleOffsetCode(AutomatedCashInvestmentModel aciModel, int inv) {
-        String offsetCode = "";
-        switch (inv) {
-            case 1:
-                offsetCode = aciModel.getInvestment1().getFundAssetSaleOffsetTranCode();
-                break;
-            case 2:
-                offsetCode = aciModel.getInvestment2().getFundAssetSaleOffsetTranCode();
-                break;
-            case 3:
-                offsetCode = aciModel.getInvestment3().getFundAssetSaleOffsetTranCode();
-                break;
-            case 4:
-                offsetCode = aciModel.getInvestment4().getFundAssetSaleOffsetTranCode();
-                break;
-        }
-
-        return offsetCode;
-    }
+//    private String getSaleOffsetCode(AutomatedCashInvestmentModel aciModel, int inv) {
+//        String offsetCode = "";
+//        switch (inv) {
+//            case 1:
+//                offsetCode = aciModel.getInvestment1().getFundAssetSaleOffsetTranCode();
+//                break;
+//            case 2:
+//                offsetCode = aciModel.getInvestment2().getFundAssetSaleOffsetTranCode();
+//                break;
+//            case 3:
+//                offsetCode = aciModel.getInvestment3().getFundAssetSaleOffsetTranCode();
+//                break;
+//            case 4:
+//                offsetCode = aciModel.getInvestment4().getFundAssetSaleOffsetTranCode();
+//                break;
+//        }
+//
+//        return offsetCode;
+//    }
 
     /**
      * Calculates the unite amount for the specified investment.
@@ -1109,9 +1109,9 @@ public class CreateAutomatedCashInvestmentTransactionsServiceImpl implements Cre
      * 
      * @return
      */
-    private String getSaleDescription() {
-        return parameterService.getParameterValueAsString(CreateAutomatedCashInvestmentTransactionsStep.class, EndowParameterKeyConstants.SALE_DESCRIPTION);
-    }
+//    private String getSaleDescription() {
+//        return parameterService.getParameterValueAsString(CreateAutomatedCashInvestmentTransactionsStep.class, EndowParameterKeyConstants.SALE_DESCRIPTION);
+//    }
 
     /**
      * Sets the createAutomatedCashInvestmentExceptionReportWriterService attribute value.

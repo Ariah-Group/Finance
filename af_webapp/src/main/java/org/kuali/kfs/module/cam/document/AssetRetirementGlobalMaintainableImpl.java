@@ -315,33 +315,33 @@ public class AssetRetirementGlobalMaintainableImpl extends LedgerPostingMaintain
      * @return 01/01/[closing year]
      * TODO Remove hardcoding
      */
-    private String getClosingCalendarDate(Integer closingYear) {
-        return "01/01/" + closingYear.toString();
-    }
+//    private String getClosingCalendarDate(Integer closingYear) {
+//        return "01/01/" + closingYear.toString();
+//    }
 
     /**
      * Convenience method to reduce clutter
      * @return {@link DateTimeService}
      */
-    private DateTimeService getDateTimeService() {
-        return SpringContext.getBean(DateTimeService.class);
-    }
+//    private DateTimeService getDateTimeService() {
+//        return SpringContext.getBean(DateTimeService.class);
+//    }
 
     /**
      * Perform changes to assetRetirementGlobal on period 13.
      * @param assetRetirementGlobal
      */
-    private void doPeriod13Changes(AssetRetirementGlobal assetRetirementGlobal) {
-        if (isPeriod13(assetRetirementGlobal)) {
-            Integer closingYear = new Integer(SpringContext.getBean(ParameterService.class).getParameterValueAsString(KfsParameterConstants.GENERAL_LEDGER_BATCH.class, GeneralLedgerConstants.ANNUAL_CLOSING_FISCAL_YEAR_PARM));
-            String closingDate = getClosingDate(closingYear);
-            try {
-                updateAssetRetirementGlobalForPeriod13(assetRetirementGlobal, closingYear, closingDate);
-            } catch (Exception e) {
-                LOG.error(e);
-            }
-        }
-    }
+//    private void doPeriod13Changes(AssetRetirementGlobal assetRetirementGlobal) {
+//        if (isPeriod13(assetRetirementGlobal)) {
+//            Integer closingYear = new Integer(SpringContext.getBean(ParameterService.class).getParameterValueAsString(KfsParameterConstants.GENERAL_LEDGER_BATCH.class, GeneralLedgerConstants.ANNUAL_CLOSING_FISCAL_YEAR_PARM));
+//            String closingDate = getClosingDate(closingYear);
+//            try {
+//                updateAssetRetirementGlobalForPeriod13(assetRetirementGlobal, closingYear, closingDate);
+//            } catch (Exception e) {
+//                LOG.error(e);
+//            }
+//        }
+//    }
 
 
     /**

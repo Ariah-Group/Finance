@@ -142,21 +142,21 @@ public class PropertyLoadingFactoryBean implements FactoryBean<Properties> {
      *
      * @param props the properties object
      */
-    private static void loadExternalProperties(Properties props) {
-        String externalConfigLocationPaths = props.getProperty(PropertyLoadingFactoryBean.ADDITIONAL_KFS_CONFIG_LOCATIONS_PARAM);
-        if (StringUtils.isNotEmpty(externalConfigLocationPaths)) {
-            String[] files = externalConfigLocationPaths.split(",");
-
-            for (String f : files) {
-                if (StringUtils.isNotEmpty(f)) {
-                    //loadProperties(props, new StringBuffer("file:").append(f).toString());
-                    loadProperties(props, f);
-                }
-            }
-        }
-
-        props.putAll(System.getProperties());
-    }
+//    private static void loadExternalProperties(Properties props) {
+//        String externalConfigLocationPaths = props.getProperty(PropertyLoadingFactoryBean.ADDITIONAL_KFS_CONFIG_LOCATIONS_PARAM);
+//        if (StringUtils.isNotEmpty(externalConfigLocationPaths)) {
+//            String[] files = externalConfigLocationPaths.split(",");
+//
+//            for (String f : files) {
+//                if (StringUtils.isNotEmpty(f)) {
+//                    //loadProperties(props, new StringBuffer("file:").append(f).toString());
+//                    loadProperties(props, f);
+//                }
+//            }
+//        }
+//
+//        props.putAll(System.getProperties());
+//    }
 
     public void setTestMode(boolean testMode) {
         this.testMode = testMode;

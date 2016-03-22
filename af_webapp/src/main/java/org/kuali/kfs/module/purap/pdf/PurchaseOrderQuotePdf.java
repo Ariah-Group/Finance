@@ -661,14 +661,14 @@ public class PurchaseOrderQuotePdf extends PurapPdf {
      * @param campusParameter  The CampusParameter object to be used to create the partial purchasing address.
      * @return                 The String containing the partial purchasing address.
      */
-    private String getPurchasingAddressPartial(CampusParameter campusParameter) {
-        StringBuffer purchasingAddressPartial = new StringBuffer();
-
-        purchasingAddressPartial.append(campusParameter.getPurchasingInstitutionName() + ", ");
-        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentCityName() + ", ");
-        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentStateCode() + " ");
-        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentZipCode());
-
-        return purchasingAddressPartial.toString();
-    }
+//    private String getPurchasingAddressPartial(CampusParameter campusParameter) {
+//        StringBuffer purchasingAddressPartial = new StringBuffer();
+//
+//        purchasingAddressPartial.append(campusParameter.getPurchasingInstitutionName() + ", ");
+//        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentCityName() + ", ");
+//        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentStateCode() + " ");
+//        purchasingAddressPartial.append(campusParameter.getPurchasingDepartmentZipCode());
+//
+//        return purchasingAddressPartial.toString();
+//    }
 }

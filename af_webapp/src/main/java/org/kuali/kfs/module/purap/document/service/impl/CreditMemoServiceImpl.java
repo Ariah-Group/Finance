@@ -278,14 +278,14 @@ public class CreditMemoServiceImpl implements CreditMemoService {
      * @param appDocStatus
      * @return
      */
-    private Iterator<VendorCreditMemoDocument> filterCreditMemoByAppDocStatus(Iterator<VendorCreditMemoDocument> creditMemoIterator, String... appDocStatus) {
-        Collection<VendorCreditMemoDocument> creditMemoDocuments = new ArrayList<VendorCreditMemoDocument>();
-        for (;creditMemoIterator.hasNext();){
-            creditMemoDocuments.add(creditMemoIterator.next());
-        }
-
-        return filterCreditMemoByAppDocStatus(creditMemoDocuments, appDocStatus).iterator();
-    }
+//    private Iterator<VendorCreditMemoDocument> filterCreditMemoByAppDocStatus(Iterator<VendorCreditMemoDocument> creditMemoIterator, String... appDocStatus) {
+//        Collection<VendorCreditMemoDocument> creditMemoDocuments = new ArrayList<VendorCreditMemoDocument>();
+//        for (;creditMemoIterator.hasNext();){
+//            creditMemoDocuments.add(creditMemoIterator.next());
+//        }
+//
+//        return filterCreditMemoByAppDocStatus(creditMemoDocuments, appDocStatus).iterator();
+//    }
 
     /**
      * @see org.kuali.kfs.module.purap.document.service.CreditMemoService#creditMemoDuplicateMessages(org.kuali.kfs.module.purap.document.CreditMemoDocument)

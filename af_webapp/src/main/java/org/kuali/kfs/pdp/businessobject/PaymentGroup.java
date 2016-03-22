@@ -187,13 +187,13 @@ public class PaymentGroup extends TimestampedBusinessObjectBase {
      * @param b the boolean object
      * @return the boolean value
      */
-    private boolean booleanValue(Boolean b) {
-        boolean bv = false;
-        if (b != null) {
-            bv = b.booleanValue();
-        }
-        return bv;
-    }
+//    private boolean booleanValue(Boolean b) {
+//        boolean bv = false;
+//        if (b != null) {
+//            bv = b.booleanValue();
+//        }
+//        return bv;
+//    }
 
     /**
      * This method gets the notle lines

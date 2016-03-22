@@ -80,9 +80,9 @@ public class AccountingLineViewField extends FieldTableJoiningWithHeader impleme
      *
      * @return true if the short label should be used, false otherwise
      */
-    private boolean shouldUseShortLabel() {
-        return definition.shouldUseShortLabel();
-    }
+//    private boolean shouldUseShortLabel() {
+//        return definition.shouldUseShortLabel();
+//    }
 
     /**
      * Gets the field attribute.

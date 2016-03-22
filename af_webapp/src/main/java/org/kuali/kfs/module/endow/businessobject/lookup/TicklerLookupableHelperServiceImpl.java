@@ -100,8 +100,8 @@ public class TicklerLookupableHelperServiceImpl extends KualiLookupableHelperSer
         return personService;
     }
 
-    private GroupService getGroupService()
-    {
-        return KimApiServiceLocator.getGroupService();
-    }
+//    private GroupService getGroupService()
+//    {
+//        return KimApiServiceLocator.getGroupService();
+//    }
 }

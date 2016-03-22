@@ -686,9 +686,9 @@ public class PurchasingAccountsPayableItemAsset extends PersistableBusinessObjec
         }
     }
 
-    private DataDictionaryService getDataDictionaryService() {
-        return SpringContext.getBean(DataDictionaryService.class);
-    }
+//    private DataDictionaryService getDataDictionaryService() {
+//        return SpringContext.getBean(DataDictionaryService.class);
+//    }
 
     public PurchasingAccountsPayableLineAssetAccount getPurchasingAccountsPayableLineAssetAccount(int index) {
         int size = getPurchasingAccountsPayableLineAssetAccounts().size();

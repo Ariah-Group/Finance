@@ -88,9 +88,9 @@ public final class FlatFileTransactionInformation {
      * Sets the resultCode for this transaction information object
      * @param result the result code to set
      */
-    private void setResult(ResultCode result) {
-        this.result = result;
-    }
+//    private void setResult(ResultCode result) {
+//        this.result = result;
+//    }
 
     /**
      * Declares the logical file a success!

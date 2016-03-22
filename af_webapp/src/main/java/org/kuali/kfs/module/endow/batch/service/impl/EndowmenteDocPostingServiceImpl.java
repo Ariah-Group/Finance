@@ -695,18 +695,18 @@ public class EndowmenteDocPostingServiceImpl implements EndowmenteDocPostingServ
      * @param tranLine
      * @param reason
      */
-    private void writeExceptionReportEntry(EndowmentTransactionLinesDocumentBase lineDoc, EndowmentTransactionLine tranLine, String reason) {
-        TransactioneDocPostingDocumentExceptionReportLine eDocExceptionReportLine = new TransactioneDocPostingDocumentExceptionReportLine();
-
-        eDocExceptionReportLine.setDocumentName(dataDictionaryService.getDocumentTypeNameByClass(lineDoc.getClass()));
-        eDocExceptionReportLine.setDocumentNumber(tranLine.getDocumentNumber());
-        eDocExceptionReportLine.setLineType(tranLine.getTransactionLineTypeCode());
-        eDocExceptionReportLine.setLineNumber(tranLine.getKemid());
-        eDocExceptionReportLine.setReason(reason);
-
-        eDocPostingExceptionReportWriterService.writeTableRow(eDocExceptionReportLine);
-        eDocPostingExceptionReportWriterService.writeNewLines(1);
-    }
+//    private void writeExceptionReportEntry(EndowmentTransactionLinesDocumentBase lineDoc, EndowmentTransactionLine tranLine, String reason) {
+//        TransactioneDocPostingDocumentExceptionReportLine eDocExceptionReportLine = new TransactioneDocPostingDocumentExceptionReportLine();
+//
+//        eDocExceptionReportLine.setDocumentName(dataDictionaryService.getDocumentTypeNameByClass(lineDoc.getClass()));
+//        eDocExceptionReportLine.setDocumentNumber(tranLine.getDocumentNumber());
+//        eDocExceptionReportLine.setLineType(tranLine.getTransactionLineTypeCode());
+//        eDocExceptionReportLine.setLineNumber(tranLine.getKemid());
+//        eDocExceptionReportLine.setReason(reason);
+//
+//        eDocPostingExceptionReportWriterService.writeTableRow(eDocExceptionReportLine);
+//        eDocPostingExceptionReportWriterService.writeNewLines(1);
+//    }
 
     /**
      * Print the statistics.

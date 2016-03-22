@@ -127,15 +127,15 @@ public class BatchStepLauncher implements Runnable {
      * Removes the batch container semaphore (used by the shutdown hook added to Runtime)
      * This is necessary because the Launcher exits immediately when the Trigger exits. Shutdown hook cleans up the semaphore.
      */
-    private static void removeBatchContainerSemaphore() {
-        logToOut("removing batch container semaphore file");
-
-        if (batchStepTriggerParms.getBatchContainerDirectory().isBatchContainerRunning()) {
-            batchStepTriggerParms.getBatchContainerDirectory().removeBatchContainerSemaphore();
-        }
-
-        logToOut("batch container semaphore file has been removed");
-    }
+//    private static void removeBatchContainerSemaphore() {
+//        logToOut("removing batch container semaphore file");
+//
+//        if (batchStepTriggerParms.getBatchContainerDirectory().isBatchContainerRunning()) {
+//            batchStepTriggerParms.getBatchContainerDirectory().removeBatchContainerSemaphore();
+//        }
+//
+//        logToOut("batch container semaphore file has been removed");
+//    }
 
     /**
      * Logs statement to System.out with a prefix.

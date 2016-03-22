@@ -432,12 +432,12 @@ public class PaymentApplicationDocumentRuleUtil {
      * 
      * @return
      */
-    private static KualiDecimal getSumOfNonInvoiceds(List<NonInvoiced> nonInvoiceds) {
-        KualiDecimal sum = new KualiDecimal(0);
-        for(NonInvoiced nonInvoiced : nonInvoiceds) {
-            sum = sum.add(nonInvoiced.getFinancialDocumentLineAmount());
-        }
-        return sum;
-    }
+//    private static KualiDecimal getSumOfNonInvoiceds(List<NonInvoiced> nonInvoiceds) {
+//        KualiDecimal sum = new KualiDecimal(0);
+//        for(NonInvoiced nonInvoiced : nonInvoiceds) {
+//            sum = sum.add(nonInvoiced.getFinancialDocumentLineAmount());
+//        }
+//        return sum;
+//    }
 
 }

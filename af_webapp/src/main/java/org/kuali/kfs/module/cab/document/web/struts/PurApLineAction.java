@@ -687,9 +687,9 @@ public class PurApLineAction extends CabActionBase {
      * @param purApLineForm
      * @return
      */
-    private PurchasingAccountsPayableDocument getSelectedPurApDoc(PurApLineForm purApLineForm) {
-        return purApLineForm.getPurApDocs().get(purApLineForm.getActionPurApDocIndex());
-    }
+//    private PurchasingAccountsPayableDocument getSelectedPurApDoc(PurApLineForm purApLineForm) {
+//        return purApLineForm.getPurApDocs().get(purApLineForm.getActionPurApDocIndex());
+//    }
 
     /**
      * Handle apply payment action.

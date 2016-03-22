@@ -234,9 +234,9 @@ public class AssetYearEndDepreciationMaintainableImpl extends FinancialSystemMai
      * Convenience method to get {@link AssetRetirementService}
      * @return {@link AssetRetirementService}
      */
-    private AssetRetirementService getAssetRetirementService() {
-        return SpringContext.getBean(AssetRetirementService.class);
-    }
+//    private AssetRetirementService getAssetRetirementService() {
+//        return SpringContext.getBean(AssetRetirementService.class);
+//    }
 
     /**
      * Convenience method to get {@link AssetService}

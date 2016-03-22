@@ -1055,15 +1055,15 @@ public class VendorRule extends MaintenanceDocumentRuleBase {
      * @param document MaintenanceDocument instance
      * @return boolean false or true
      */
-    private boolean processCustomerNumberValidation(MaintenanceDocument document) {
-        boolean valid = true;
-
-        List<VendorCustomerNumber> customerNumbers = newVendor.getVendorCustomerNumbers();
-        for (VendorCustomerNumber customerNumber : customerNumbers) {
-            valid &= validateVendorCustomerNumber(customerNumber);
-        }
-        return valid;
-    }
+//    private boolean processCustomerNumberValidation(MaintenanceDocument document) {
+//        boolean valid = true;
+//
+//        List<VendorCustomerNumber> customerNumbers = newVendor.getVendorCustomerNumbers();
+//        for (VendorCustomerNumber customerNumber : customerNumbers) {
+//            valid &= validateVendorCustomerNumber(customerNumber);
+//        }
+//        return valid;
+//    }
 
     /**
      * Validates vendor customer number. The chart and org must exist in the database.

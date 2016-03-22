@@ -295,19 +295,19 @@ public class UpdateHoldingAdjustmentDocumentTaxLotsServiceImpl implements Update
      * @param oldestTaxLot
      * @param isSource
      */
-    private void adjustTaxLotsCost(BigDecimal totalTaxLotsCost, BigDecimal transLineCost, EndowmentTransactionTaxLotLine oldestTaxLot, boolean isSource) {
-
-        if (totalTaxLotsCost.compareTo(transLineCost) != 0 && oldestTaxLot != null) {
-            BigDecimal diff = transLineCost.subtract(totalTaxLotsCost);
-
-            if (isSource) {
-                oldestTaxLot.setLotHoldingCost(oldestTaxLot.getLotHoldingCost().add(diff.negate()));
-            }
-            else {
-                oldestTaxLot.setLotHoldingCost(oldestTaxLot.getLotHoldingCost().add(diff));
-            }
-        }
-    }
+//    private void adjustTaxLotsCost(BigDecimal totalTaxLotsCost, BigDecimal transLineCost, EndowmentTransactionTaxLotLine oldestTaxLot, boolean isSource) {
+//
+//        if (totalTaxLotsCost.compareTo(transLineCost) != 0 && oldestTaxLot != null) {
+//            BigDecimal diff = transLineCost.subtract(totalTaxLotsCost);
+//
+//            if (isSource) {
+//                oldestTaxLot.setLotHoldingCost(oldestTaxLot.getLotHoldingCost().add(diff.negate()));
+//            }
+//            else {
+//                oldestTaxLot.setLotHoldingCost(oldestTaxLot.getLotHoldingCost().add(diff));
+//            }
+//        }
+//    }
 
     /**
      * Gets the taxLotService.

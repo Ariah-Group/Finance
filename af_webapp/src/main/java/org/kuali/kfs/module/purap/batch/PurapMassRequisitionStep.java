@@ -489,102 +489,102 @@ public class PurapMassRequisitionStep extends AbstractStep implements TestingSte
         return reqDoc;
     }
 
-    private RequisitionDocument populateCapitalAsset_Individual_Unfilled_Document() {
-        RequisitionDocument reqDoc = null;
-        try {
-            reqDoc = (RequisitionDocument) documentService.getNewDocument(RequisitionDocument.class);
-
-            // set doc attributes
-            reqDoc.getDocumentHeader().setExplanation("batch created quantity document BAS");
-            DocumentHeader documentHeader = reqDoc.getDocumentHeader();
-            documentHeader.setDocumentDescription("batch created quantity document BAS");
-            reqDoc.setDocumentFundingSourceCode("INST");
-            reqDoc.setRequisitionSourceCode(RequisitionSources.STANDARD_ORDER);
-            reqDoc.setPurchaseOrderTransmissionMethodCode(POTransmissionMethods.NOPRINT);
-            reqDoc.setPurchaseOrderCostSourceCode(POCostSources.ESTIMATE);
-            reqDoc.setChartOfAccountsCode("UA");
-            reqDoc.setOrganizationCode("VPIT");
-            reqDoc.setDeliveryCampusCode("KO");
-            reqDoc.setRequestorPersonName("WATSON,TERRENCE G");
-            reqDoc.setRequestorPersonEmailAddress("tw@localhost.localhost");
-            reqDoc.setRequestorPersonPhoneNumber("812-555-5555");
-            reqDoc.setDeliveryBuildingCode("ADMN");
-            reqDoc.setDeliveryBuildingName("Administration");
-            reqDoc.setDeliveryBuildingRoomNumber("100");
-            reqDoc.setDeliveryBuildingLine1Address("98 smart street");
-            reqDoc.setDeliveryCityName("brainy");
-            reqDoc.setDeliveryStateCode("CA");
-            reqDoc.setDeliveryPostalCode("46202");
-            reqDoc.setDeliveryToName("front desk");
-            reqDoc.setBillingName("THE UNIVERSITY");
-            reqDoc.setBillingLine1Address("ACCOUNTS PAYABLE");
-            reqDoc.setBillingCityName("BUTTER NUT");
-            reqDoc.setBillingStateCode("SC");
-            reqDoc.setBillingPostalCode("47402");
-            reqDoc.setBillingCountryCode("US");
-            reqDoc.setBillingPhoneNumber("111-111-1111");
-            reqDoc.setPurchaseOrderAutomaticIndicator(false);
-            reqDoc.setApplicationDocumentStatus(RequisitionStatuses.APPDOC_IN_PROCESS);
-            reqDoc.setVendorHeaderGeneratedIdentifier(1002);
-            reqDoc.setVendorDetailAssignedIdentifier(0);
-            reqDoc.setVendorName("MK CORPORATION ACTIVE");
-            reqDoc.setVendorLine1Address("3984 SOUTH ST");
-            reqDoc.setVendorCityName("SPRINGFIELD");
-            reqDoc.setVendorStateCode("IL");
-            reqDoc.setVendorPostalCode("33555");
-            reqDoc.setVendorCountryCode("US");
-            reqDoc.setUseTaxIndicator(false);
-
-            // set item attributes
-            RequisitionItem item1 = new RequisitionItem();
-            item1.setItemLineNumber(new Integer(1));
-            item1.setItemUnitOfMeasureCode("EA");
-            item1.setItemCatalogNumber("");
-            item1.setItemDescription("Gas Chromatograph");
-            item1.setItemUnitPrice(new BigDecimal(6000));
-            item1.setItemTypeCode("ITEM");
-            item1.setItemQuantity(new KualiDecimal(1.00));
-            item1.setExtendedPrice(new KualiDecimal(6000));
-            item1.setItemAssignedToTradeInIndicator(false);
-
-            // set accounting line attributes
-            RequisitionAccount account1 = new RequisitionAccount();
-            account1.setPostingYear(2004);
-            account1.setChartOfAccountsCode("BL");
-            account1.setAccountNumber("1023200");
-            account1.setFinancialObjectCode("7000");
-            account1.setDebitCreditCode(KFSConstants.GL_DEBIT_CODE);
-            account1.setAmount(new KualiDecimal("10000"));
-            account1.setAccountLinePercent(new BigDecimal("100"));
-
-            item1.getSourceAccountingLines().add(account1);
-            reqDoc.getItems().add(item1);
-            reqDoc.fixItemReferences();
-
-            reqDoc.setCapitalAssetSystemStateCode("NEW");
-            reqDoc.setCapitalAssetSystemTypeCode("IND");
-
-            // Save here because auto-generated IDs will be needed later.
-            purapService.saveDocumentNoValidation(reqDoc);
-            List<PurchasingCapitalAssetItem> purchasingCapitalAssetItems = new ArrayList();
-            RequisitionCapitalAssetItem capitalAssetItem = (RequisitionCapitalAssetItem) requisitionService.createCamsItem(reqDoc, item1);
-            capitalAssetItem.setCapitalAssetTransactionTypeCode("NEW");
-
-            RequisitionCapitalAssetSystem system = (RequisitionCapitalAssetSystem) capitalAssetItem.getPurchasingCapitalAssetSystem();
-            system.setCapitalAssetNoteText("");
-            system.setCapitalAssetNotReceivedCurrentFiscalYearIndicator(false);
-            system.setCapitalAssetManufacturerName("");
-            system.setCapitalAssetTypeCode("");
-            system.setCapitalAssetModelDescription("");
-
-            purchasingCapitalAssetItems.add(capitalAssetItem);
-            reqDoc.setPurchasingCapitalAssetItems(purchasingCapitalAssetItems);
-        }
-        catch (WorkflowException e1) {
-            e1.printStackTrace();
-        }
-        return reqDoc;
-    }
+//    private RequisitionDocument populateCapitalAsset_Individual_Unfilled_Document() {
+//        RequisitionDocument reqDoc = null;
+//        try {
+//            reqDoc = (RequisitionDocument) documentService.getNewDocument(RequisitionDocument.class);
+//
+//            // set doc attributes
+//            reqDoc.getDocumentHeader().setExplanation("batch created quantity document BAS");
+//            DocumentHeader documentHeader = reqDoc.getDocumentHeader();
+//            documentHeader.setDocumentDescription("batch created quantity document BAS");
+//            reqDoc.setDocumentFundingSourceCode("INST");
+//            reqDoc.setRequisitionSourceCode(RequisitionSources.STANDARD_ORDER);
+//            reqDoc.setPurchaseOrderTransmissionMethodCode(POTransmissionMethods.NOPRINT);
+//            reqDoc.setPurchaseOrderCostSourceCode(POCostSources.ESTIMATE);
+//            reqDoc.setChartOfAccountsCode("UA");
+//            reqDoc.setOrganizationCode("VPIT");
+//            reqDoc.setDeliveryCampusCode("KO");
+//            reqDoc.setRequestorPersonName("WATSON,TERRENCE G");
+//            reqDoc.setRequestorPersonEmailAddress("tw@localhost.localhost");
+//            reqDoc.setRequestorPersonPhoneNumber("812-555-5555");
+//            reqDoc.setDeliveryBuildingCode("ADMN");
+//            reqDoc.setDeliveryBuildingName("Administration");
+//            reqDoc.setDeliveryBuildingRoomNumber("100");
+//            reqDoc.setDeliveryBuildingLine1Address("98 smart street");
+//            reqDoc.setDeliveryCityName("brainy");
+//            reqDoc.setDeliveryStateCode("CA");
+//            reqDoc.setDeliveryPostalCode("46202");
+//            reqDoc.setDeliveryToName("front desk");
+//            reqDoc.setBillingName("THE UNIVERSITY");
+//            reqDoc.setBillingLine1Address("ACCOUNTS PAYABLE");
+//            reqDoc.setBillingCityName("BUTTER NUT");
+//            reqDoc.setBillingStateCode("SC");
+//            reqDoc.setBillingPostalCode("47402");
+//            reqDoc.setBillingCountryCode("US");
+//            reqDoc.setBillingPhoneNumber("111-111-1111");
+//            reqDoc.setPurchaseOrderAutomaticIndicator(false);
+//            reqDoc.setApplicationDocumentStatus(RequisitionStatuses.APPDOC_IN_PROCESS);
+//            reqDoc.setVendorHeaderGeneratedIdentifier(1002);
+//            reqDoc.setVendorDetailAssignedIdentifier(0);
+//            reqDoc.setVendorName("MK CORPORATION ACTIVE");
+//            reqDoc.setVendorLine1Address("3984 SOUTH ST");
+//            reqDoc.setVendorCityName("SPRINGFIELD");
+//            reqDoc.setVendorStateCode("IL");
+//            reqDoc.setVendorPostalCode("33555");
+//            reqDoc.setVendorCountryCode("US");
+//            reqDoc.setUseTaxIndicator(false);
+//
+//            // set item attributes
+//            RequisitionItem item1 = new RequisitionItem();
+//            item1.setItemLineNumber(new Integer(1));
+//            item1.setItemUnitOfMeasureCode("EA");
+//            item1.setItemCatalogNumber("");
+//            item1.setItemDescription("Gas Chromatograph");
+//            item1.setItemUnitPrice(new BigDecimal(6000));
+//            item1.setItemTypeCode("ITEM");
+//            item1.setItemQuantity(new KualiDecimal(1.00));
+//            item1.setExtendedPrice(new KualiDecimal(6000));
+//            item1.setItemAssignedToTradeInIndicator(false);
+//
+//            // set accounting line attributes
+//            RequisitionAccount account1 = new RequisitionAccount();
+//            account1.setPostingYear(2004);
+//            account1.setChartOfAccountsCode("BL");
+//            account1.setAccountNumber("1023200");
+//            account1.setFinancialObjectCode("7000");
+//            account1.setDebitCreditCode(KFSConstants.GL_DEBIT_CODE);
+//            account1.setAmount(new KualiDecimal("10000"));
+//            account1.setAccountLinePercent(new BigDecimal("100"));
+//
+//            item1.getSourceAccountingLines().add(account1);
+//            reqDoc.getItems().add(item1);
+//            reqDoc.fixItemReferences();
+//
+//            reqDoc.setCapitalAssetSystemStateCode("NEW");
+//            reqDoc.setCapitalAssetSystemTypeCode("IND");
+//
+//            // Save here because auto-generated IDs will be needed later.
+//            purapService.saveDocumentNoValidation(reqDoc);
+//            List<PurchasingCapitalAssetItem> purchasingCapitalAssetItems = new ArrayList();
+//            RequisitionCapitalAssetItem capitalAssetItem = (RequisitionCapitalAssetItem) requisitionService.createCamsItem(reqDoc, item1);
+//            capitalAssetItem.setCapitalAssetTransactionTypeCode("NEW");
+//
+//            RequisitionCapitalAssetSystem system = (RequisitionCapitalAssetSystem) capitalAssetItem.getPurchasingCapitalAssetSystem();
+//            system.setCapitalAssetNoteText("");
+//            system.setCapitalAssetNotReceivedCurrentFiscalYearIndicator(false);
+//            system.setCapitalAssetManufacturerName("");
+//            system.setCapitalAssetTypeCode("");
+//            system.setCapitalAssetModelDescription("");
+//
+//            purchasingCapitalAssetItems.add(capitalAssetItem);
+//            reqDoc.setPurchasingCapitalAssetItems(purchasingCapitalAssetItems);
+//        }
+//        catch (WorkflowException e1) {
+//            e1.printStackTrace();
+//        }
+//        return reqDoc;
+//    }
 
     /**
      * Sets a Run parameter that tells the step that it has already run and it does not need to run again.
@@ -610,81 +610,81 @@ public class PurapMassRequisitionStep extends AbstractStep implements TestingSte
      * 
      * @return A Map<String,Object> where the Objects are the attributes of the Run parameter
      */
-    private Map<String, Object> buildRunParameterSearchKeyMap() {
-        Map<String, Object> pkMapForParameter = new HashMap<String, Object>();
+//    private Map<String, Object> buildRunParameterSearchKeyMap() {
+//        Map<String, Object> pkMapForParameter = new HashMap<String, Object>();
+//
+//        // Set up a list of all the field names and values of the fields in the Parameter object.
+//        Map<String, Object> fieldNamesValuesForParameter = new HashMap<String, Object>();
+//        fieldNamesValuesForParameter.put("parameterNamespaceCode", PurapConstants.PURAP_NAMESPACE);
+//        fieldNamesValuesForParameter.put("parameterDetailTypeCode", RUN_INDICATOR_PARAMETER_NAMESPACE_STEP);
+//        fieldNamesValuesForParameter.put("parameterName", Job.STEP_RUN_PARM_NM);
+//        fieldNamesValuesForParameter.put("parameterConstraintCode", RUN_INDICATOR_PARAMETER_ALLOWED);
+//        fieldNamesValuesForParameter.put("parameterTypeCode", RUN_INDICATOR_PARAMETER_TYPE);
+//
+//        // get the primary keys and assign them to values
+//        List<String> parameterPKFields = psService.getPrimaryKeys(Parameter.class);
+//        for (String pkFieldName : parameterPKFields) {
+//            pkMapForParameter.put(pkFieldName, fieldNamesValuesForParameter.get(pkFieldName));
+//        }
+//        return pkMapForParameter;
+//    }
 
-        // Set up a list of all the field names and values of the fields in the Parameter object.
-        Map<String, Object> fieldNamesValuesForParameter = new HashMap<String, Object>();
-        fieldNamesValuesForParameter.put("parameterNamespaceCode", PurapConstants.PURAP_NAMESPACE);
-        fieldNamesValuesForParameter.put("parameterDetailTypeCode", RUN_INDICATOR_PARAMETER_NAMESPACE_STEP);
-        fieldNamesValuesForParameter.put("parameterName", Job.STEP_RUN_PARM_NM);
-        fieldNamesValuesForParameter.put("parameterConstraintCode", RUN_INDICATOR_PARAMETER_ALLOWED);
-        fieldNamesValuesForParameter.put("parameterTypeCode", RUN_INDICATOR_PARAMETER_TYPE);
+//    private ContractManagerAssignmentDocument createAndRouteContractManagerAssignmentDocument(RequisitionDocument reqDoc) {
+//        ContractManagerAssignmentDocument acmDoc = null;
+//        try {
+//            acmDoc = (ContractManagerAssignmentDocument) documentService.getNewDocument(ContractManagerAssignmentDocument.class);
+//            List<ContractManagerAssignmentDetail> contractManagerAssignmentDetails = new ArrayList<ContractManagerAssignmentDetail>();
+//            ContractManagerAssignmentDetail detail = new ContractManagerAssignmentDetail(acmDoc, reqDoc);
+//            detail.setContractManagerCode(new Integer("10"));
+//            detail.refreshReferenceObject("contractManager");
+//            contractManagerAssignmentDetails.add(detail);
+//            acmDoc.setContractManagerAssignmentDetailss(contractManagerAssignmentDetails);
+//            acmDoc.getDocumentHeader().setDocumentDescription("batch-created");
+//            documentService.routeDocument(acmDoc, "Routing batch-created Contract Manager Assignment Document", null);
+//            ChangeWaiter waiter = new ChangeWaiter(documentService, acmDoc.getDocumentNumber(), "F");
+//            try {
+//                waiter.waitUntilChange(waiter, ROUTE_TO_FINAL_SECONDS_LIMIT, 5);
+//            }
+//            catch (Exception e) {
+//                throw new RuntimeException("ContractManagerAssignmentDocument timed out in routing to final.");
+//            }
+//        }
+//        catch (WorkflowException we) {
+//            we.printStackTrace();
+//        }
+//        catch (ValidationException ve) {
+//            ve.printStackTrace();
+//        }
+//        return acmDoc;
+//    }
 
-        // get the primary keys and assign them to values
-        List<String> parameterPKFields = psService.getPrimaryKeys(Parameter.class);
-        for (String pkFieldName : parameterPKFields) {
-            pkMapForParameter.put(pkFieldName, fieldNamesValuesForParameter.get(pkFieldName));
-        }
-        return pkMapForParameter;
-    }
-
-    private ContractManagerAssignmentDocument createAndRouteContractManagerAssignmentDocument(RequisitionDocument reqDoc) {
-        ContractManagerAssignmentDocument acmDoc = null;
-        try {
-            acmDoc = (ContractManagerAssignmentDocument) documentService.getNewDocument(ContractManagerAssignmentDocument.class);
-            List<ContractManagerAssignmentDetail> contractManagerAssignmentDetails = new ArrayList<ContractManagerAssignmentDetail>();
-            ContractManagerAssignmentDetail detail = new ContractManagerAssignmentDetail(acmDoc, reqDoc);
-            detail.setContractManagerCode(new Integer("10"));
-            detail.refreshReferenceObject("contractManager");
-            contractManagerAssignmentDetails.add(detail);
-            acmDoc.setContractManagerAssignmentDetailss(contractManagerAssignmentDetails);
-            acmDoc.getDocumentHeader().setDocumentDescription("batch-created");
-            documentService.routeDocument(acmDoc, "Routing batch-created Contract Manager Assignment Document", null);
-            ChangeWaiter waiter = new ChangeWaiter(documentService, acmDoc.getDocumentNumber(), "F");
-            try {
-                waiter.waitUntilChange(waiter, ROUTE_TO_FINAL_SECONDS_LIMIT, 5);
-            }
-            catch (Exception e) {
-                throw new RuntimeException("ContractManagerAssignmentDocument timed out in routing to final.");
-            }
-        }
-        catch (WorkflowException we) {
-            we.printStackTrace();
-        }
-        catch (ValidationException ve) {
-            ve.printStackTrace();
-        }
-        return acmDoc;
-    }
-
-    private void createAndRoutePurchaseOrderDocument(RequisitionDocument reqDoc, ContractManagerAssignmentDocument acmDoc) {
-
-        List<PurchaseOrderView> poViews = reqDoc.getRelatedViews().getRelatedPurchaseOrderViews();
-        if ((poViews != null) && (poViews.size() >= 1)) {
-            // There should be only one related PO at this point, so get that one and route it.
-            PurchaseOrderView poView = poViews.get(0);
-            String relatedPOWorkflowDocumentId = poView.getDocumentNumber();
-            PurchaseOrderDocument poDoc = null;
-            try {
-                poDoc = (PurchaseOrderDocument) documentService.getByDocumentHeaderId(relatedPOWorkflowDocumentId);
-                documentService.blanketApproveDocument(poDoc, "auto-routing: Test Requisition Job", null);
-                ChangeWaiter waiter = new ChangeWaiter(documentService, poDoc.getDocumentNumber(), "F");
-                try {
-                    waiter.waitUntilChange(waiter, ROUTE_TO_FINAL_SECONDS_LIMIT, 5);
-                }
-                catch (Exception e) {
-                    throw new RuntimeException("ContractManagerAssignmentDocument timed out in routing to final.");
-                }
-            }
-            catch (WorkflowException e) {
-                e.printStackTrace();
-            }
-            catch (ValidationException ve) {
-                ve.printStackTrace();
-            }
-        }
-    }
+//    private void createAndRoutePurchaseOrderDocument(RequisitionDocument reqDoc, ContractManagerAssignmentDocument acmDoc) {
+//
+//        List<PurchaseOrderView> poViews = reqDoc.getRelatedViews().getRelatedPurchaseOrderViews();
+//        if ((poViews != null) && (poViews.size() >= 1)) {
+//            // There should be only one related PO at this point, so get that one and route it.
+//            PurchaseOrderView poView = poViews.get(0);
+//            String relatedPOWorkflowDocumentId = poView.getDocumentNumber();
+//            PurchaseOrderDocument poDoc = null;
+//            try {
+//                poDoc = (PurchaseOrderDocument) documentService.getByDocumentHeaderId(relatedPOWorkflowDocumentId);
+//                documentService.blanketApproveDocument(poDoc, "auto-routing: Test Requisition Job", null);
+//                ChangeWaiter waiter = new ChangeWaiter(documentService, poDoc.getDocumentNumber(), "F");
+//                try {
+//                    waiter.waitUntilChange(waiter, ROUTE_TO_FINAL_SECONDS_LIMIT, 5);
+//                }
+//                catch (Exception e) {
+//                    throw new RuntimeException("ContractManagerAssignmentDocument timed out in routing to final.");
+//                }
+//            }
+//            catch (WorkflowException e) {
+//                e.printStackTrace();
+//            }
+//            catch (ValidationException ve) {
+//                ve.printStackTrace();
+//            }
+//        }
+//    }
 
     public DocumentService getDocumentService() {
         return documentService;

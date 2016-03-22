@@ -148,18 +148,18 @@ public class PurapAccountingLineAuthorizer extends AccountingLineAuthorizerBase 
      * @param accountingDocument
      * @return
      */
-    private FinancialSystemTransactionalDocumentPresentationController getPresentationController(AccountingDocument accountingDocument) {
-        final Class<? extends DocumentPresentationController> presentationControllerClass = ((TransactionalDocumentEntry) SpringContext.getBean(DataDictionaryService.class).getDataDictionary().getDictionaryObjectEntry(accountingDocument.getClass().getName())).getDocumentPresentationControllerClass();
-        FinancialSystemTransactionalDocumentPresentationController presentationController = null;
-        try {
-            presentationController = (FinancialSystemTransactionalDocumentPresentationController) presentationControllerClass.newInstance();
-        } catch (InstantiationException ie) {
-            throw new RuntimeException("Cannot instantiate instance of presentation controller for " + accountingDocument.getClass().getName(), ie);
-        } catch (IllegalAccessException iae) {
-            throw new RuntimeException("Cannot instantiate instance of presentation controller for " + accountingDocument.getClass().getName(), iae);
-        }
-        return presentationController;
-    }
+//    private FinancialSystemTransactionalDocumentPresentationController getPresentationController(AccountingDocument accountingDocument) {
+//        final Class<? extends DocumentPresentationController> presentationControllerClass = ((TransactionalDocumentEntry) SpringContext.getBean(DataDictionaryService.class).getDataDictionary().getDictionaryObjectEntry(accountingDocument.getClass().getName())).getDocumentPresentationControllerClass();
+//        FinancialSystemTransactionalDocumentPresentationController presentationController = null;
+//        try {
+//            presentationController = (FinancialSystemTransactionalDocumentPresentationController) presentationControllerClass.newInstance();
+//        } catch (InstantiationException ie) {
+//            throw new RuntimeException("Cannot instantiate instance of presentation controller for " + accountingDocument.getClass().getName(), ie);
+//        } catch (IllegalAccessException iae) {
+//            throw new RuntimeException("Cannot instantiate instance of presentation controller for " + accountingDocument.getClass().getName(), iae);
+//        }
+//        return presentationController;
+//    }
 
     /**
      *

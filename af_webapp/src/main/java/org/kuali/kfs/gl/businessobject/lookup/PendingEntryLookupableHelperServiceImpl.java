@@ -204,17 +204,17 @@ public class PendingEntryLookupableHelperServiceImpl extends AbstractGeneralLedg
      * @param periodCode the current period code
      * @return the collection of search results with updated period codes
      */
-    private Collection buildSearchResults(Iterator iterator, String periodCode) {
-        Collection collection = new ArrayList();
-
-        while (iterator.hasNext()) {
-            GeneralLedgerPendingEntry pendingEntry = (GeneralLedgerPendingEntry) iterator.next();
-            pendingEntry.setUniversityFiscalPeriodCode(periodCode);
-            collection.add(pendingEntry);
-        }
-
-        return new CollectionIncomplete(collection, new Long(collection.size()));
-    }
+//    private Collection buildSearchResults(Iterator iterator, String periodCode) {
+//        Collection collection = new ArrayList();
+//
+//        while (iterator.hasNext()) {
+//            GeneralLedgerPendingEntry pendingEntry = (GeneralLedgerPendingEntry) iterator.next();
+//            pendingEntry.setUniversityFiscalPeriodCode(periodCode);
+//            collection.add(pendingEntry);
+//        }
+//
+//        return new CollectionIncomplete(collection, new Long(collection.size()));
+//    }
     
     
     @Override

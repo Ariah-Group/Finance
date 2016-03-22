@@ -154,28 +154,28 @@ public class OrganizationReversionGlobalOrganization extends GlobalBusinessObjec
      * representation
      * @return a part of a locking representation
      */
-    private String convertKeyToLockingRepresentation(String keyName) {
-        StringBuffer sb = new StringBuffer();
-        sb.append(keyName);
-        sb.append(KFSConstants.Maintenance.AFTER_FIELDNAME_DELIM);
-        String keyValue = "";
-        try {
-            Object keyValueObj = PropertyUtils.getProperty(this, keyName);
-            if (keyValueObj != null) {
-                keyValue = keyValueObj.toString();
-            }
-        } catch (IllegalAccessException iae) {
-            LOG.info("Illegal access exception while attempting to read property " + keyName, iae);
-        } catch (InvocationTargetException ite) {
-            LOG.info("Illegal Target Exception while attempting to read property " + keyName, ite);
-        } catch (NoSuchMethodException nsme) {
-            LOG.info("There is no such method to read property " + keyName + " in this class.", nsme);
-        } finally {
-            sb.append(keyValue);
-        }
-        sb.append(KFSConstants.Maintenance.AFTER_VALUE_DELIM);
-        return sb.toString();
-    }
+//    private String convertKeyToLockingRepresentation(String keyName) {
+//        StringBuffer sb = new StringBuffer();
+//        sb.append(keyName);
+//        sb.append(KFSConstants.Maintenance.AFTER_FIELDNAME_DELIM);
+//        String keyValue = "";
+//        try {
+//            Object keyValueObj = PropertyUtils.getProperty(this, keyName);
+//            if (keyValueObj != null) {
+//                keyValue = keyValueObj.toString();
+//            }
+//        } catch (IllegalAccessException iae) {
+//            LOG.info("Illegal access exception while attempting to read property " + keyName, iae);
+//        } catch (InvocationTargetException ite) {
+//            LOG.info("Illegal Target Exception while attempting to read property " + keyName, ite);
+//        } catch (NoSuchMethodException nsme) {
+//            LOG.info("There is no such method to read property " + keyName + " in this class.", nsme);
+//        } finally {
+//            sb.append(keyValue);
+//        }
+//        sb.append(KFSConstants.Maintenance.AFTER_VALUE_DELIM);
+//        return sb.toString();
+//    }
 
     /**
      * @see java.lang.Object#hashCode()

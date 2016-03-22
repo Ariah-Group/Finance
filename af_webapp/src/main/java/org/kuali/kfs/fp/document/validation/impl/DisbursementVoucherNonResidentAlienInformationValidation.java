@@ -351,12 +351,12 @@ public class DisbursementVoucherNonResidentAlienInformationValidation extends Ge
         return isValid;
     }
 
-    private boolean stateAndFederalTaxesNotNull(DisbursementVoucherDocument document) {
-        if( (document.getDvNonResidentAlienTax().getFederalIncomeTaxPercent() != null) && (document.getDvNonResidentAlienTax().getStateIncomeTaxPercent() != null) ) {
-            return true;
-        }
-        return false;
-    }
+//    private boolean stateAndFederalTaxesNotNull(DisbursementVoucherDocument document) {
+//        if( (document.getDvNonResidentAlienTax().getFederalIncomeTaxPercent() != null) && (document.getDvNonResidentAlienTax().getStateIncomeTaxPercent() != null) ) {
+//            return true;
+//        }
+//        return false;
+//    }
 
 
 

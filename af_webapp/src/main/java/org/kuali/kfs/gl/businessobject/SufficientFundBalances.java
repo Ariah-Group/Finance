@@ -196,15 +196,15 @@ public class SufficientFundBalances extends PersistableBusinessObjectBase {
      * @param date
      * @return
      */
-    private String formatDate(Date date) {
-        if (date == null) {
-            return "          ";
-        }
-        else {
-            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_STRING);
-            return sdf.format(date);
-        }
-    }
+//    private String formatDate(Date date) {
+//        if (date == null) {
+//            return "          ";
+//        }
+//        else {
+//            SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_STRING);
+//            return sdf.format(date);
+//        }
+//    }
 
     /**
      * Gets the universityFiscalYear attribute.

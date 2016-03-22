@@ -434,23 +434,23 @@ public class CashieringTransaction extends TransientBusinessObjectBase {
      * @param checks
      * @return Map containing Checks from the given List, indexed by their sequenceId
      */
-    private Map buildCheckMap(List checks) {
-        Map checkMap = new HashMap();
-
-        for (Iterator i = checks.iterator(); i.hasNext();) {
-            Check check = (Check) i.next();
-            Integer sequenceId = check.getSequenceId();
-
-            Object oldCheck = checkMap.put(sequenceId, check);
-
-            // verify that sequence numbers are unique...
-            if (oldCheck != null) {
-                throw new IllegalStateException("sequence id collision detected for sequence id " + sequenceId);
-            }
-        }
-
-        return checkMap;
-    }
+//    private Map buildCheckMap(List checks) {
+//        Map checkMap = new HashMap();
+//
+//        for (Iterator i = checks.iterator(); i.hasNext();) {
+//            Check check = (Check) i.next();
+//            Integer sequenceId = check.getSequenceId();
+//
+//            Object oldCheck = checkMap.put(sequenceId, check);
+//
+//            // verify that sequence numbers are unique...
+//            if (oldCheck != null) {
+//                throw new IllegalStateException("sequence id collision detected for sequence id " + sequenceId);
+//            }
+//        }
+//
+//        return checkMap;
+//    }
 
     /**
      * This method removes a check from the list and updates the total appropriately.
