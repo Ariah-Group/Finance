@@ -743,7 +743,7 @@ public class PurapMassRequisitionStep extends AbstractStep implements TestingSte
         }
 
         public boolean valueChanged() throws Exception {
-            Document d = documentService.getByDocumentHeaderId(docHeaderId.toString());
+            Document d = documentService.getByDocumentHeaderId(docHeaderId);
 
             String currentStatus = d.getDocumentHeader().getWorkflowDocument().getStatus().getCode();
 

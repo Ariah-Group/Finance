@@ -601,7 +601,7 @@ public class CustomerInvoiceDocumentBatchStep extends AbstractStep implements Te
         }
 
         public boolean valueChanged() throws Exception {
-            Document d = documentService.getByDocumentHeaderId(docHeaderId.toString());
+            Document d = documentService.getByDocumentHeaderId(docHeaderId);
 
             String currentStatus = d.getDocumentHeader().getWorkflowDocument().getStatus().getCode();
 

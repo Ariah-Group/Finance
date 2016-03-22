@@ -459,7 +459,7 @@ public class CreateRecurringCashTransferTransactionsServiceImpl implements Creat
         }
         else {
             // report to error
-            writeExceptionReportLine(EndowConstants.DocumentTypeNames.ENDOWMENT_CASH_TRANSFER, sourceKemid, endowmentRecurringCashTransferKEMIDTarget.getTransferNumber(), endowmentRecurringCashTransferKEMIDTarget.getTargetSequenceNumber().toString());
+            writeExceptionReportLine(EndowConstants.DocumentTypeNames.ENDOWMENT_CASH_TRANSFER, sourceKemid, endowmentRecurringCashTransferKEMIDTarget.getTransferNumber(), endowmentRecurringCashTransferKEMIDTarget.getTargetSequenceNumber());
             String documentTypeName = dataDictionaryService.getDocumentTypeNameByClass(cashTransferDoc.getClass());
             updateErrorStats(documentTypeName);
         }
@@ -485,7 +485,7 @@ public class CreateRecurringCashTransferTransactionsServiceImpl implements Creat
         }
         else {
             // report to error
-            writeExceptionReportLine(EndowConstants.ENDOWMENT_GENERAL_LEDGER_CASH_TRANSFER_TRANSACTION_TYPE, sourceKemid, endowmentRecurringCashTransferGLTarget.getTransferNumber(), endowmentRecurringCashTransferGLTarget.getTargetSequenceNumber().toString());
+            writeExceptionReportLine(EndowConstants.ENDOWMENT_GENERAL_LEDGER_CASH_TRANSFER_TRANSACTION_TYPE, sourceKemid, endowmentRecurringCashTransferGLTarget.getTransferNumber(), endowmentRecurringCashTransferGLTarget.getTargetSequenceNumber());
             String documentTypeName = dataDictionaryService.getDocumentTypeNameByClass(endowmentToGLTransferOfFundsDocument.getClass());
             updateErrorStats(documentTypeName);
 

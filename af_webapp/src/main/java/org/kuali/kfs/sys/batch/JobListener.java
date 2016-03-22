@@ -111,7 +111,7 @@ public class JobListener implements org.quartz.JobListener {
     }
 
     protected String getLogFileName(String nestedDiagnosticContext) {
-        return new StringBuilder(configurationService.getPropertyValueAsString(KFSConstants.REPORTS_DIRECTORY_KEY)).append(File.separator).append(nestedDiagnosticContext.toString()).append(".log").toString();
+        return new StringBuilder(configurationService.getPropertyValueAsString(KFSConstants.REPORTS_DIRECTORY_KEY)).append(File.separator).append(nestedDiagnosticContext).append(".log").toString();
     }
 
     protected void notify(JobExecutionContext jobExecutionContext, String jobStatus) {

@@ -210,7 +210,7 @@ public class CashReceiptCoverSheetServiceImpl implements CashReceiptCoverSheetSe
      * @param check The check the check number will be retrieved from.
      */
     protected void writeCheckNumber(PdfContentByte output, Check check) {
-        writeCheckField(output, CHECK_NUMBER_FIELD_POSITION, check.getCheckNumber().toString());
+        writeCheckField(output, CHECK_NUMBER_FIELD_POSITION, check.getCheckNumber());
     }
 
     /**

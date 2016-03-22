@@ -113,7 +113,7 @@ public class DropDownRenderer extends FieldRendererBase {
         option.append("<option value=\"");
         option.append(keyLabelPair.getKey());
         option.append("\"");
-        if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey().toString())) {
+        if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey())) {
             option.append(" selected=\"selected\"");
         }
         option.append(">");

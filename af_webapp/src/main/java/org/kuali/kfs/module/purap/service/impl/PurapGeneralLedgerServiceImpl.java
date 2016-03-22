@@ -1605,7 +1605,7 @@ public class PurapGeneralLedgerServiceImpl implements PurapGeneralLedgerService 
      */
     protected String entryDescription(String description) {
         if (description != null && description.length() > 40) {
-            return description.toString().substring(0, 39);
+            return description.substring(0, 39);
         }
         else {
             return description;

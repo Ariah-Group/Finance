@@ -148,7 +148,7 @@ public class KfsBusinessObjectMetaDataServiceImpl implements KfsBusinessObjectMe
 
         List<BusinessObjectProperty> matchingBusinessObjectProperties = new ArrayList<BusinessObjectProperty>();
         for (BusinessObjectComponent businessObjectComponent : businessObjectComponents) {
-            for (AttributeDefinition attributeDefinition : dataDictionaryService.getDataDictionary().getBusinessObjectEntry(businessObjectComponent.getComponentClass().toString()).getAttributes()) {
+            for (AttributeDefinition attributeDefinition : dataDictionaryService.getDataDictionary().getBusinessObjectEntry(businessObjectComponent.getComponentClass()).getAttributes()) {
                 if (!attributeDefinition.getName().endsWith(KFSPropertyConstants.VERSION_NUMBER) && !attributeDefinition.getName().endsWith(KFSPropertyConstants.OBJECT_ID) && ((propertyLabelRegex == null) || propertyLabelRegex.matcher(attributeDefinition.getLabel().toUpperCase()).matches())) {
                     matchingBusinessObjectProperties.add(new BusinessObjectProperty(businessObjectComponent, attributeDefinition));
                 }

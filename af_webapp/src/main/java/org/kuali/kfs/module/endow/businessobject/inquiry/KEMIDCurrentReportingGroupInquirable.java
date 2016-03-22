@@ -68,7 +68,7 @@ public class KEMIDCurrentReportingGroupInquirable extends KfsInquirableImpl {
             String url = UrlFactory.parameterizeUrl(KRADConstants.LOOKUP_ACTION, params);
 
             Map<String, String> fieldList = new HashMap<String, String>();
-            fieldList.put(EndowPropertyConstants.KEMID, currentReportingGroup.getKemid().toString());
+            fieldList.put(EndowPropertyConstants.KEMID, currentReportingGroup.getKemid());
             fieldList.put(EndowPropertyConstants.CURRENT_BAL_PURPOSE_CD, currentReportingGroup.getKemidObj().getPurposeCode());
             fieldList.put(EndowPropertyConstants.CURRENT_TAX_LOT_REP_GRP, currentReportingGroup.getReportingGroupCode());
             fieldList.put(EndowPropertyConstants.CURRENT_TAX_LOT_IP_IND, currentReportingGroup.getIpIndicator());

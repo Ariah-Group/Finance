@@ -90,7 +90,7 @@ public class LedgerBalanceLookupableHelperServiceImpl extends BalanceLookupableH
             wildCards += op.op();
         }
 
-        if (wildCards.indexOf(fieldValues.get(KFSPropertyConstants.EMPLID).toString().trim()) != -1) {
+        if (wildCards.indexOf(fieldValues.get(KFSPropertyConstants.EMPLID).trim()) != -1) {
             // StringUtils.indexOfAny(fieldValues.get(KFSPropertyConstants.EMPLID).toString().trim(), KFSConstants.QUERY_CHARACTERS)
             // != 0) {
             List emptySearchResults = new ArrayList();
@@ -113,7 +113,7 @@ public class LedgerBalanceLookupableHelperServiceImpl extends BalanceLookupableH
         boolean isAccumulated = amountViewOption.equals(Constant.ACCUMULATE);
         
         // get the input balance type code
-        String balanceTypeCode = fieldValues.get(KFSPropertyConstants.FINANCIAL_BALANCE_TYPE_CODE).toString();
+        String balanceTypeCode = fieldValues.get(KFSPropertyConstants.FINANCIAL_BALANCE_TYPE_CODE);
         boolean isA21Balance = StringUtils.isNotEmpty(balanceTypeCode) && BALANCE_TYPE_AC_AND_A21.equals(balanceTypeCode.trim());
 
         // get the ledger balances with actual balance type code

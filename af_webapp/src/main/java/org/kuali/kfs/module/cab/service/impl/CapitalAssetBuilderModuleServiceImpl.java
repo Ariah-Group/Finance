@@ -1623,7 +1623,7 @@ public class CapitalAssetBuilderModuleServiceImpl implements CapitalAssetBuilder
     protected boolean validateNewCapitalAssetFields(CapitalAssetInformation capitalAssetInformation, int index, AccountingDocument accountingDocument) {
         boolean valid = true;
 
-        if (!isAssetTypeExisting(capitalAssetInformation.getCapitalAssetTypeCode().toString())) {
+        if (!isAssetTypeExisting(capitalAssetInformation.getCapitalAssetTypeCode())) {
             valid = false;
             String label = this.getDataDictionaryService().getAttributeLabel(CapitalAssetInformation.class, KFSPropertyConstants.CAPITAL_ASSET_TYPE_CODE);
             GlobalVariables.getMessageMap().putError(KFSPropertyConstants.CAPITAL_ASSET_TYPE_CODE, KFSKeyConstants.ERROR_EXISTENCE, label);
@@ -1986,7 +1986,7 @@ public class CapitalAssetBuilderModuleServiceImpl implements CapitalAssetBuilder
         }
         else {
             for (CapitalAssetInformationDetail capitalAssetInfoDetl : capitalAssetInformationDetails) {
-                if (capitalAssetInfoDetl.getCapitalAssetTagNumber().equalsIgnoreCase(dtl.getCapitalAssetTagNumber().toString())) {
+                if (capitalAssetInfoDetl.getCapitalAssetTagNumber().equalsIgnoreCase(dtl.getCapitalAssetTagNumber())) {
                     tagCounter++;
                 }
             }

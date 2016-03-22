@@ -180,8 +180,8 @@ public class EndowmentAccountingLineParserBase implements EndowmentAccountingLin
                     }
                 }
                 catch (FormatException e) {
-                    String[] errorParameters = { entry.getValue().toString(), retrieveAttributeLabel(accountingLine.getClass(), entry.getKey()), accountingLineAsString };
-                    GlobalVariables.getMessageMap().putError(EndowConstants.ACCOUNTING_LINE_ERRORS, ERROR_INVALID_PROPERTY_VALUE, entry.getValue().toString(), entry.getKey(), accountingLineAsString + "  : Line Number " + lineNo.toString());
+                    String[] errorParameters = { entry.getValue(), retrieveAttributeLabel(accountingLine.getClass(), entry.getKey()), accountingLineAsString };
+                    GlobalVariables.getMessageMap().putError(EndowConstants.ACCOUNTING_LINE_ERRORS, ERROR_INVALID_PROPERTY_VALUE, entry.getValue(), entry.getKey(), accountingLineAsString + "  : Line Number " + lineNo.toString());
                     throw new AccountingLineParserException("invalid '" + entry.getKey() + "=" + entry.getValue() + " for " + accountingLineAsString, ERROR_INVALID_PROPERTY_VALUE, errorParameters);
                 }
             }

@@ -169,7 +169,7 @@ public class ReadOnlyRenderer extends FieldRendererBase {
     protected String getValueForDropDown() {
         for (Object keyLabelPairAsObject : getField().getFieldValidValues()) {
             final KeyValue keyLabelPair = (KeyValue)keyLabelPairAsObject;
-            if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey().toString())) {
+            if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey())) {
                 return keyLabelPair.getValue();
             }
         }

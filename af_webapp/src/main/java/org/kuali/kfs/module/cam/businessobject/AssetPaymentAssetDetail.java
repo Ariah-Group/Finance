@@ -76,7 +76,7 @@ public class AssetPaymentAssetDetail extends PersistableBusinessObjectBase {
     protected LinkedHashMap toStringMapper_RICE20_REFACTORME() {
         LinkedHashMap<String, String> m = new LinkedHashMap<String, String>();
         if (this.documentNumber != null) {
-            m.put("documentNumber", this.documentNumber.toString());
+            m.put("documentNumber", this.documentNumber);
         }
         if (this.capitalAssetNumber != null) {
             m.put("capitalAssetNumber", this.capitalAssetNumber.toString());

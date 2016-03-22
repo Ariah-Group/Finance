@@ -60,7 +60,7 @@ public class KEMIDHistoricalBalanceInquirable extends KfsInquirableImpl {
             String url = UrlFactory.parameterizeUrl(KRADConstants.LOOKUP_ACTION, params);
 
             Map<String, String> fieldList = new HashMap<String, String>();
-            fieldList.put(EndowPropertyConstants.KEMID_HIST_BAL_DET_KEMID, historicalBalance.getKemid().toString());
+            fieldList.put(EndowPropertyConstants.KEMID_HIST_BAL_DET_KEMID, historicalBalance.getKemid());
             fieldList.put(EndowPropertyConstants.KEMID_HIST_BAL_DET_PURPOSE_CODE, historicalBalance.getKemidObj().getPurposeCode());
             fieldList.put(EndowPropertyConstants.KEMID_HIST_BAL_DET_DATE_ID, String.valueOf(historicalBalance.getHistoryBalanceDateId()));
             fieldList.put(EndowPropertyConstants.KEMID_HIST_BAL_DET_KEMID_CLOSED_INDICATOR, historicalBalance.getKemidObj().isClose() ? "Yes" : "No");

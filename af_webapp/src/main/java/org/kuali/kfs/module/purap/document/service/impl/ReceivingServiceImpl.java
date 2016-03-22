@@ -860,7 +860,7 @@ public class ReceivingServiceImpl implements ReceivingService {
                     //if latest create date is null or the latest is before the current, current is newer
                     if( ObjectUtils.isNull(latestCreateDate) || latestCreateDate.isBefore(workflowDocument.getDateCreated()) ){
                         latestCreateDate = workflowDocument.getDateCreated();
-                        latestDocumentNumber = workflowDocument.getDocumentId().toString();
+                        latestDocumentNumber = workflowDocument.getDocumentId();
                     }
                 }catch(WorkflowException we){
                     throw new RuntimeException(we);

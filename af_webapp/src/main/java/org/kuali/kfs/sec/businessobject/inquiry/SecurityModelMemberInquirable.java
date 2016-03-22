@@ -59,17 +59,17 @@ public class SecurityModelMemberInquirable extends KfsInquirableImpl {
                 if (MemberType.ROLE.getCode().equals(memberTypeCode)) {
                     parameters.put(KRADConstants.BUSINESS_OBJECT_CLASS_ATTRIBUTE, RoleEbo.class.getName());
                     parameters.put(KimConstants.PrimaryKeyConstants.ROLE_ID, memberId);
-                    fieldList.put(KimConstants.PrimaryKeyConstants.ROLE_ID, memberId.toString());
+                    fieldList.put(KimConstants.PrimaryKeyConstants.ROLE_ID, memberId);
                 }
                 else if (MemberType.GROUP.getCode().equals(memberTypeCode)) {
                     parameters.put(KRADConstants.BUSINESS_OBJECT_CLASS_ATTRIBUTE, GroupEbo.class.getName());
                     parameters.put(KimConstants.PrimaryKeyConstants.GROUP_ID, memberId);
-                    fieldList.put(KimConstants.PrimaryKeyConstants.GROUP_ID, memberId.toString());
+                    fieldList.put(KimConstants.PrimaryKeyConstants.GROUP_ID, memberId);
                 }
                 else {
                     parameters.put(KRADConstants.BUSINESS_OBJECT_CLASS_ATTRIBUTE, Person.class.getName());
                     parameters.put(KimConstants.PrimaryKeyConstants.PRINCIPAL_ID, memberId);
-                    fieldList.put(KimConstants.PrimaryKeyConstants.PRINCIPAL_ID, memberId.toString());
+                    fieldList.put(KimConstants.PrimaryKeyConstants.PRINCIPAL_ID, memberId);
                 }
 
                 return getHyperLink(SecurityModelDefinition.class, fieldList, UrlFactory.parameterizeUrl(KRADConstants.INQUIRY_ACTION, parameters));

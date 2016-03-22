@@ -304,12 +304,12 @@ public class AssetGlobalMaintainableImpl extends LedgerPostingMaintainable {
     private void setSeparateSourceCapitalAssetParameters(AssetGlobal assetGlobal, Map<String, String[]> parameters) {
         String[] separateSourceCapitalAssetNumber = parameters.get(CamsPropertyConstants.AssetGlobal.SEPARATE_SOURCE_CAPITAL_ASSET_NUMBER);
         if (separateSourceCapitalAssetNumber != null) {
-            assetGlobal.setSeparateSourceCapitalAssetNumber(Long.parseLong(separateSourceCapitalAssetNumber[0].toString()));
+            assetGlobal.setSeparateSourceCapitalAssetNumber(Long.parseLong(separateSourceCapitalAssetNumber[0]));
         }
 
         String[] separateSourcePaymentSequenceNumber = parameters.get(CamsPropertyConstants.AssetGlobal.SEPERATE_SOURCE_PAYMENT_SEQUENCE_NUMBER);
         if (separateSourcePaymentSequenceNumber != null) {
-            assetGlobal.setSeparateSourcePaymentSequenceNumber(Integer.parseInt(separateSourcePaymentSequenceNumber[0].toString()));
+            assetGlobal.setSeparateSourcePaymentSequenceNumber(Integer.parseInt(separateSourcePaymentSequenceNumber[0]));
         }
     }
 
@@ -323,7 +323,7 @@ public class AssetGlobalMaintainableImpl extends LedgerPostingMaintainable {
     private void setFinancialDocumentTypeCode(AssetGlobal assetGlobal, Map<String, String[]> parameters) {
         String[] financialDocumentTypeCode = parameters.get(KFSPropertyConstants.FINANCIAL_DOCUMENT_TYPE_CODE);
         if (financialDocumentTypeCode != null) {
-            assetGlobal.setFinancialDocumentTypeCode(financialDocumentTypeCode[0].toString());
+            assetGlobal.setFinancialDocumentTypeCode(financialDocumentTypeCode[0]);
         }
     }
 

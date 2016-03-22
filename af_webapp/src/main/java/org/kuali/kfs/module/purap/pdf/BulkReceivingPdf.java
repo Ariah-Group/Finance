@@ -117,7 +117,7 @@ public class BulkReceivingPdf extends PurapPdf {
          */
         Paragraph p = new Paragraph();
         p.add(new Chunk("Doc Number: ", ver_11_normal));
-        p.add(new Chunk(blkRecDoc.getDocumentNumber().toString(), cour_10_normal));
+        p.add(new Chunk(blkRecDoc.getDocumentNumber(), cour_10_normal));
         cell = new PdfPCell(p);
         cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell.setBorderWidth(0);
@@ -225,7 +225,7 @@ public class BulkReceivingPdf extends PurapPdf {
         infoTable.addCell(getPDFCell("Shipment Received Date\n", blkRecDoc.getShipmentReceivedDate().toString()));
 
         if (blkRecDoc.getShipmentWeight() != null){
-            infoTable.addCell(getPDFCell("Weight\n", blkRecDoc.getShipmentWeight().toString()));
+            infoTable.addCell(getPDFCell("Weight\n", blkRecDoc.getShipmentWeight()));
         }else{
             infoTable.addCell(getPDFCell("Weight\n", StringUtils.EMPTY));
         }

@@ -422,10 +422,10 @@ public abstract class AbstractGeneralLedgerInquirableImpl extends KfsInquirableI
         parameters.put(KFSConstants.DISPATCH_REQUEST_PARAMETER, KFSConstants.START_METHOD);
         parameters.put(KFSConstants.BUSINESS_OBJECT_CLASS_ATTRIBUTE, DocumentTypeEBO.class.getName());
         parameters.put(KFSConstants.DOC_FORM_KEY, "88888888");
-        parameters.put(KFSPropertyConstants.DOCUMENT_TYPE_ID, docTypeDTO.getId().toString());
+        parameters.put(KFSPropertyConstants.DOCUMENT_TYPE_ID, docTypeDTO.getId());
 
         Map<String, String> inquiryFields = new HashMap<String, String>();
-        inquiryFields.put(KFSPropertyConstants.DOCUMENT_TYPE_ID, docTypeDTO.getId().toString());
+        inquiryFields.put(KFSPropertyConstants.DOCUMENT_TYPE_ID, docTypeDTO.getId());
 
         return getHyperLink(DocumentTypeEBO.class, inquiryFields, UrlFactory.parameterizeUrl(baseUrl, parameters));
     }

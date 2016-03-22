@@ -72,7 +72,7 @@ public class KEMIDCurrentBalanceDetailInquirable extends KfsInquirableImpl {
             String url = UrlFactory.parameterizeUrl(KRADConstants.LOOKUP_ACTION, params);
 
             Map<String, String> fieldList = new HashMap<String, String>();
-            fieldList.put(EndowPropertyConstants.KEMID, currentBalanceDetail.getKemid().toString());
+            fieldList.put(EndowPropertyConstants.KEMID, currentBalanceDetail.getKemid());
             fieldList.put(EndowPropertyConstants.CURRENT_BAL_PURPOSE_CD, currentBalanceDetail.getKemidObj().getPurposeCode());
             fieldList.put(EndowPropertyConstants.CURRENT_TAX_LOT_BALANCE_DATE, dateTimeService.toDateString(currentBalanceDetail.getBalanceDate()));
             fieldList.put(EndowPropertyConstants.CURRENT_BAL_CLOSED_INDICATOR, currentBalanceDetail.getKemidObj().isClose() ? "Yes" : "No");

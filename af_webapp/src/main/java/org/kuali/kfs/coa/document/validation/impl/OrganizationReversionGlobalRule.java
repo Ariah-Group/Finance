@@ -331,7 +331,7 @@ public class OrganizationReversionGlobalRule extends GlobalDocumentRuleBase {
             // search through the values. Is that right good & healthy?
             for (Object kvPairObj : new OrganizationReversionCodeValuesFinder().getKeyValues()) {
                 KeyValue kvPair = (KeyValue) kvPairObj;
-                if (kvPair.getKey().toString().equals(detail.getOrganizationReversionCode())) {
+                if (kvPair.getKey().equals(detail.getOrganizationReversionCode())) {
                     foundInList = true;
                     break;
                 }

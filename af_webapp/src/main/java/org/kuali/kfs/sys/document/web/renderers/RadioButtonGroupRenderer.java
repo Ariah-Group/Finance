@@ -75,7 +75,7 @@ public class RadioButtonGroupRenderer extends FieldRendererBase {
         
         radioButton.append("<input type=\"radio\"");
         
-        if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey().toString())) {
+        if (getField().getPropertyValue().equalsIgnoreCase(keyLabelPair.getKey())) {
             radioButton.append(" checked=\"checked\"");
         }
         
@@ -88,7 +88,7 @@ public class RadioButtonGroupRenderer extends FieldRendererBase {
         radioButton.append("\"");
         
         radioButton.append(" id=\"");
-        radioButton.append(getFieldName()+"_"+keyLabelPair.getKey().toString().replaceAll("\\W", "_"));
+        radioButton.append(getFieldName()+"_"+keyLabelPair.getKey().replaceAll("\\W", "_"));
         radioButton.append("\"");
         
         radioButton.append(" value=\"");

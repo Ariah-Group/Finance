@@ -218,27 +218,27 @@ public class BudgetReportsControlListDaoJdbc extends BudgetConstructionDaoJdbcBa
         String idForSession = UUID.randomUUID().toString();
 
         // build 1st temp table with list of accounts for the selected organizations
-        getSimpleJdbcTemplate().update(updateReportsControlList[0], idForSession.toString(), principalName, universityFiscalYear);
+        getSimpleJdbcTemplate().update(updateReportsControlList[0], idForSession, principalName, universityFiscalYear);
 
         // build 2nd temp table with list of accounts from 1 temp table that are also contained in user's point of view
-        getSimpleJdbcTemplate().update(updateReportsControlList[1], idForSession.toString(), principalName, chartOfAccountsCode, organizationCode, idForSession.toString());
+        getSimpleJdbcTemplate().update(updateReportsControlList[1], idForSession, principalName, chartOfAccountsCode, organizationCode, idForSession);
 
         // constrain account list further based on buildMode
         switch (buildMode) {
             case PBGL:
-                getSimpleJdbcTemplate().update(updateReportsControlList[2], idForSession.toString());
+                getSimpleJdbcTemplate().update(updateReportsControlList[2], idForSession);
                 break;
             case MONTH:
-                getSimpleJdbcTemplate().update(updateReportsControlList[3], idForSession.toString());
+                getSimpleJdbcTemplate().update(updateReportsControlList[3], idForSession);
                 break;
             case BCAF:
-                getSimpleJdbcTemplate().update(updateReportsControlList[4], idForSession.toString());
+                getSimpleJdbcTemplate().update(updateReportsControlList[4], idForSession);
                 break;
         }
 
         // clear out temp tables
-        clearTempTableBySesId("LD_BCN_BUILD_CTRL_LIST01_MT", "SESID", idForSession.toString());
-        clearTempTableBySesId("LD_BCN_BUILD_CTRL_LIST02_MT", "SESID", idForSession.toString());
+        clearTempTableBySesId("LD_BCN_BUILD_CTRL_LIST01_MT", "SESID", idForSession);
+        clearTempTableBySesId("LD_BCN_BUILD_CTRL_LIST02_MT", "SESID", idForSession);
     }
 
     /**

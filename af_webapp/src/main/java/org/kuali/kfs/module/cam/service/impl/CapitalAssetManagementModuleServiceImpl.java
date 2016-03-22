@@ -115,7 +115,7 @@ public class CapitalAssetManagementModuleServiceImpl implements CapitalAssetMana
         if (capitalAssetNumbers.size() > 0) {
             if (document instanceof AccountingDocument) {
                 if (isFpDocumentEligibleForAssetLock((AccountingDocument) document, documentTypeName) && !this.storeAssetLocks(capitalAssetNumbers, document.getDocumentNumber(), documentTypeName, null)) {
-                    throw new ValidationException("Asset " + capitalAssetToBeLocked.toString() + " is being locked by other documents.");
+                    throw new ValidationException("Asset " + capitalAssetToBeLocked + " is being locked by other documents.");
                 }
             }
         }

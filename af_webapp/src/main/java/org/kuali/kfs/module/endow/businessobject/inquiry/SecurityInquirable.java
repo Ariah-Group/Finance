@@ -79,7 +79,7 @@ public class SecurityInquirable extends KfsInquirableImpl {
             String url = UrlFactory.parameterizeUrl(KRADConstants.LOOKUP_ACTION, params);
 
             Map<String, String> fieldList = new HashMap<String, String>();
-            fieldList.put(EndowPropertyConstants.HOLDING_TAX_LOT_SECURITY_ID, security.getId().toString());
+            fieldList.put(EndowPropertyConstants.HOLDING_TAX_LOT_SECURITY_ID, security.getId());
 
             return getHyperLink(Security.class, fieldList, url);
         }

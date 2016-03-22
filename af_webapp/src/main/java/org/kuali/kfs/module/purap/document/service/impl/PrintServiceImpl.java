@@ -491,7 +491,7 @@ public class PrintServiceImpl implements PrintService {
         String imageTempLocation = StringUtils.EMPTY;
         String logoImage = StringUtils.EMPTY;
         
-        String key = blkRecDoc.getDocumentNumber().toString(); // key can be any string; 
+        String key = blkRecDoc.getDocumentNumber(); // key can be any string; 
         String campusCode = blkRecDoc.getDeliveryCampusCode().toLowerCase();
         
         String environment = kualiConfigurationService.getPropertyValueAsString(KFSConstants.ENVIRONMENT_KEY);

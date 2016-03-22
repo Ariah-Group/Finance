@@ -553,7 +553,7 @@ public class CorrectionAction extends KualiDocumentActionBase implements KualiTa
                     return mapping.findForward(KFSConstants.MAPPING_BASIC);
                 }
                 else {
-                    String fileName = "glcp_archived_group_" + correctionForm.getInputGroupIdFromLastDocumentLoad().toString() + ".txt";
+                    String fileName = "glcp_archived_group_" + correctionForm.getInputGroupIdFromLastDocumentLoad() + ".txt";
                     // set response
                     response.setContentType("application/txt");
                     response.setHeader("Content-disposition", "attachment; filename=" + fileName);
