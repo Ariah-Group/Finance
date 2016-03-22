@@ -117,8 +117,6 @@ public class FinancialSystemTransactionalDocumentPresentationControllerBase exte
             }
         }
 
-        // CSU 6702 BEGIN
-        // rSmart-jkneal-KFSCSU-199-begin mod for adding accounting period view action
         if (document instanceof LedgerPostingDocument) {
             // check account period selection is enabled
             // PERFORMANCE: cache this setting - move call to service
@@ -133,8 +131,6 @@ public class FinancialSystemTransactionalDocumentPresentationControllerBase exte
                 }
             }
         }
-        // rSmart-jkneal-KFSCSU-199-end mod
-        // CSU 6702 END
 
         return documentActions;
     }

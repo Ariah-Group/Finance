@@ -169,8 +169,6 @@ public class LedgerPostingDocumentBase extends FinancialSystemTransactionalDocum
         return accountingPeriodService;
     }
     
-    // CSU 6702 BEGIN
-    // rSmart-jkneal-KFSCSU-199-begin mod for selected accounting period
     /**
      * Composite of postingPeriodCode and postingYear
      * @return Return a composite of postingPeriodCode and postingYear
@@ -191,6 +189,4 @@ public class LedgerPostingDocumentBase extends FinancialSystemTransactionalDocum
             setAccountingPeriod(accountingPeriod);
         }
     }
-    // rSmart-jkneal-KFSCSU-199-end mod for selected accounting period
-    // CSU 6702 END    
 }
