@@ -611,7 +611,7 @@ public class AccountsPayableActionBase extends PurchasingAccountsPayableActionBa
 
         item.refreshReferenceObject(PurapPropertyConstants.ITEM_TYPE);
 
-        final KualiDecimal itemExtendedPrice = (item.getExtendedPrice()==null)?KualiDecimal.ZERO:item.getExtendedPrice();;
+        final KualiDecimal itemExtendedPrice = (item.getExtendedPrice()==null)?KualiDecimal.ZERO:item.getExtendedPrice();
         if (item.getItemType().isQuantityBasedGeneralLedgerIndicator()) {
             KualiDecimal newExtendedPrice = item.calculateExtendedPrice();
             item.setExtendedPrice(newExtendedPrice);
@@ -679,7 +679,7 @@ public class AccountsPayableActionBase extends PurchasingAccountsPayableActionBa
 
         item.refreshReferenceObject(PurapPropertyConstants.ITEM_TYPE);
 
-        final KualiDecimal itemExtendedPrice = (item.getExtendedPrice()==null)?KualiDecimal.ZERO:item.getExtendedPrice();;
+        final KualiDecimal itemExtendedPrice = (item.getExtendedPrice()==null)?KualiDecimal.ZERO:item.getExtendedPrice();
         if (item.getItemType().isQuantityBasedGeneralLedgerIndicator()) {
             KualiDecimal newExtendedPrice = item.calculateExtendedPrice();
             item.setExtendedPrice(newExtendedPrice);

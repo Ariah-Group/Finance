@@ -42,7 +42,6 @@ public class CorrectionLaborGroupEntriesFinder extends KeyValuesBase {
         List<KeyValue> activeLabels = new ArrayList<KeyValue>();
 
         LaborOriginEntryGroupService originEntryGroupService = SpringContext.getBean(LaborOriginEntryGroupService.class);
-        ;
            
         File[] fileList = originEntryGroupService.getAllFileInBatchDirectory();
 

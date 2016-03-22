@@ -177,7 +177,7 @@ public class GenesisDaoOjb extends BudgetConstructionBatchHelperDaoOjb implement
             String[] mapValues = (String[]) ((Object[]) Results.next());
             controlFlags.put(mapValues[0], mapValues[1]);
         }
-        ;
+
         return controlFlags;
     }
 
@@ -1387,7 +1387,7 @@ public class GenesisDaoOjb extends BudgetConstructionBatchHelperDaoOjb implement
             lockID.addNotEqualTo(BCPropertyConstants.BUDGET_LOCK_USER_IDENTIFIER, BCConstants.DEFAULT_BUDGET_HEADER_LOCK_IDS);
             tranLockID.addNotEqualTo(BCPropertyConstants.BUDGET_TRANSACTION_LOCK_USER_IDENTIFIER, BCConstants.DEFAULT_BUDGET_HEADER_LOCK_IDS);
         }
-        ;
+
         lockID.addOrCriteria(tranLockID);
         criteriaID.addAndCriteria(lockID);
         //
@@ -1442,7 +1442,7 @@ public class GenesisDaoOjb extends BudgetConstructionBatchHelperDaoOjb implement
         else {
             lockID.addNotEqualTo(BCPropertyConstants.POSITION_LOCK_USER_IDENTIFIER, BCConstants.DEFAULT_BUDGET_HEADER_LOCK_IDS);
         }
-        ;
+
         criteriaID.addAndCriteria(lockID);
         //
         QueryByCriteria queryID = new QueryByCriteria(BudgetConstructionPosition.class, criteriaID);
@@ -1462,7 +1462,7 @@ public class GenesisDaoOjb extends BudgetConstructionBatchHelperDaoOjb implement
         if (!LOG.isEnabledFor(Level.INFO)) {
             return;
         }
-        ;
+
         //  print one header row   
         for (Map.Entry<String, String> bcHeaderRows : documentNumberFromBCHdr.entrySet()) {
             String toPrint = bcHeaderRows.getValue();
@@ -1493,7 +1493,7 @@ public class GenesisDaoOjb extends BudgetConstructionBatchHelperDaoOjb implement
         if (!LOG.isEnabledFor(Level.DEBUG)) {
             return;
         }
-        ;
+
         //  print one header row    
         for (Map.Entry<String, String> bcHeaderRows : documentNumberFromBCHdr.entrySet()) {
             String toPrint = bcHeaderRows.getValue();

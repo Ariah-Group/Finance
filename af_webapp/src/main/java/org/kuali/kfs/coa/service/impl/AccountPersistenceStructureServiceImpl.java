@@ -279,7 +279,7 @@ public class AccountPersistenceStructureServiceImpl extends PersistenceStructure
         return accountChartPairs;
     }
 
-    public Set<String> listChartOfAccountsCodeNames(PersistableBusinessObject bo) {;
+    public Set<String> listChartOfAccountsCodeNames(PersistableBusinessObject bo) {
         return listChartCodeAccountNumberPairs(bo).keySet();        
     }
 

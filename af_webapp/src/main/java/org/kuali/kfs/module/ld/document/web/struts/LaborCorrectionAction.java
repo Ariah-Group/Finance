@@ -103,7 +103,7 @@ public class LaborCorrectionAction extends CorrectionAction {
 
         // Init our services once
         if (originEntryGroupService == null) {
-            CorrectionAction.originEntryGroupService = (OriginEntryGroupService)SpringContext.getBean(LaborOriginEntryGroupService.class);;
+            CorrectionAction.originEntryGroupService = (OriginEntryGroupService)SpringContext.getBean(LaborOriginEntryGroupService.class);
             CorrectionAction.originEntryService = SpringContext.getBean(OriginEntryService.class);
             CorrectionAction.dateTimeService = SpringContext.getBean(DateTimeService.class);
             CorrectionAction.kualiConfigurationService = SpringContext.getBean(ConfigurationService.class);

@@ -1238,7 +1238,7 @@ public class DisbursementVoucherDocument extends AccountingDocumentBase implemen
         if (!StringUtils.isBlank(getDvPayeeDetail().getDisbVchrPayeeIdNumber())) {
             VendorDetail vendorDetail = getVendorService().getVendorDetail(dvPayeeDetail.getDisbVchrVendorHeaderIdNumberAsInteger(), dvPayeeDetail.getDisbVchrVendorDetailAssignedIdNumberAsInteger());
             if (vendorDetail == null) {
-                dvPayeeDetail = new DisbursementVoucherPayeeDetail();;
+                dvPayeeDetail = new DisbursementVoucherPayeeDetail();
                 getDvPayeeDetail().setDisbVchrPayeeIdNumber(StringUtils.EMPTY);
                 KNSGlobalVariables.getMessageList().add(KFSKeyConstants.WARNING_DV_PAYEE_NONEXISTANT_CLEARED);
             }

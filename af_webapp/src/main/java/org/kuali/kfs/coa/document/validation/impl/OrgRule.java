@@ -482,7 +482,7 @@ public class OrgRule extends MaintenanceDocumentRuleBase {
                     do {
                         tempOrg = orgService.getByPrimaryId(lastReportsToChartOfAccountsCode, lastReportsToOrganizationCode);
                         loopCount++;
-                        ;
+
                         if (ObjectUtils.isNull(tempOrg)) {
                             continueSearch = false;
                             // if a null is returned on the first iteration, then the reports-to org does not exist

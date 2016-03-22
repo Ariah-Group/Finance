@@ -264,7 +264,7 @@ public class ElectronicInvoiceDetailRequestHeader {
    * @param isDiscountInLine The isDiscountInLine to set.
    */
   public void setDiscountInfoProvidedIndicator(String isDiscountInLine) {
-    this.isDiscountInLine = StringUtils.equalsIgnoreCase(StringUtils.defaultString(isDiscountInLine),"yes");;
+    this.isDiscountInLine = StringUtils.equalsIgnoreCase(StringUtils.defaultString(isDiscountInLine),"yes");
   }
   /**
    * @return Returns the isHeaderInvoiceIndicator.
@@ -371,7 +371,7 @@ public class ElectronicInvoiceDetailRequestHeader {
   }
 
   public void setAccountingInfoProvidedIndicator(String isAccountingInLine) {
-      this.isAccountingInLine = StringUtils.equalsIgnoreCase(StringUtils.defaultString(isAccountingInLine),"yes");;
+      this.isAccountingInLine = StringUtils.equalsIgnoreCase(StringUtils.defaultString(isAccountingInLine),"yes");
   }
   
   public String getIdReferenceCreator() {

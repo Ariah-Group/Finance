@@ -253,7 +253,7 @@ public class BulkReceivingDocument extends ReceivingDocumentBase{
         if (event instanceof AttributedContinuePurapEvent) {
             SpringContext.getBean(BulkReceivingService.class).populateBulkReceivingFromPurchaseOrder(this);
             if (getPurchaseOrderIdentifier() == null){
-                getDocumentHeader().setDocumentDescription(PurapConstants.BulkReceivingDocumentStrings.MESSAGE_BULK_RECEIVING_DEFAULT_DOC_DESCRIPTION);;
+                getDocumentHeader().setDocumentDescription(PurapConstants.BulkReceivingDocumentStrings.MESSAGE_BULK_RECEIVING_DEFAULT_DOC_DESCRIPTION);
             }
         }else{
             if (getGoodsDeliveredVendorNumber() != null){

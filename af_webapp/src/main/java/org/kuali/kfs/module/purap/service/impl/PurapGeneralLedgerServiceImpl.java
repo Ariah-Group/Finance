@@ -1390,7 +1390,7 @@ public class PurapGeneralLedgerServiceImpl implements PurapGeneralLedgerService 
             }
 
             final KualiDecimal cmItemTotalAmount = (cmItem.getTotalAmount() == null) ? KualiDecimal.ZERO : cmItem.getTotalAmount();
-            ;
+
             // If there isn't a PO item or the total amount is 0, we don't need encumbrances
             if ((poItem == null) || (cmItemTotalAmount == null) || (cmItemTotalAmount.doubleValue() == 0)) {
                 if (LOG.isDebugEnabled()) {

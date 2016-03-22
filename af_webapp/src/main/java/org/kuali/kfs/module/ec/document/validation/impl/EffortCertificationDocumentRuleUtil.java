@@ -436,7 +436,7 @@ public class EffortCertificationDocumentRuleUtil {
      * @param document the given effort certification document
      * @return true if there is a line associated with the given document; otherwise, false
      */
-    public static boolean hasDetailLine(EffortCertificationDocument document) {;
+    public static boolean hasDetailLine(EffortCertificationDocument document) {
         List<EffortCertificationDetail> detailLines = document.getEffortCertificationDetailLines();
 
         return detailLines != null && !detailLines.isEmpty();

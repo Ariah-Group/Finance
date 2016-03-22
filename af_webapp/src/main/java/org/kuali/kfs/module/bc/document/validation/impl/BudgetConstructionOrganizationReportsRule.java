@@ -146,7 +146,7 @@ public class BudgetConstructionOrganizationReportsRule extends MaintenanceDocume
                     do {
                         tempBCOrgReports = bcOrgReportsService.getByPrimaryId(lastReportsToChartOfAccountsCode, lastReportsToOrganizationCode);
                         loopCount++;
-                        ;
+
                         if (ObjectUtils.isNull(tempBCOrgReports)) {
                             continueSearch = false;
                             // if a null is returned on the first iteration, then the reports-to org does not exist

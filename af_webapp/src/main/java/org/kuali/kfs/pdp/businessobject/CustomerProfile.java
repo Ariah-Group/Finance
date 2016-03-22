@@ -114,7 +114,7 @@ public class CustomerProfile extends PersistableBusinessObjectBase implements Mu
 
     public CustomerProfile() {
         super();
-        customerBanks = new ArrayList<CustomerBank>();;
+        customerBanks = new ArrayList<CustomerBank>();
     }
 
     public String getCustomerShortName() {

@@ -74,7 +74,7 @@ public class ElectronicInvoiceMatchingServiceImpl implements ElectronicInvoiceMa
         }
 
         upperVariancePercentString = SpringContext.getBean(ParameterService.class).getParameterValueAsString(ElectronicInvoiceStep.class, PurapParameterConstants.ElectronicInvoiceParameters.SALES_TAX_UPPER_VARIANCE_PERCENT);
-        lowerVariancePercentString = SpringContext.getBean(ParameterService.class).getParameterValueAsString(ElectronicInvoiceStep.class, PurapParameterConstants.ElectronicInvoiceParameters.SALES_TAX_LOWER_VARIANCE_PERCENT);;
+        lowerVariancePercentString = SpringContext.getBean(ParameterService.class).getParameterValueAsString(ElectronicInvoiceStep.class, PurapParameterConstants.ElectronicInvoiceParameters.SALES_TAX_LOWER_VARIANCE_PERCENT);
 
         try {
             if (orderHolder.isValidateHeaderInformation()) {

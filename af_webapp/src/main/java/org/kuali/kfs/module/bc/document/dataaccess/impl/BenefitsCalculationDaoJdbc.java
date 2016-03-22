@@ -437,7 +437,7 @@ public class BenefitsCalculationDaoJdbc extends BudgetConstructionDaoJdbcBase im
         sqlBuilder.append("          AND LD_BENEFITS_CALC_T.fin_coa_cd = ?\n");
         sqlBuilder.append("          AND LD_BENEFITS_CALC_T.pos_frngben_obj_cd = LD_BCNSTR_MONTH_T.fin_object_cd\n");
         sqlBuilder.append("          AND LD_BENEFITS_CALC_T.actv_ind = ?)\n");
-        ;
+
         sqlMonthlySteps.add(new SQLForStep(sqlBuilder));
 
         /********************************************

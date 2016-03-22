@@ -172,7 +172,6 @@ public class OriginEntryTotals {
             else {
                 otherAmount = otherAmount.add(originEntry.getTransactionLedgerEntryAmount());
                 numOtherEntries++;
-                ;
             }
         }
     }
