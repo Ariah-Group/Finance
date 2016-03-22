@@ -15,9 +15,9 @@
  limitations under the License.
 -->
 <xsd:schema elementFormDefault="qualified"
-    targetNamespace="http://www.kuali.org/kfs/sys/ddTypes"
-    xmlns:dd="http://www.kuali.org/kfs/sys/ddTypes"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            targetNamespace="http://www.kuali.org/kfs/sys/ddTypes"
+            xmlns:dd="http://www.kuali.org/kfs/sys/ddTypes"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
     <xsd:simpleType name="Customer.customerNumber">
         <xsd:restriction base="xsd:normalizedString">
