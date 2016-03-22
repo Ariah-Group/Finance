@@ -677,7 +677,7 @@
 
             <forward name="basic" path="/jsp/module/purap/ShopCatalogs.jsp" />
             <forward name="removeframe" path="/jsp/module/purap/ShopRemoveFrame.jsp" />
-
+            <forward name="b2berror" path="/jsp/module/purap/ShopError.jsp" />
             <forward name="failure" path="/requisition/requisitionFailure.jsp" />
             <forward name="invalid" path="/requisition/shopFail.jsp" />
         </action>

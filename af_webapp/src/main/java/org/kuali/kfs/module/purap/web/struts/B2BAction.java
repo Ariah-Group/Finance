@@ -25,7 +25,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.kuali.kfs.module.purap.document.RequisitionDocument;
 import org.kuali.kfs.module.purap.document.service.B2BShoppingService;
-import org.kuali.kfs.module.purap.exception.B2BConnectionException;
 import org.kuali.kfs.module.purap.exception.B2BShoppingException;
 import org.kuali.kfs.module.purap.PurapPropertyConstants;
 import org.kuali.kfs.module.purap.util.cxml.B2BParserHelper;
@@ -45,7 +44,9 @@ public class B2BAction extends KualiAction {
         String url = SpringContext.getBean(B2BShoppingService.class).getPunchOutUrl(GlobalVariables.getUserSession().getPerson());
 
         if (ObjectUtils.isNull(url)) {
-            throw new B2BConnectionException("Unable to connect to remote site for punchout.");
+            //throw new B2BConnectionException("Unable to connect to remote site for punchout.");
+            request.setAttribute("errormessage","Unable to connect to remote site for punchout. It may not be configured/setup.");
+            return mapping.findForward("b2berror");
         }
 
         b2bForm.setShopUrl(url);
@@ -73,7 +74,7 @@ public class B2BAction extends KualiAction {
             throw new B2BShoppingException("Retrieving shopping cart from cxml was unsuccessful. Error message:" + cart.getStatusText());
         }
 
-        return (mapping.findForward("removeframe"));
+        return mapping.findForward("removeframe");
     }
 
 }

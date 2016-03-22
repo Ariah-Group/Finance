@@ -110,7 +110,19 @@ public class B2BShoppingServiceImpl implements B2BShoppingService {
         String response = b2bDao.sendPunchOutRequest(cxml.getPunchOutSetupRequestMessage(), b2b.getPunchoutURL());
 
         // parse response
-        PunchOutSetupResponse posr = B2BParserHelper.getInstance().parsePunchOutSetupResponse(response);
+        PunchOutSetupResponse posr = null;
+        
+        try {
+           posr =  B2BParserHelper.getInstance().parsePunchOutSetupResponse(response);
+            
+        } catch (Exception e) {
+            LOG.error("Error with B2B Punchout configuration :" + e.getMessage(), e);
+            posr = new PunchOutSetupResponse();
+            posr.setPunchOutUrl(null);
+            posr.setStatusCode("403");
+            posr.setStatusText("Error with B2B Punchout configuration :" + e.getMessage());
+        }
+
 
         // return url to use for punchout
         return posr.getPunchOutUrl();
