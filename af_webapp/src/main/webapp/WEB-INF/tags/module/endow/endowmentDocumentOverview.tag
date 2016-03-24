@@ -27,7 +27,7 @@
 	<c:if test="${includeTotalUnits or includeTotalAmount}">
 	  <h3><c:out value="Endowment Document Details"/></h3>
 	  
-	  <table cellpadding="0" cellspacing="0" class="datatable" summary="KFS Detail Section">
+	  <table cellpadding="0" cellspacing="0" class="datatable" summary="Detail Section">
 	    <tr>
 	      <c:choose>
 	        <c:when test="${includeTotalUnits}">

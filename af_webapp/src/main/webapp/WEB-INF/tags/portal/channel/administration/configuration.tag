@@ -17,7 +17,7 @@
 
 <channel:portalChannelTop channelTitle="Configuration" />
 <div class="body">
-	<strong>KFS</strong></br>
+	<strong>General</strong></br>
 	<ul class="chan">
 		<li><portal:portalLink displayTitle="true"
 				title="Data Mapping Field Definition"
